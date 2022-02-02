@@ -6,8 +6,8 @@
 }
 
 .home,
-.services,
-.products,
+.trips,
+.post,
 .sign-up {
   display: flex;
   height: 90vh;
@@ -16,7 +16,7 @@
   font-size: 3rem;
 }
 
-.services {
+.post {
   background-image: url('../public/images/img-2.jpg');
   background-position: center;
   background-size: cover;
@@ -25,7 +25,7 @@
   font-size: 100px;
 }
 
-.products {
+.trips {
   background-image: url('../public/images/img-1.jpg');
   background-position: center;
   background-size: fill;
