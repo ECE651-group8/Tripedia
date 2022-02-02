@@ -1,0 +1,4 @@
+.right {
+    border-right: 1px solid var(--option-background);
+    flex: auto;
+}
