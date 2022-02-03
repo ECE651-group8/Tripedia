@@ -6,7 +6,7 @@ import "./Right.css"
 function Right() {
   return (
     <div className='right'>
-        <Topbar />
+        {/*<Topbar />*/}
         
         <Posts />
     </div>

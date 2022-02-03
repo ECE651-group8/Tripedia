@@ -28,9 +28,9 @@
 .mask{
     background-color: rgba(0, 0, 0, 0.5);
     position: absolute;
-    top: 110px;
+    top: 6rem;
     bottom: 0px;
-    width: 95%;
+    width: 20rem;
     height: 30%;
     overflow: hidden;
     padding: 4px;
@@ -38,6 +38,9 @@
     border-radius: 10px;
 }
 .card-img{
-    width:30rem;
+    width:20rem;
     border-radius: 10px;
+}
+.bg-image{
+
 }

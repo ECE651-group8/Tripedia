@@ -7,18 +7,20 @@
     background-clip: border-box;
     border: 1px solid rgba(0,0,0,.125);
     margin-top: 5px;
-    margin-left: 20px;
+    margin-left: 5rem;
     padding: 5px;
     border-radius: 5px;
     width: 30rem;
 }
 
 .hottest-text{
-    width:20rem;
+    
+    float:left;
 }
 .hottest-card-text{
     
     display:flex;
+    
     
 }
 
@@ -26,20 +28,21 @@
     margin-top: 2px; 
     font-size:x-small;
     font-style:italic;
-    font-size: 15px;
+    font-size: 1.2em;
     font-weight:bold;
 }
 
 .hottest-text> h{
     font-style:oblique;
     font-size: x-small;
+    font-size: 0.8em;
     color:gray;
 }
 
 .hottest-text> h1{
     font-size: x-small;
     color:gray;
-    margin-top: 10 spx;
+    margin-top: 10 rem;
 
 }
 
@@ -51,10 +54,10 @@
 }
 .img-thumbnail {
     
-    width: 10rem;
+    width: 8rem;
     border-radius: 10px;
     
-    display: flex;
+    /*display: flex;*/
     object-fit: cover;
     
 }

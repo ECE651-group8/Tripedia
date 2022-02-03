@@ -1,13 +1,24 @@
 import React from 'react';
 import '../../App.css';
 import Right from "../Right";
+import Hottest from "../Hottest"
+import './Post.css'
+
 
 export default function Post() {
   return (
-  <h1 className='post'>
+  
     <div className='container'>
-      Post
+      
+
+      <div className='trend'>
+        <Hottest />
+      </div>
+      <div className='right'>
+        <Right />
+      </div>
+      
     </div>
     
-  </h1>);
+  );
 }
