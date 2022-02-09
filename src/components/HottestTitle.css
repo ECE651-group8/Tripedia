@@ -16,7 +16,7 @@
 }
 .hottest-content >h1{
     color:white;
-    margin-top: 45px;
+    margin-top: 20px;
     font-size: 20px;
     font-weight:bold;
     font-style:italic;
@@ -30,16 +30,15 @@
     position: absolute;
     top: 6rem;
     bottom: 0px;
-    width: 20rem;
-    height: 30%;
+    width: 97%;
+    height: 44.5%;
     overflow: hidden;
-    padding: 4px;
     background-attachment: fixed;
     border-radius: 10px;
 }
 .card-img{
-    width:20rem;
-    border-radius: 10px;
+    max-width: 100%;
+    border-radius: 1rem;
 }
 .bg-image{
 

@@ -2,7 +2,11 @@
     float: left;
     width: 20%;
     height: 100%;
-    
+    display:flex;
+    flex:auto;
+    margin-left:auto;
+    margin-right:auto;
+    margin-top:20px;
   }
 
   .right {

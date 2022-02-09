@@ -6,11 +6,12 @@
     background-color: white;
     background-clip: border-box;
     border: 1px solid rgba(0,0,0,.125);
-    margin-top: 5px;
-    margin-left: 5rem;
-    padding: 5px;
-    border-radius: 5px;
-    width: 30rem;
+    margin-top: 0.5rem ;
+    margin-left: 10vw;
+    padding: 1%;
+    border-radius: 1rem;
+    width: 25rem;
+    
 }
 
 .hottest-text{
@@ -41,8 +42,9 @@
 
 .hottest-text> h1{
     font-size: x-small;
-    color:gray;
-    margin-top: 10 rem;
+    color:red;
+    margin-top:20px ;
+    
 
 }
 
