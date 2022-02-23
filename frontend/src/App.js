@@ -7,6 +7,7 @@ import Trips from './components/pages/Trips';
 import Post from './components/pages/Post';
 import SignUp from './components/pages/SignUp';
 import Detail from './components/pages/Detail';
+import Timeline from './components/pages/Timeline';
 
 // import 'slick-carousel/slick/slick.css';
 // import 'slick-carousel/slick/slick-theme.css';
@@ -22,6 +23,7 @@ function App() {
                     <Route path="/trips" element={<Trips />} />
                     <Route path="/sign-up" element={<SignUp />} />
                     <Route path="/detail" element={<Detail />} />
+                    <Route path="/timeline" element={<Timeline />} />
                 </Routes>
             </Router>
         </>

@@ -9,7 +9,7 @@ function Timeline() {
 
     <div>
 
-         <Navbar/>
+         
          <TimelineAlone />
          
          
