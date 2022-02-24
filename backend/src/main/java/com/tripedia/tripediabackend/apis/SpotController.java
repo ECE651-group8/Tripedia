@@ -44,12 +44,12 @@ public class SpotController {
         }
     }
 
-    @DeleteMapping
+    @DeleteMapping(path = "/del")
     public void delSpot(@RequestBody Spot spot) {
         spotService.delSpot(spot);
     }
 
-    @DeleteMapping("{id}")
+    @DeleteMapping("/del/{id}")
     public void delSpotById(@PathVariable("id") Long id) {
         spotService.delSpotById(id);
     }
