@@ -8,7 +8,9 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Calendar;
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("api/post")
@@ -26,10 +28,18 @@ public class PostController {
     }
 
 
-    @PostMapping
+    @RequestMapping("/{pid}")
+    @GetMapping
+    public Optional<Post> getPostById(@PathVariable("pid") Long postId) {
+        return postService.getPostById(postId);
+    }
+
     @RequestMapping("/add")
+    @PostMapping
     public ResponseEntity<String> addPost(@RequestBody Post post) {
         try{
+            post.setPostTime(Calendar.getInstance().getTime());
+            post.setCreateTime(Calendar.getInstance().getTime());
             Post savedPost = postService.addPost(post);
             return ResponseEntity.ok("Added Post. " + savedPost.toString());
         } catch (InvalidPostException e){
@@ -39,8 +49,8 @@ public class PostController {
 
     @RequestMapping("/del")
     @PostMapping
-    public void delPost(@RequestBody Post post) {
-        postService.delPost(post);
+    public void delPost(Long postId) {
+        postService.deletePost(postId);
     }
 
     @RequestMapping("/update")

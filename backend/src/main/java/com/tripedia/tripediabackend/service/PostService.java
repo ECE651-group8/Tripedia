@@ -35,9 +35,8 @@ public class PostService {
         return postDao.findById(postId);
     }
 
-    public void delPost(Post post) {
-        // TODO
-        postDao.delete(post);
+    public void deletePost(Long postId) {
+        postDao.deleteById(postId);
     }
 
     public Post updatePost(Post post) {

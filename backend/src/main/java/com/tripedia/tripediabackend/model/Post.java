@@ -1,9 +1,7 @@
 package com.tripedia.tripediabackend.model;
 
 import javax.persistence.*;
-
 import java.util.Date;
-import java.util.UUID;
 
 @Entity
 @Table(name = "post")
@@ -13,16 +11,24 @@ public class Post {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long postId;
 
-    private String createTime;
-
-    @Column(nullable = false, name = "title")
+    @Column(unique = true, nullable = false)
     private String title;
+
+    private Date createTime;
+
+    private Date postTime;
 
     private Long visitorNum;
 
-    private String postTime;
+    public Post() {}
 
-    private UUID userId;
+    public Post(Long postId, String title, Date createTime, Date postTime, Long visitorNum) {
+        this.postId = postId;
+        this.title = title;
+        this.createTime = createTime;
+        this.postTime = postTime;
+        this.visitorNum = visitorNum;
+    }
 
     public Long getPostId() {
         return postId;
@@ -30,14 +36,6 @@ public class Post {
 
     public void setPostId(Long postId) {
         this.postId = postId;
-    }
-
-    public String getCreateTime() {
-        return createTime;
-    }
-
-    public void setCreateTime(String createTime) {
-        this.createTime = createTime;
     }
 
     public String getTitle() {
@@ -48,6 +46,22 @@ public class Post {
         this.title = title;
     }
 
+    public Date getCreateTime() {
+        return createTime;
+    }
+
+    public void setCreateTime(Date createTime) {
+        this.createTime = createTime;
+    }
+
+    public Date getPostTime() {
+        return postTime;
+    }
+
+    public void setPostTime(Date postTime) {
+        this.postTime = postTime;
+    }
+
     public Long getVisitorNum() {
         return visitorNum;
     }
@@ -56,31 +70,15 @@ public class Post {
         this.visitorNum = visitorNum;
     }
 
-    public String getPostTime() {
-        return postTime;
-    }
-
-    public void setPostTime(String postTime) {
-        this.postTime = postTime;
-    }
-
-    public UUID getUserId() {
-        return userId;
-    }
-
-    public void setUserId(UUID userId) {
-        this.userId = userId;
-    }
 
     @Override
     public String toString() {
         return "Post{" +
                 "postId=" + postId +
-                ", createTime='" + createTime + '\'' +
                 ", title='" + title + '\'' +
+                ", createTime=" + createTime +
+                ", postTime=" + postTime +
                 ", visitorNum=" + visitorNum +
-                ", postTime='" + postTime + '\'' +
-                ", userId=" + userId +
                 '}';
     }
 }
