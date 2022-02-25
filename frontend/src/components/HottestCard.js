@@ -15,7 +15,7 @@ function HottestCard(){
          <Card.Text>
            
            <div className="hottest-text">
-           <p>#2. Blue Montain</p>
+           <p>#2. BBBBB Montain</p>
            <h> Join us between 3 and 6 pm on our outdoor patio’s to win new Dakine Mittens.</h>
            <h1> 74.7K Likes</h1>
           </div>
