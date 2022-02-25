@@ -1,9 +1,9 @@
 .navbar {
-  background: linear-gradient(90deg, rgb(13, 27, 3) 20%, rgba(59, 141, 12) 100%);
-  height: 80px;
+  background:#F2C53D;
+  height: 95px;
   display: flex;
   justify-content: center;
-  align-items: center;
+  /*align-items: center;*/
   font-size: 1.2rem;
   position: sticky;
   top: 0;
@@ -14,14 +14,14 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 80px;
+  height: 90px;
   max-width: 1500px;
 }
 
 .navbar-logo {
   color: #fff;
   justify-self: start;
-  margin-left: 20px;
+  margin-top: 18px;
   cursor: pointer;
   text-decoration: none;
   font-size: 2rem;
@@ -40,7 +40,7 @@
   grid-gap: 10px;
   list-style: none;
   text-align: center;
-  width: 60vw;
+  width: 75vw;
   justify-content: end;
   margin-right: 2rem;
 }
@@ -64,8 +64,8 @@
 }
 
 .logo {
-  width: 130px;
-  height: 60px;
+  width: 110px;
+  height: 70px;
 }
 
 .fa-bars {
@@ -119,9 +119,9 @@
   }
 
   .navbar-logo {
-    position: absolute;
+    position:absolute;
     top: 0;
-    left: 0;
+    left: 0px;
     transform: translate(25%, 50%);
   }
 
