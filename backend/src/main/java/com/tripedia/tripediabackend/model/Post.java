@@ -15,16 +15,16 @@ public class Post {
 
     private Date tripTime;
 
-    private Long cost;
-
     @Column(unique = true, nullable = false)
     private String title;
 
     private Date createTime;
 
+    private Long visitorNum;
+
     private Date postTime;
 
-    private Long visitorNum;
+    private Long cost;
 
     @ManyToOne
     @JoinColumn(name = "spot_id")
