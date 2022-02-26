@@ -30,8 +30,6 @@ public class Post {
     @JoinColumn(name = "spot_id")
     private Spot spot;
 
-
-
     public Post() {}
 
     public Post(Long postId, boolean isBrief, Date tripTime, Long cost, String title, Date createTime, Date postTime, Long visitorNum, Spot spot) {

@@ -1,6 +1,11 @@
 package com.tripedia.tripediabackend.service;
 import com.tripedia.tripediabackend.dao.ImageDao;
+import com.tripedia.tripediabackend.dao.SpotDao;
+import com.tripedia.tripediabackend.exceptions.PostNotExistException;
+import com.tripedia.tripediabackend.exceptions.SpotNotExistException;
 import com.tripedia.tripediabackend.model.Image;
+import com.tripedia.tripediabackend.model.Post;
+import com.tripedia.tripediabackend.model.Spot;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.tripedia.tripediabackend.exceptions.PostEmptyImageException;
@@ -12,6 +17,7 @@ import java.util.Optional;
 @Service
 public class ImageService {
     private ImageDao imageDao;
+    private SpotDao spotDao;
 
     @Autowired
     public ImageService(ImageDao imageDao) {
@@ -19,7 +25,7 @@ public class ImageService {
     }
 
     public Image addImage(Image image) {
-        if (image.getimageUrl().isEmpty()) {
+        if (image.getImageUrl().isEmpty()) {
             throw new PostEmptyImageException("Image name can not be empty");
         }
 
@@ -43,10 +49,26 @@ public class ImageService {
     }
 
     public Image updateImage(Image image) {
-        if (image.getimageId() == null || !imageDao.existsById(image.getimageId())) {
+        if (image.getImageId() == null || !imageDao.existsById(image.getImageId())) {
             throw new ImageNotExistException("Image cannot be found");
         }
 
+        return imageDao.save(image);
+    }
+
+    public Image assignSpot(Long imageId, Long spotId) {
+        if (!imageDao.existsById(imageId)) {
+            throw new ImageNotExistException("Cannot find image ID" + imageId);
+        }
+
+        if(!spotDao.existsById(spotId)) {
+            throw new SpotNotExistException("Cannot find spot ID" + spotId);
+        }
+
+        Image image = getImageById(imageId).get();
+        Spot spot = spotDao.findById(spotId).get();
+
+        image.setSpot(spot);
         return imageDao.save(image);
     }
 }

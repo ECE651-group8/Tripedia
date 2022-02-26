@@ -15,6 +15,10 @@ public class Image {
     @Column(nullable = false)
     private String imageUrl;
 
+    @ManyToOne
+    @JoinColumn(name = "spot_id")
+    private Spot spot;
+
     public Image(){}
 
     public Image(Long imageId, String imageUrl){
@@ -22,20 +26,28 @@ public class Image {
         this.imageUrl = imageUrl;
     }
 
-    public Long getimageId() {
+    public Long getImageId() {
         return imageId;
     }
 
-    public void setimageId(Long imageId) {
+    public void setImageId(Long imageId) {
         this.imageId = imageId;
     }
 
-    public String getimageUrl() {
+    public String getImageUrl() {
         return imageUrl;
     }
 
-    public void setimageUrl(String imageUrl) {
+    public void setImageUrl(String imageUrl) {
         this.imageUrl = imageUrl;
+    }
+
+    public Spot getSpot() {
+        return spot;
+    }
+
+    public void setSpot(Spot spot) {
+        this.spot = spot;
     }
 
     @Override

@@ -24,6 +24,20 @@ public class Spot {
     @OneToMany(mappedBy = "spot")
     List<Post> posts;
 
+    @OneToMany(mappedBy = "spot")
+    List<Image> images;
+
+    public Spot(){}
+
+    public Spot(Long spotId, String address, Long popularity, String spotName, String introduction, List<Post> posts, List<Image> images) {
+        this.spotId = spotId;
+        this.address = address;
+        this.popularity = popularity;
+        this.spotName = spotName;
+        this.introduction = introduction;
+        this.posts = posts;
+        this.images = images;
+    }
 
     public Long getSpotId() {
         return spotId;
@@ -65,14 +79,32 @@ public class Spot {
         this.address = address;
     }
 
+    public List<Post> getPosts() {
+        return posts;
+    }
+
+    public void setPosts(List<Post> posts) {
+        this.posts = posts;
+    }
+
+    public List<Image> getImages() {
+        return images;
+    }
+
+    public void setImages(List<Image> images) {
+        this.images = images;
+    }
+
     @Override
     public String toString() {
         return "Spot{" +
                 "spotId=" + spotId +
-                ", introduction='" + introduction + '\'' +
-                ", spotName='" + spotName + '\'' +
-                ", popularity=" + popularity +
                 ", address='" + address + '\'' +
+                ", popularity=" + popularity +
+                ", spotName='" + spotName + '\'' +
+                ", introduction='" + introduction + '\'' +
+                ", posts=" + posts +
+                ", images=" + images +
                 '}';
     }
 }
