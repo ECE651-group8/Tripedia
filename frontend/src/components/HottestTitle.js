@@ -5,7 +5,7 @@ import Card from 'react-bootstrap/Card';
 function Hottest(){
     return (
       <div className="hottestTitle">
-        
+        <Card.Link href= "/trips">
         <Card className="all-hottest-card" >
           <div className="bg-image" >
       
@@ -29,6 +29,7 @@ function Hottest(){
          
             </Card.ImgOverlay>
         </Card>
+        </Card.Link>
       </div>
     );
 }
