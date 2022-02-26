@@ -13,15 +13,14 @@ public class Image {
     private Long imageId;
 
     @Column(nullable = false)
-
-    private String imageurl;
+    private String imageUrl;
 
 
     public Image(){}
 
-    public Image(Long imageId, String imageurl){
+    public Image(Long imageId, String imageUrl){
         this.imageId = imageId;
-        this.imageurl = imageurl;
+        this.imageUrl = imageUrl;
     }
 
     public Long getimageId() {
@@ -32,19 +31,19 @@ public class Image {
         this.imageId = imageId;
     }
 
-    public String getimageurl() {
-        return imageurl;
+    public String getimageUrl() {
+        return imageUrl;
     }
 
-    public void setimageurl(String imageurl) {
-        this.imageurl = imageurl;
+    public void setimageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
     }
 
     @Override
     public String toString() {
         return "Post{" +
                 "imageId=" + imageId +
-                ", imageurl='" + imageurl + '\'' +
+                ", imageUrl='" + imageUrl + '\'' +
                 '}';
     }
     

@@ -19,7 +19,7 @@ public class ImageService {
     }
 
     public Image addImage(Image image) {
-        if (image.getimageurl().isEmpty()) {
+        if (image.getimageUrl().isEmpty()) {
             throw new PostEmptyImageException("Image name can not be empty");
         }
 

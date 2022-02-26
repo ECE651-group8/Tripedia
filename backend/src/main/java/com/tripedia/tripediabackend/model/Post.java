@@ -11,38 +11,32 @@ public class Post {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long postId;
 
-    private boolean isBreif;
+    private boolean isBrief;
 
     private Date tripTime;
-
-    private Long cost;
 
     @Column(unique = true, nullable = false)
     private String title;
 
     private Date createTime;
 
+    private Long visitorNum;
+
     private Date postTime;
 
-    private Long visitorNum;
+    private Long cost;
 
     @ManyToOne
     @JoinColumn(name = "spot_id")
     private Spot spot;
 
-    public Spot getSpot() {
-        return spot;
-    }
 
-    public void setSpot(Spot spot) {
-        this.spot = spot;
-    }
 
     public Post() {}
 
-    public Post(Long postId, boolean isBreif, Date tripTime, Long cost, String title, Date createTime, Date postTime, Long visitorNum, Spot spot) {
+    public Post(Long postId, boolean isBrief, Date tripTime, Long cost, String title, Date createTime, Date postTime, Long visitorNum, Spot spot) {
         this.postId = postId;
-        this.isBreif = isBreif;
+        this.isBrief = isBrief;
         this.tripTime = tripTime;
         this.cost = cost;
         this.title = title;
@@ -92,12 +86,12 @@ public class Post {
         this.visitorNum = visitorNum;
     }
 
-    public boolean isBreif() {
-        return isBreif;
+    public boolean isBrief() {
+        return isBrief;
     }
 
     public void setBreif(boolean breif) {
-        isBreif = breif;
+        isBrief = breif;
     }
 
     public Date getTripTime() {
@@ -116,11 +110,19 @@ public class Post {
         this.cost = cost;
     }
 
+    public Spot getSpot() {
+        return spot;
+    }
+
+    public void setSpot(Spot spot) {
+        this.spot = spot;
+    }
+
     @Override
     public String toString() {
         return "Post{" +
                 "postId=" + postId +
-                ", isBreif=" + isBreif +
+                ", isBrief=" + isBrief +
                 ", tripTime=" + tripTime +
                 ", cost=" + cost +
                 ", title='" + title + '\'' +
