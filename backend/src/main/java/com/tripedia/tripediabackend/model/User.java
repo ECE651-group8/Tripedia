@@ -2,6 +2,7 @@ package com.tripedia.tripediabackend.model;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.Date;
 import java.util.List;
 import java.util.UUID;
 
@@ -14,28 +15,40 @@ public class User implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long userId;
 
+    private Date signTime;
+
+    private String introduction;
+
+    private String city;
+
     @Column(nullable = false, name = "username")
     private String userName;
-    private String password;
-    private String email;
-    private String avator_url;
-    private Long rating;
-    private String profileBg_url;
 
-//    @OneToMany(mappedBy = "user")
-//    List<Post> posts;
+    private String password;
+
+    private String email;
+
+    private String avatarId;
+
+    private Long rating;
+
+    private String profileBgId;
 
 
     public User() {
     }
 
-    public User(String userName, String password, String email, String avator_url, Long rating, String profileBg_url) {
+    public User(Long userId, Date signTime, String introduction, String city, String userName, String password, String email, String avatarId, Long rating, String profileBgId) {
+        this.userId = userId;
+        this.signTime = signTime;
+        this.introduction = introduction;
+        this.city = city;
         this.userName = userName;
         this.password = password;
         this.email = email;
-        this.avator_url = avator_url;
+        this.avatarId = avatarId;
         this.rating = rating;
-        this.profileBg_url = profileBg_url;
+        this.profileBgId = profileBgId;
     }
 
     public Long getUserId() {
@@ -44,6 +57,30 @@ public class User implements Serializable {
 
     public void setUserId(Long userId) {
         this.userId = userId;
+    }
+
+    public Date getSignTime() {
+        return signTime;
+    }
+
+    public void setSignTime(Date signTime) {
+        this.signTime = signTime;
+    }
+
+    public String getIntroduction() {
+        return introduction;
+    }
+
+    public void setIntroduction(String introduction) {
+        this.introduction = introduction;
+    }
+
+    public String getCity() {
+        return city;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
     }
 
     public String getUserName() {
@@ -70,12 +107,12 @@ public class User implements Serializable {
         this.email = email;
     }
 
-    public String getAvator_url() {
-        return avator_url;
+    public String getAvatarId() {
+        return avatarId;
     }
 
-    public void setAvator_url(String avator_url) {
-        this.avator_url = avator_url;
+    public void setAvatarId(String avatarId) {
+        this.avatarId = avatarId;
     }
 
     public Long getRating() {
@@ -86,25 +123,27 @@ public class User implements Serializable {
         this.rating = rating;
     }
 
-    public String getProfileBg_url() {
-        return profileBg_url;
+    public String getProfileBgId() {
+        return profileBgId;
     }
 
-    public void setProfileBg_url(String profileBg_url) {
-        this.profileBg_url = profileBg_url;
+    public void setProfileBgId(String profileBgId) {
+        this.profileBgId = profileBgId;
     }
 
     @Override
     public String toString() {
         return "User{" +
                 "userId=" + userId +
+                ", signTime=" + signTime +
+                ", introduction='" + introduction + '\'' +
+                ", city='" + city + '\'' +
                 ", userName='" + userName + '\'' +
                 ", password='" + password + '\'' +
                 ", email='" + email + '\'' +
-                ", avator_url='" + avator_url + '\'' +
+                ", avatarId='" + avatarId + '\'' +
                 ", rating=" + rating +
-                ", profileBg_url='" + profileBg_url + '\'' +
+                ", profileBgId='" + profileBgId + '\'' +
                 '}';
     }
-
 }
