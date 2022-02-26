@@ -15,7 +15,6 @@ public class Image {
     @Column(nullable = false)
     private String imageUrl;
 
-
     public Image(){}
 
     public Image(Long imageId, String imageUrl){
