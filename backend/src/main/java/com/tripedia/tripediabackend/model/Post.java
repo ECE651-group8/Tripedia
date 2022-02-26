@@ -2,6 +2,7 @@ package com.tripedia.tripediabackend.model;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Table(name = "post")
@@ -30,18 +31,22 @@ public class Post {
     @JoinColumn(name = "spot_id")
     private Spot spot;
 
+    @OneToMany(mappedBy = "post")
+    List<Image> images;
+
     public Post() {}
 
-    public Post(Long postId, boolean isBrief, Date tripTime, Long cost, String title, Date createTime, Date postTime, Long visitorNum, Spot spot) {
+    public Post(Long postId, boolean isBrief, Date tripTime, String title, Date createTime, Long visitorNum, Date postTime, Long cost, Spot spot, List<Image> images) {
         this.postId = postId;
         this.isBrief = isBrief;
         this.tripTime = tripTime;
-        this.cost = cost;
         this.title = title;
         this.createTime = createTime;
-        this.postTime = postTime;
         this.visitorNum = visitorNum;
+        this.postTime = postTime;
+        this.cost = cost;
         this.spot = spot;
+        this.images = images;
     }
 
     public Long getPostId() {
@@ -88,8 +93,8 @@ public class Post {
         return isBrief;
     }
 
-    public void setBreif(boolean breif) {
-        isBrief = breif;
+    public void setBrief(boolean brief) {
+        isBrief = brief;
     }
 
     public Date getTripTime() {
@@ -116,18 +121,27 @@ public class Post {
         this.spot = spot;
     }
 
+    public List<Image> getImages() {
+        return images;
+    }
+
+    public void setImages(List<Image> images) {
+        this.images = images;
+    }
+
     @Override
     public String toString() {
         return "Post{" +
                 "postId=" + postId +
                 ", isBrief=" + isBrief +
                 ", tripTime=" + tripTime +
-                ", cost=" + cost +
                 ", title='" + title + '\'' +
                 ", createTime=" + createTime +
-                ", postTime=" + postTime +
                 ", visitorNum=" + visitorNum +
+                ", postTime=" + postTime +
+                ", cost=" + cost +
                 ", spot=" + spot +
+                ", images=" + images +
                 '}';
     }
 }

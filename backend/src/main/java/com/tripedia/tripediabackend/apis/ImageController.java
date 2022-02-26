@@ -6,6 +6,7 @@ import com.tripedia.tripediabackend.exceptions.PostNotExistException;
 import com.tripedia.tripediabackend.exceptions.SpotNotExistException;
 import com.tripedia.tripediabackend.model.Image;
 import com.tripedia.tripediabackend.model.Post;
+import com.tripedia.tripediabackend.model.Spot;
 import com.tripedia.tripediabackend.service.ImageService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -76,6 +77,19 @@ public class ImageController {
         } catch (ImageNotExistException e) {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
         } catch (SpotNotExistException e) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
+        }
+    }
+
+    @PostMapping(path = "assignpost/{iid}/{pid}")
+    public ResponseEntity<String> assignPost(@PathVariable("iid") Long imageId,
+                                             @PathVariable("pid") Long postId) {
+        try {
+            Image updatedImage = imageService.assignSpot(imageId, postId);
+            return ResponseEntity.ok("Assigned spot. " + updatedImage.toString());
+        } catch (ImageNotExistException e) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
+        } catch (PostNotExistException e) {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
         }
     }

@@ -19,11 +19,17 @@ public class Image {
     @JoinColumn(name = "spot_id")
     private Spot spot;
 
+    @ManyToOne
+    @JoinColumn(name = "post_id")
+    private Post post;
+
     public Image(){}
 
-    public Image(Long imageId, String imageUrl){
+    public Image(Long imageId, String imageUrl, Spot spot, Post post) {
         this.imageId = imageId;
         this.imageUrl = imageUrl;
+        this.spot = spot;
+        this.post = post;
     }
 
     public Long getImageId() {
@@ -50,12 +56,21 @@ public class Image {
         this.spot = spot;
     }
 
+    public Post getPost() {
+        return post;
+    }
+
+    public void setPost(Post post) {
+        this.post = post;
+    }
+
     @Override
     public String toString() {
-        return "Post{" +
+        return "Image{" +
                 "imageId=" + imageId +
                 ", imageUrl='" + imageUrl + '\'' +
+                ", spot=" + spot +
+                ", post=" + post +
                 '}';
     }
-    
 }
