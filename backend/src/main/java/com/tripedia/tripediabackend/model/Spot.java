@@ -10,20 +10,16 @@ public class Spot {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long spotId;
 
-    private String postalCode;
+    @Column(nullable = false, name = "address")
+    private String address;
 
-    private Long cost;
-
-    @Column(nullable = false, name = "introduction")
-    private String introduction;
+    private Long popularity;
 
     @Column(nullable = false, name = "spot_name")
     private String spotName;
 
-    private Long popularity;
-
-    @Column(nullable = false, name = "address")
-    private String address;
+    @Column(nullable = false, name = "introduction")
+    private String introduction;
 
     @OneToMany(mappedBy = "spot")
     List<Post> posts;
@@ -35,22 +31,6 @@ public class Spot {
 
     public void setSpotId(Long spotId) {
         this.spotId = spotId;
-    }
-
-    public String getPostalCode() {
-        return postalCode;
-    }
-
-    public void setPostalCode(String postalCode) {
-        this.postalCode = postalCode;
-    }
-
-    public Long getCost() {
-        return cost;
-    }
-
-    public void setCost(Long cost) {
-        this.cost = cost;
     }
 
     public String getIntroduction() {
@@ -89,8 +69,6 @@ public class Spot {
     public String toString() {
         return "Spot{" +
                 "spotId=" + spotId +
-                ", postalCode='" + postalCode + '\'' +
-                ", cost=" + cost +
                 ", introduction='" + introduction + '\'' +
                 ", spotName='" + spotName + '\'' +
                 ", popularity=" + popularity +
