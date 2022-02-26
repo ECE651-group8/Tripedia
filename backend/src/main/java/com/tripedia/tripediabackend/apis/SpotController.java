@@ -13,6 +13,7 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("api/spot")
+@CrossOrigin(origins = "http://localhost:3000")
 public class SpotController {
     private SpotService spotService;
 
