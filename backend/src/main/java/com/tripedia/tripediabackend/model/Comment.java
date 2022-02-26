@@ -18,20 +18,17 @@ public class Comment {
     @Column(nullable = false)
     private Date CommentDate;
 
+    @ManyToOne
+    @JoinColumn(name = "post_id")
+    private Post post;
+
     public Comment(){}
 
-    public Comment(Long commentId, Date CommentDate, String CommentText, Long PostId){
+    public Comment(Long commentId, String commentText, Date commentDate, Post post) {
         this.commentId = commentId;
-        this.CommentDate = CommentDate;
-        this.CommentText = CommentText;
-    }
-
-    public Long getcommentId() {
-        return commentId;
-    }
-
-    public void setcommentId(Long commentId) {
-        this.commentId = commentId;
+        CommentText = commentText;
+        CommentDate = commentDate;
+        this.post = post;
     }
 
     public String getCommentText() {
@@ -50,13 +47,29 @@ public class Comment {
         this.CommentDate = CommentDate;
     }
 
-    @Override
-    public String toString() {
-        return "Post{" +
-                "commentId=" + commentId +
-                ", CommentDate='" + CommentDate + '\'' +
-                ", CommentText='" + CommentText + '\'' +
-                '}';
+    public Long getCommentId() {
+        return commentId;
     }
 
+    public void setCommentId(Long commentId) {
+        this.commentId = commentId;
+    }
+
+    public Post getPost() {
+        return post;
+    }
+
+    public void setPost(Post post) {
+        this.post = post;
+    }
+
+    @Override
+    public String toString() {
+        return "Comment{" +
+                "commentId=" + commentId +
+                ", CommentText='" + CommentText + '\'' +
+                ", CommentDate=" + CommentDate +
+                ", post=" + post +
+                '}';
+    }
 }

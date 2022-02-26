@@ -1,6 +1,11 @@
 package com.tripedia.tripediabackend.service;
 import com.tripedia.tripediabackend.dao.CommentDao;
+import com.tripedia.tripediabackend.dao.PostDao;
+import com.tripedia.tripediabackend.exceptions.PostNotExistException;
+import com.tripedia.tripediabackend.exceptions.SpotNotExistException;
 import com.tripedia.tripediabackend.model.Comment;
+import com.tripedia.tripediabackend.model.Post;
+import com.tripedia.tripediabackend.model.Spot;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.tripedia.tripediabackend.exceptions.PostEmptyCommentException;
@@ -12,6 +17,7 @@ import java.util.Optional;
 @Service
 public class CommentService {
     private CommentDao commentDao;
+    private PostDao postDao;
 
     @Autowired
     public CommentService(CommentDao commentDao) {
@@ -43,10 +49,26 @@ public class CommentService {
     }
 
     public Comment updateComment(Comment comment) {
-        if (comment.getcommentId() == null || !commentDao.existsById(comment.getcommentId())) {
+        if (comment.getCommentId() == null || !commentDao.existsById(comment.getCommentId())) {
             throw new CommentNotExistException("Comment cannot be found");
         }
 
+        return commentDao.save(comment);
+    }
+
+    public Comment assignPost(Long commentId, Long postId) {
+        if (!commentDao.existsById(commentId)) {
+            throw new CommentNotExistException("Cannot find comment ID" + commentId);
+        }
+
+        if(!postDao.existsById(postId)) {
+            throw new SpotNotExistException("Cannot find post ID" + postId);
+        }
+
+        Comment comment = getCommentById(commentId).get();
+        Post post = postDao.findById(postId).get();
+
+        comment.setPost(post);
         return commentDao.save(comment);
     }
 }

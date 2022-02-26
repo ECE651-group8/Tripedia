@@ -1,7 +1,11 @@
 package com.tripedia.tripediabackend.apis;
 
+import com.tripedia.tripediabackend.exceptions.CommentNotExistException;
 import com.tripedia.tripediabackend.exceptions.InvalidPostException;
+import com.tripedia.tripediabackend.exceptions.PostNotExistException;
+import com.tripedia.tripediabackend.exceptions.SpotNotExistException;
 import com.tripedia.tripediabackend.model.Comment;
+import com.tripedia.tripediabackend.model.Post;
 import com.tripedia.tripediabackend.service.CommentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -63,5 +67,18 @@ public class CommentController {
         commentService.updateComment(comment);
 
         return "Updated comment";
+    }
+
+    @PostMapping(path = "assignpost/{cid}/{pid}")
+    public ResponseEntity<String> assignSpot(@PathVariable("cid") Long commentId,
+                                             @PathVariable("pid") Long postId) {
+        try {
+            Comment updatedComment = commentService.assignPost(commentId, postId);
+            return ResponseEntity.ok("Assigned post. " + updatedComment.toString());
+        } catch (CommentNotExistException e) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
+        } catch (PostNotExistException e) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
+        }
     }
 }

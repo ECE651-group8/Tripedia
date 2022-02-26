@@ -37,9 +37,17 @@ public class Post {
     @OneToMany(mappedBy = "post")
     List<Image> images;
 
+    @OneToMany(mappedBy = "post")
+    List<Comment> comments;
+
+    @ManyToOne
+    @JsonIgnoreProperties(value = {"post"})
+    @JoinColumn(name = "user_id")
+    private User user;
+
     public Post() {}
 
-    public Post(Long postId, boolean isBrief, Date tripTime, String title, Date createTime, Long visitorNum, Date postTime, Long cost, Spot spot, List<Image> images) {
+    public Post(Long postId, boolean isBrief, Date tripTime, String title, Date createTime, Long visitorNum, Date postTime, Long cost, Spot spot, List<Image> images, List<Comment> comments, User user) {
         this.postId = postId;
         this.isBrief = isBrief;
         this.tripTime = tripTime;
@@ -50,6 +58,8 @@ public class Post {
         this.cost = cost;
         this.spot = spot;
         this.images = images;
+        this.comments = comments;
+        this.user = user;
     }
 
     public Long getPostId() {
@@ -132,6 +142,22 @@ public class Post {
         this.images = images;
     }
 
+    public List<Comment> getComments() {
+        return comments;
+    }
+
+    public void setComments(List<Comment> comments) {
+        this.comments = comments;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
     @Override
     public String toString() {
         return "Post{" +
@@ -145,6 +171,8 @@ public class Post {
                 ", cost=" + cost +
                 ", spot=" + spot +
                 ", images=" + images +
+                ", comments=" + comments +
+                ", user=" + user +
                 '}';
     }
 }

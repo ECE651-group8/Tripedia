@@ -1,5 +1,7 @@
 package com.tripedia.tripediabackend.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
@@ -34,11 +36,14 @@ public class User implements Serializable {
 
     private String profileBgId;
 
+    @OneToMany(mappedBy = "spot")
+    @JsonIgnoreProperties(value = {"spot"})
+    List<Post> posts;
 
     public User() {
     }
 
-    public User(Long userId, Date signTime, String introduction, String city, String userName, String password, String email, String avatarId, Long rating, String profileBgId) {
+    public User(Long userId, Date signTime, String introduction, String city, String userName, String password, String email, String avatarId, Long rating, String profileBgId, List<Post> posts) {
         this.userId = userId;
         this.signTime = signTime;
         this.introduction = introduction;
@@ -49,6 +54,7 @@ public class User implements Serializable {
         this.avatarId = avatarId;
         this.rating = rating;
         this.profileBgId = profileBgId;
+        this.posts = posts;
     }
 
     public Long getUserId() {
@@ -131,6 +137,14 @@ public class User implements Serializable {
         this.profileBgId = profileBgId;
     }
 
+    public List<Post> getPosts() {
+        return posts;
+    }
+
+    public void setPosts(List<Post> posts) {
+        this.posts = posts;
+    }
+
     @Override
     public String toString() {
         return "User{" +
@@ -144,6 +158,7 @@ public class User implements Serializable {
                 ", avatarId='" + avatarId + '\'' +
                 ", rating=" + rating +
                 ", profileBgId='" + profileBgId + '\'' +
+                ", posts=" + posts +
                 '}';
     }
 }
