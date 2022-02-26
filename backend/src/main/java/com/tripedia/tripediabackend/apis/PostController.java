@@ -14,6 +14,7 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("api/post")
+@CrossOrigin(origins = "http://localhost:3000")
 public class PostController {
     private PostService postService;
 
@@ -26,7 +27,6 @@ public class PostController {
     public List<Post> getAllPost() {
         return postService.getAllPost();
     }
-
 
     @RequestMapping("/{pid}")
     @GetMapping
