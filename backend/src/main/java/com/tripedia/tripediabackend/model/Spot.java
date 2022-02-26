@@ -1,6 +1,7 @@
 package com.tripedia.tripediabackend.model;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "spot")
@@ -23,6 +24,10 @@ public class Spot {
 
     @Column(nullable = false, name = "address")
     private String address;
+
+    @OneToMany(mappedBy = "spot")
+    List<Post> posts;
+
 
     public Long getSpotId() {
         return spotId;

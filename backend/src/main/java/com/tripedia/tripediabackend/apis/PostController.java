@@ -1,6 +1,8 @@
 package com.tripedia.tripediabackend.apis;
 
 import com.tripedia.tripediabackend.exceptions.InvalidPostException;
+import com.tripedia.tripediabackend.exceptions.PostNotExistException;
+import com.tripedia.tripediabackend.exceptions.SpotNotExistException;
 import com.tripedia.tripediabackend.model.Post;
 import com.tripedia.tripediabackend.service.PostService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -60,4 +62,18 @@ public class PostController {
 
         return "Updated post";
     }
+
+    @PostMapping(path = "assignspot/{pid}/{sid}")
+    public ResponseEntity<String> assignSpot(@PathVariable("pid") Long postId,
+                                             @PathVariable("sid") Long spotId) {
+        try {
+            Post updatedPost = postService.assignSpot(postId, spotId);
+            return ResponseEntity.ok("Assigned spot. " + updatedPost.toString());
+        } catch (PostNotExistException e) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
+        } catch (SpotNotExistException e) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
+        }
+    }
+
 }
