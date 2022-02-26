@@ -8,15 +8,15 @@ function Hottest(){
     return (
        <div className="hottest">
             {/* HottestTitle */}
-            <HottestTitle />  
+            <HottestTitle /> 
 
             {/* HottestCard */}
             <HottestCard /> 
             <HottestCard /> 
 
             {/*HottestText*/}
-            <HottestText />
-            <HottestText />
+            <HottestCard /> 
+            <HottestCard /> 
 
 
        </div>

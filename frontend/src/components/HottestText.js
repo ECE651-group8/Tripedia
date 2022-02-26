@@ -7,6 +7,7 @@ import Card from 'react-bootstrap/Card';
 function HottestText(){
     return (
         <div className="hottestText">
+            <Card.Link href= "/trips">
             <Card className="all-hottest-card">
                 <Card.Text >
                     <div className="hottest-text">
@@ -15,6 +16,7 @@ function HottestText(){
                     </div>
                 </Card.Text>
             </Card>
+            </Card.Link>
        </div>
     );
 }
