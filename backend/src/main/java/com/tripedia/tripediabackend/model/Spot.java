@@ -1,5 +1,7 @@
 package com.tripedia.tripediabackend.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import javax.persistence.*;
 import java.util.List;
 
@@ -22,6 +24,7 @@ public class Spot {
     private String introduction;
 
     @OneToMany(mappedBy = "spot")
+    @JsonIgnoreProperties(value = {"spot"})
     List<Post> posts;
 
     @OneToMany(mappedBy = "spot")
