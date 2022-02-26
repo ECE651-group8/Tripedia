@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { useState } from 'react';
 import Box from '@mui/material/Box';
 import ImageList from '@mui/material/ImageList';
 import ImageListItem from '@mui/material/ImageListItem';
@@ -6,7 +7,17 @@ import ImageListItemBar from '@mui/material/ImageListItemBar';
 import IconButton from '@mui/material/IconButton';
 import InfoIcon from '@mui/icons-material/Info';
 
-import getPostData from '../apis/getPostData';
+async function getData() {
+    const res = await fetch('http://localhost:8080/api/post', {
+        headers: {
+            'content-type': 'application/json',
+        },
+        method: 'GET',
+    });
+    const json = await res.json();
+    // console.log(data);
+    return json;
+}
 
 export default function TitlebarBelowMasonryImageList() {
     const [post, setPost] = useState([]);
@@ -14,6 +25,7 @@ export default function TitlebarBelowMasonryImageList() {
     json.then(item => {
         setPost(item);
     });
+    console.log(post[0].title);
 
     return (
         <Box
