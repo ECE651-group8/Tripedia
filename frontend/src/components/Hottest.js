@@ -15,8 +15,8 @@ function Hottest(){
             <HottestCard /> 
 
             {/*HottestText*/}
-            <HottestText />
-            <HottestText />
+            <HottestCard /> 
+            <HottestCard /> 
 
 
        </div>

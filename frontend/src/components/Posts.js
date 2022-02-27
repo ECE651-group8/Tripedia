@@ -1,114 +1,115 @@
-import React,{useState} from 'react';
-import Masony from "react-masonry-component";
-import "./Posts.css";
-
-// Dome dummy content
-const PHOTOS = [
-    {
-      imageUrl:
-        "https://images.pexels.com/photos/1076240/pexels-photo-1076240.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
-    },
-    {
-      imageUrl:
-        "https://images.pexels.com/photos/757444/pexels-photo-757444.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
-    },
-    {
-      imageUrl:
-        "https://images.pexels.com/photos/2516406/pexels-photo-2516406.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
-    },
-    {
-      imageUrl:
-        "https://images.pexels.com/photos/2413238/pexels-photo-2413238.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
-    },
-    {
-      imageUrl:
-        "https://images.pexels.com/photos/1714455/pexels-photo-1714455.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
-    },
-    {
-      imageUrl:
-        "https://images.pexels.com/photos/2407265/pexels-photo-2407265.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
-    },
-    {
-      imageUrl:
-        "https://images.pexels.com/photos/3698534/pexels-photo-3698534.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
-    },
-    {
-      imageUrl:
-        "https://images.pexels.com/photos/2467670/pexels-photo-2467670.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
-    },
-    {
-      imageUrl:
-        "https://images.pexels.com/photos/2623690/pexels-photo-2623690.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
-    },
-    {
-      imageUrl:
-        "https://images.pexels.com/photos/3047993/pexels-photo-3047993.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
-    },
-    {
-      imageUrl:
-        "https://images.pexels.com/photos/239546/pexels-photo-239546.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
-    },
-    {
-      imageUrl:
-        "https://images.pexels.com/photos/4496891/pexels-photo-4496891.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
-    },
-    {
-      imageUrl:
-        "https://images.pexels.com/photos/8979525/pexels-photo-8979525.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
-    },
-  ];
-   
-// Masory Options
-const masonryOptions = {
-  fitWidth: false,
-  columnWidth: 300,
-  gutter: 30,
-  itemSelector: ".photo-item",
-};
+import * as React from 'react';
+import { useState } from 'react';
+import Box from '@mui/material/Box';
+import ImageList from '@mui/material/ImageList';
+import ImageListItem from '@mui/material/ImageListItem';
+import ImageListItemBar from '@mui/material/ImageListItemBar';
+import IconButton from '@mui/material/IconButton';
+import InfoIcon from '@mui/icons-material/Info';
 
 
-async function getData() {
-  const res = await fetch('http://localhost:8080/api/post', {
-      headers: {
-          'content-type': 'application/json',
-      },
-      method: 'GET',
-  });
-  const json = await res.json();
-  console.log(json);
-  return json;
+export default function TitlebarBelowMasonryImageList() {
+  
+    return (
+        <Box
+            sx={{
+                verflowY: 'scroll',
+            }}
+        >
+            <ImageList variant="masonry" cols={3} gap={8}>
+                {itemData.map(item => (
+                    <ImageListItem key={item.post_id} border={1}>
+                        <a href="/detail">
+                            <img
+                                src={`${item.img}?w=248&fit=crop&auto=format`}
+                                srcSet={`${item.img}?w=248&fit=crop&auto=format&dpr=2 2x`}
+                                alt={item.title}
+                                loading="lazy"
+                            />
+                        </a>
+                        <ImageListItemBar
+                            title={item.title}
+                            subtitle={
+                                <a href="/timeline">
+                                    <span>by: {item.author}</span>
+                                </a>
+                            }
+                            actionIcon={
+                                <IconButton
+                                    sx={{ color: 'F2C53D' }}
+                                    aria-label={`info about ${item.title}`}
+                                >
+                                    <InfoIcon />
+                                </IconButton>
+                            }
+                            position="below"
+                        />
+                    </ImageListItem>
+                ))}
+            </ImageList>
+        </Box>
+    );
 }
 
-const json = getData();
-
-function Posts() {
-  const [post, setPost] = useState([]);
-  json.then(item => {
-      setPost(item);
-  });
-
-  return (
-      <div>
-          {/* <Masony
-              className={'photo-list'}
-              elementType={'ul'}
-              options={masonryOptions}
-              disableImagesLoaded={false}
-              updateOnEachImageLoad={false}
-          >
-              {PHOTOS.map(photo => (
-                  <li className={`photo-item`}>
-                      <img src={photo.imageUrl} alt="" />
-                  </li>
-              ))}
-          </Masony> */}
-          <div>00000</div>
-          {post.map(item => (
-              <div>{item.title}</div>
-          ))}
-          <div>11111</div>
-      </div>
-  );
-}
-
-export default Posts;
+const itemData = [
+    {
+        img: 'https://images.unsplash.com/photo-1549388604-817d15aa0110',
+        title: 'Bed',
+        author: 'swabdesign',
+    },
+    {
+        img: 'https://images.unsplash.com/photo-1525097487452-6278ff080c31',
+        title: 'Books',
+        author: 'Pavel Nekoranec',
+    },
+    {
+        img: 'https://images.unsplash.com/photo-1523413651479-597eb2da0ad6',
+        title: 'Sink',
+        author: 'Charles Deluvio',
+    },
+    {
+        img: 'https://images.unsplash.com/photo-1563298723-dcfebaa392e3',
+        title: 'Kitchen',
+        author: 'Christian Mackie',
+    },
+    {
+        img: 'https://images.unsplash.com/photo-1588436706487-9d55d73a39e3',
+        title: 'Blinds',
+        author: 'Darren Richardson',
+    },
+    {
+        img: 'https://images.unsplash.com/photo-1574180045827-681f8a1a9622',
+        title: 'Chairs',
+        author: 'Taylor Simpson',
+    },
+    {
+        img: 'https://images.unsplash.com/photo-1530731141654-5993c3016c77',
+        title: 'Laptop',
+        author: 'Ben Kolde',
+    },
+    {
+        img: 'https://images.unsplash.com/photo-1481277542470-605612bd2d61',
+        title: 'Doors',
+        author: 'Philipp Berndt',
+    },
+    {
+        img: 'https://images.unsplash.com/photo-1517487881594-2787fef5ebf7',
+        title: 'Coffee',
+        author: 'Jen P.',
+    },
+    {
+        img: 'https://images.unsplash.com/photo-1516455207990-7a41ce80f7ee',
+        title: 'Storage',
+        author: 'Douglas Sheppard',
+    },
+    {
+        img: 'https://images.unsplash.com/photo-1597262975002-c5c3b14bbd62',
+        title: 'Candle',
+        author: 'Fi Bell',
+    },
+    {
+        img: 'https://images.unsplash.com/photo-1519710164239-da123dc03ef4',
+        title: 'Coffee table',
+        author: 'Hutomo Abrianto',
+    },
+];

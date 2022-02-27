@@ -1,13 +1,11 @@
 import React from 'react'
 import '../App.css';
+import './TimelineAlone.css';
 import {ReactComponent as WorkIcon} from "./work.svg";
 import {ReactComponent as SchoolIcon} from "./school.svg";
 import timelineBackup from "./timelineBackup";
 import {VerticalTimeline, VerticalTimelineElement} from "react-vertical-timeline-component";
 import "react-vertical-timeline-component/style.min.css";
-
-
-
 
 // import * as React from 'react';
 import { styled } from '@mui/material/styles';
@@ -27,10 +25,6 @@ import ShareIcon from '@mui/icons-material/Share';
 
 import MoreVertIcon from '@mui/icons-material/MoreVert';
 
-
-
-import List from '@mui/material/List';
-import ListItem from '@mui/material/ListItem';
 import ListItemText from '@mui/material/ListItemText';
 import ListItemAvatar from '@mui/material/ListItemAvatar';
 
@@ -59,18 +53,32 @@ export default function TimelineAlone() {
       <Grid container spacing={2}>
         <Grid item xs={12}>
           <Item>
-          <Card >
+          <Card sx={{ height: 350 }} >
           <CardMedia
           component="img"
-          height="194"
-          image="https://www.banfftours.com/wp-content/uploads/2017/08/Banff-Ave-and-Town-in-Winter-1140x530.jpg"
+          height="350"
+          image="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/1c/ae/59/d8/caption.jpg?w=400&h=300&s=1&cx=2330&cy=1561&chk=v1_b70d932b90eebb686764"
           alt="Paella dish"
+          //这是前面班夫国家公园的东西，这边能不能合并在一起，并且上面有单独的 提示行来显示
         />
-      <CardHeader
+     
+      </Card>
+
+    <Card   sx={{ 
+            width: 4/5,
+            border: 1,
+            boxShadow: 1,
+            borderRadius: 2,
+            zIndex: 'modal',
+            ml: 17,
+            mt: 1,
+        }} >
+         
+        <CardHeader 
+       
         avatar={
-  
           <Avatar src="https://images.pexels.com/photos/4496891/pexels-photo-4496891.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500" sx={{ width: 77, height: 77 }}>
-                
+                {/* //用户 */}
           </Avatar>
         
         }
@@ -81,11 +89,13 @@ export default function TimelineAlone() {
         }
         title="by Suzanne R, Brooklyn, New York"
         subheader="Jan 19, 2021"
-        co
-      />
+        
+        />
+
+      
      
       <CardContent>
-        <Typography variant="body2" color="text.secondary">
+        <Typography variant="body2" color="rgb(2,89,89)">
         From Central Park on down to Lady Liberty--and everything around and in between--here are the key things to see on a visit to New York City.
         </Typography>
       </CardContent>
@@ -101,55 +111,18 @@ export default function TimelineAlone() {
      
     </Card>
 
-
-
-
           </Item>
         </Grid>
         <Grid item xs>
     <Item></Item>
+  
   </Grid>
-        <Grid item xs={7}>
-          {/* <Item>Toronto Island was a lot of fun. I took a walk through the island and enjoyed myself. I found an app called paint by the numbers battle app when I was sitting down on the beach. That kept me entertained. So it was fun.</Item> */}
-        </Grid>
-        <Grid item xs={3}>
-          {/* <Item> */}
-          {/* <List sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper' }}>
-      <ListItem>
-        <ListItemAvatar>
-          <Avatar>
-            <ImageIcon />
-          </Avatar>
-        </ListItemAvatar>
-        <ListItemText primary="Time" secondary="Jan 9, 2021" />
-      </ListItem>
-      <ListItem>
-        <ListItemAvatar>
-          <Avatar>
-            <WorkIcon />
-          </Avatar>
-        </ListItemAvatar>
-        <ListItemText primary="People" secondary="4" />
-      </ListItem>
-      <ListItem>
-        <ListItemAvatar>
-          <Avatar>
-            <BeachAccessIcon />
-          </Avatar>
-        </ListItemAvatar>
-        <ListItemText primary="Cost" secondary="$2000" />
-      </ListItem>
-    </List> */}
-        
-
-            
-          {/* </Item> */}
-        </Grid>
         <Grid item xs>
     <Item></Item>
   </Grid>
       </Grid>
     </Box>
+
     
     <VerticalTimeline>
       {
@@ -182,7 +155,7 @@ export default function TimelineAlone() {
               <p id ="description">{element.description}</p>
               {showButton && (<a className={`button ${isWorkIcon ? "workButton": "schoolButton"
                 }`} 
-                href='/'>
+                href='/detail'>
                   {element.buttonText}
                   </a>)}
               {/* here button has function logic */}

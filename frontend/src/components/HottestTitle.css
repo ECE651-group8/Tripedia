@@ -30,7 +30,7 @@
     position: absolute;
     top: 6rem;
     bottom: 0px;
-    width: 97%;
+    width: 98%;
     height: 44.5%;
     overflow: hidden;
     background-attachment: fixed;
@@ -40,6 +40,4 @@
     max-width: 100%;
     border-radius: 1rem;
 }
-.bg-image{
 
-}
