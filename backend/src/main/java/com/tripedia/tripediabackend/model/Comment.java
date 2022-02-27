@@ -27,27 +27,11 @@ public class Comment {
 
     public Comment(){}
 
-    public Comment(Long commentId, String commentText, Date commentDate, Post post, User user) {
+    public Comment(Long commentId, String commentText, Date commentDate, Post post) {
         this.commentId = commentId;
         CommentText = commentText;
         CommentDate = commentDate;
         this.post = post;
-    }
-
-    public String getCommentText() {
-        return CommentText;
-    }
-
-    public void setCommentText(String CommentText) {
-        this.CommentText = CommentText;
-    }
-
-    public Date getCommentDate() {
-        return CommentDate;
-    }
-
-    public void setCommentDate(Date CommentDate) {
-        this.CommentDate = CommentDate;
     }
 
     public Long getCommentId() {
@@ -56,6 +40,22 @@ public class Comment {
 
     public void setCommentId(Long commentId) {
         this.commentId = commentId;
+    }
+
+    public String getCommentText() {
+        return CommentText;
+    }
+
+    public void setCommentText(String commentText) {
+        CommentText = commentText;
+    }
+
+    public Date getCommentDate() {
+        return CommentDate;
+    }
+
+    public void setCommentDate(Date commentDate) {
+        CommentDate = commentDate;
     }
 
     public Post getPost() {
@@ -68,11 +68,20 @@ public class Comment {
 
     @Override
     public String toString() {
-        return "Comment{" +
+        String str = "Comment{" +
                 "commentId=" + commentId +
                 ", CommentText='" + CommentText + '\'' +
-                ", CommentDate=" + CommentDate +
-                ", post=" + post +
-                '}';
+                ", CommentDate=" + CommentDate;
+
+        if (post == null) {
+            str += null;
+        }
+        else {
+            str += post;
+        }
+
+        str += '}';
+
+        return str;
     }
 }

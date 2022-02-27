@@ -200,9 +200,23 @@ public class Post {
             }
         }
 
-        str += ", comments=" + comments +
-                ", user=" + user +
-                '}';
+        if (comments == null) {
+            str += null;
+        }
+        else {
+            for (Comment comment : comments) {
+                str += comment.getCommentId();
+            }
+        }
+
+        if(user == null) {
+            str += null;
+        }
+        else {
+            str += user.getUserId().toString();
+        }
+
+        str += '}';
 
         return str;
     }
