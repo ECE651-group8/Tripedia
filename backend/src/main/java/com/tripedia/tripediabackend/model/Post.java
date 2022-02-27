@@ -37,9 +37,11 @@ public class Post {
     private Spot spot;
 
     @OneToMany(mappedBy = "post")
+    @JsonIgnoreProperties(value = {"post"})
     List<Image> images;
 
     @OneToMany(mappedBy = "post")
+    @JsonIgnoreProperties(value = {"post"})
     List<Comment> comments;
 
     @ManyToOne
@@ -171,7 +173,7 @@ public class Post {
 
     @Override
     public String toString() {
-        return "Post{" +
+        String str = "Post{" +
                 "postId=" + postId +
                 ", isBrief=" + isBrief +
                 ", tripTime=" + tripTime +
@@ -180,11 +182,28 @@ public class Post {
                 ", visitorNum=" + visitorNum +
                 ", postTime=" + postTime +
                 ", cost=" + cost +
-                ", content='" + content + '\'' +
-                ", spot=" + spot +
-                ", images=" + images +
-                ", comments=" + comments +
+                ", content='" + content + '\'';
+
+        if(spot == null) {
+            str += null;
+        }
+        else {
+            str += spot.getSpotId().toString();
+        }
+
+        if (images == null) {
+            str += null;
+        }
+        else {
+            for (Image image : images) {
+                str += image.getImageId();
+            }
+        }
+
+        str += ", comments=" + comments +
                 ", user=" + user +
                 '}';
+
+        return str;
     }
 }

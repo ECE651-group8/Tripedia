@@ -57,10 +57,19 @@ public class Image {
 
     @Override
     public String toString() {
-        return "Image{" +
+        String str = "Image{" +
                 "imageId=" + imageId +
-                ", imageUrl='" + imageUrl + '\'' +
-                ", post=" + post +
-                '}';
+                ", imageUrl='" + imageUrl + '\'';
+
+        if (post == null) {
+            str += null;
+        }
+        else {
+            str += post;
+        }
+
+        str += '}';
+
+        return str;
     }
 }

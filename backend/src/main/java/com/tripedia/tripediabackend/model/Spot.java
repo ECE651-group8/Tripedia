@@ -88,13 +88,24 @@ public class Spot {
 
     @Override
     public String toString() {
-        return "Spot{" +
+        String str = "Spot{" +
                 "spotId=" + spotId +
                 ", address='" + address + '\'' +
                 ", popularity=" + popularity +
                 ", spotName='" + spotName + '\'' +
-                ", introduction='" + introduction + '\'' +
-                ", posts=" + posts +
-                '}';
+                ", introduction='" + introduction + '\'';
+
+        if (posts == null) {
+            str += null;
+        }
+        else {
+            for (Post post : posts) {
+                str += post.getPostId();
+            }
+        }
+
+        str += '}';
+
+        return str;
     }
 }

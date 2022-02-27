@@ -6,8 +6,6 @@ import com.tripedia.tripediabackend.dao.UserDao;
 import com.tripedia.tripediabackend.exceptions.*;
 import com.tripedia.tripediabackend.model.Image;
 import com.tripedia.tripediabackend.model.Post;
-import com.tripedia.tripediabackend.model.Spot;
-import com.tripedia.tripediabackend.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -17,13 +15,12 @@ import java.util.Optional;
 @Service
 public class ImageService {
     private ImageDao imageDao;
-    private SpotDao spotDao;
     private PostDao postDao;
-    private UserDao userDao;
 
     @Autowired
-    public ImageService(ImageDao imageDao) {
+    public ImageService(ImageDao imageDao, PostDao postDao) {
         this.imageDao = imageDao;
+        this.postDao = postDao;
     }
 
     public Image addImage(Image image) {
