@@ -43,7 +43,7 @@ public class CommentService {
     }
 
     public Comment updateComment(Comment comment) {
-        if (comment.getcommentId() == null || !commentDao.existsById(comment.getcommentId())) {
+        if (comment.getCommentId() == null || !commentDao.existsById(comment.getCommentId())) {
             throw new CommentNotExistException("Comment cannot be found");
         }
 

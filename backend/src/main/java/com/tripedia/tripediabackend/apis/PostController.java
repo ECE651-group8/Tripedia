@@ -40,7 +40,6 @@ public class PostController {
     public ResponseEntity<String> addPost(@RequestBody Post post) {
         try{
             post.setPostTime(Calendar.getInstance().getTime());
-            post.setCreateTime(Calendar.getInstance().getTime());
             Post savedPost = postService.addPost(post);
             return ResponseEntity.ok("Added Post. " + savedPost.toString());
         } catch (InvalidPostException e){

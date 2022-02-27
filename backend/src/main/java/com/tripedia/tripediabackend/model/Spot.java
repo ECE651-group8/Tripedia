@@ -9,20 +9,24 @@ public class Spot {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long spotId;
 
-    private String postalCode;
+    @Column(nullable = false, name = "address")
+    private String address;
 
-    private Long cost;
-
-    @Column(nullable = false, name = "introduction")
-    private String introduction;
+    private Long popularity;
 
     @Column(nullable = false, name = "spot_name")
     private String spotName;
 
-    private Long popularity;
+    @Column(nullable = false, name = "introduction")
+    private String introduction;
 
-    @Column(nullable = false, name = "address")
-    private String address;
+    public Spot(Long spotId, String address, Long popularity, String spotName, String introduction) {
+        this.spotId = spotId;
+        this.address = address;
+        this.popularity = popularity;
+        this.spotName = spotName;
+        this.introduction = introduction;
+    }
 
     public Long getSpotId() {
         return spotId;
@@ -30,46 +34,6 @@ public class Spot {
 
     public void setSpotId(Long spotId) {
         this.spotId = spotId;
-    }
-
-    public String getPostalCode() {
-        return postalCode;
-    }
-
-    public void setPostalCode(String postalCode) {
-        this.postalCode = postalCode;
-    }
-
-    public Long getCost() {
-        return cost;
-    }
-
-    public void setCost(Long cost) {
-        this.cost = cost;
-    }
-
-    public String getIntroduction() {
-        return introduction;
-    }
-
-    public void setIntroduction(String introduction) {
-        this.introduction = introduction;
-    }
-
-    public String getSpotName() {
-        return spotName;
-    }
-
-    public void setSpotName(String spotName) {
-        this.spotName = spotName;
-    }
-
-    public Long getPopularity() {
-        return popularity;
-    }
-
-    public void setPopularity(Long popularity) {
-        this.popularity = popularity;
     }
 
     public String getAddress() {
@@ -80,16 +44,38 @@ public class Spot {
         this.address = address;
     }
 
+    public Long getPopularity() {
+        return popularity;
+    }
+
+    public void setPopularity(Long popularity) {
+        this.popularity = popularity;
+    }
+
+    public String getSpotName() {
+        return spotName;
+    }
+
+    public void setSpotName(String spotName) {
+        this.spotName = spotName;
+    }
+
+    public String getIntroduction() {
+        return introduction;
+    }
+
+    public void setIntroduction(String introduction) {
+        this.introduction = introduction;
+    }
+
     @Override
     public String toString() {
         return "Spot{" +
                 "spotId=" + spotId +
-                ", postalCode='" + postalCode + '\'' +
-                ", cost=" + cost +
-                ", introduction='" + introduction + '\'' +
-                ", spotName='" + spotName + '\'' +
-                ", popularity=" + popularity +
                 ", address='" + address + '\'' +
+                ", popularity=" + popularity +
+                ", spotName='" + spotName + '\'' +
+                ", introduction='" + introduction + '\'' +
                 '}';
     }
 }

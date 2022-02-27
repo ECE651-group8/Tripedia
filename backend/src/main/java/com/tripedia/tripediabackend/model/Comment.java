@@ -13,33 +13,24 @@ public class Comment {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long commentId;
 
+    private String CommentText;
+
     @Column(nullable = false)
     private Date CommentDate;
 
-
-    private String CommentText;
-
-    @Column (nullable = false)
-    private Long PostId;
-    @Column (nullable = false)
-    private Long UserId;
-
     public Comment(){}
 
-    public Comment(Long commentId, Date CommentDate, String CommentText, Long PostId, Long UserId){
+    public Comment(Long commentId, String commentText, Date commentDate) {
         this.commentId = commentId;
-        this.CommentDate = CommentDate;
-        this.CommentText = CommentText;
-        this.PostId = PostId;
-        this.UserId = UserId;
-
+        CommentText = commentText;
+        CommentDate = commentDate;
     }
 
-    public Long getcommentId() {
+    public Long getCommentId() {
         return commentId;
     }
 
-    public void setcommentId(Long commentId) {
+    public void setCommentId(Long commentId) {
         this.commentId = commentId;
     }
 
@@ -47,52 +38,24 @@ public class Comment {
         return CommentText;
     }
 
-    public void setCommentText(String CommentText) {
-        this.CommentText = CommentText;
+    public void setCommentText(String commentText) {
+        CommentText = commentText;
     }
 
     public Date getCommentDate() {
         return CommentDate;
     }
 
-    public void setCommentDate(Date CommentDate) {
-        this.CommentDate = CommentDate;
-    }
-
-    public Long getPostId() {
-        return PostId;
-    }
-
-    public void setPostId(Long PostId) {
-        this.PostId = PostId;
-    }
-
-    public Long getUserId() {
-        return commentId;
-    }
-
-    public void setUserId(Long UserId) {
-        this.UserId = UserId;
+    public void setCommentDate(Date commentDate) {
+        CommentDate = commentDate;
     }
 
     @Override
     public String toString() {
-        return "Post{" +
+        return "Comment{" +
                 "commentId=" + commentId +
-                ", CommentDate='" + CommentDate + '\'' +
                 ", CommentText='" + CommentText + '\'' +
-                ", PostId=" + PostId +
-                ", userId=" + UserId +
+                ", CommentDate=" + CommentDate +
                 '}';
     }
-
-
-
-
-
-
-
-
-
-    
 }

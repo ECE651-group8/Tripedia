@@ -11,23 +11,32 @@ public class Post {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long postId;
 
+    private boolean isBrief;
+
+    private Date tripTime;
+
     @Column(unique = true, nullable = false)
     private String title;
 
-    private Date createTime;
+    private Long visitorNum;
 
     private Date postTime;
 
-    private Long visitorNum;
+    private Long cost;
+
+    private String content;
 
     public Post() {}
 
-    public Post(Long postId, String title, Date createTime, Date postTime, Long visitorNum) {
+    public Post(Long postId, boolean isBrief, Date tripTime, String title, Long visitorNum, Date postTime, Long cost, String content) {
         this.postId = postId;
+        this.isBrief = isBrief;
+        this.tripTime = tripTime;
         this.title = title;
-        this.createTime = createTime;
-        this.postTime = postTime;
         this.visitorNum = visitorNum;
+        this.postTime = postTime;
+        this.cost = cost;
+        this.content = content;
     }
 
     public Long getPostId() {
@@ -38,28 +47,28 @@ public class Post {
         this.postId = postId;
     }
 
+    public boolean isBrief() {
+        return isBrief;
+    }
+
+    public void setBrief(boolean brief) {
+        isBrief = brief;
+    }
+
+    public Date getTripTime() {
+        return tripTime;
+    }
+
+    public void setTripTime(Date tripTime) {
+        this.tripTime = tripTime;
+    }
+
     public String getTitle() {
         return title;
     }
 
     public void setTitle(String title) {
         this.title = title;
-    }
-
-    public Date getCreateTime() {
-        return createTime;
-    }
-
-    public void setCreateTime(Date createTime) {
-        this.createTime = createTime;
-    }
-
-    public Date getPostTime() {
-        return postTime;
-    }
-
-    public void setPostTime(Date postTime) {
-        this.postTime = postTime;
     }
 
     public Long getVisitorNum() {
@@ -70,15 +79,41 @@ public class Post {
         this.visitorNum = visitorNum;
     }
 
+    public Date getPostTime() {
+        return postTime;
+    }
+
+    public void setPostTime(Date postTime) {
+        this.postTime = postTime;
+    }
+
+    public Long getCost() {
+        return cost;
+    }
+
+    public void setCost(Long cost) {
+        this.cost = cost;
+    }
+
+    public String getContent() {
+        return content;
+    }
+
+    public void setContent(String content) {
+        this.content = content;
+    }
 
     @Override
     public String toString() {
         return "Post{" +
                 "postId=" + postId +
+                ", isBrief=" + isBrief +
+                ", tripTime=" + tripTime +
                 ", title='" + title + '\'' +
-                ", createTime=" + createTime +
-                ", postTime=" + postTime +
                 ", visitorNum=" + visitorNum +
+                ", postTime=" + postTime +
+                ", cost=" + cost +
+                ", content='" + content + '\'' +
                 '}';
     }
 }
