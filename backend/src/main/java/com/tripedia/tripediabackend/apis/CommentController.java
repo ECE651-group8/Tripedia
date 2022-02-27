@@ -25,7 +25,6 @@ public class CommentController {
     }
 
     @GetMapping
-   
     public List<Comment> getAllComment() {
         return commentService.getAllComment();
     }
@@ -79,7 +78,7 @@ public class CommentController {
         }
     }
 
-    @PostMapping(path = "assignuser/{cid}/{uid}")
+    /*@PostMapping(path = "assignuser/{cid}/{uid}")
     public ResponseEntity<String> assignUser(@PathVariable("cid") Long commentId,
                                              @PathVariable("uid") Long userId) {
         try {
@@ -90,5 +89,5 @@ public class CommentController {
         } catch (UserNotExistException e) {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
         }
-    }
+    }*/
 }

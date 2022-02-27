@@ -40,14 +40,6 @@ public class User implements Serializable {
     @JsonIgnoreProperties(value = {"user"})
     List<Post> posts;
 
-    @OneToMany(mappedBy = "user")
-    @JsonIgnoreProperties(value = {"user"})
-    List<Comment> comments;
-
-    @OneToMany(mappedBy = "user")
-    @JsonIgnoreProperties(value = {"user"})
-    List<Image> images;
-
     public User() {
     }
 
@@ -63,8 +55,6 @@ public class User implements Serializable {
         this.rating = rating;
         this.profileBgId = profileBgId;
         this.posts = posts;
-        this.comments = comments;
-        this.images = images;
     }
 
     public Long getUserId() {
@@ -155,22 +145,6 @@ public class User implements Serializable {
         this.posts = posts;
     }
 
-    public List<Comment> getComments() {
-        return comments;
-    }
-
-    public void setComments(List<Comment> comments) {
-        this.comments = comments;
-    }
-
-    public List<Image> getImages() {
-        return images;
-    }
-
-    public void setImages(List<Image> images) {
-        this.images = images;
-    }
-
     @Override
     public String toString() {
         return "User{" +
@@ -185,8 +159,6 @@ public class User implements Serializable {
                 ", rating=" + rating +
                 ", profileBgId='" + profileBgId + '\'' +
                 ", posts=" + posts +
-                ", comments=" + comments +
-                ", images=" + images +
                 '}';
     }
 }

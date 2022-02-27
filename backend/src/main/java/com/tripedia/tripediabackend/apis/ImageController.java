@@ -65,7 +65,7 @@ public class ImageController {
         return "Updated image";
     }
 
-    @PostMapping(path = "assignspot/{iid}/{sid}")
+    /*@PostMapping(path = "assignspot/{iid}/{sid}")
     public ResponseEntity<String> assignSpot(@PathVariable("iid") Long imageId,
                                              @PathVariable("sid") Long spotId) {
         try {
@@ -76,7 +76,7 @@ public class ImageController {
         } catch (SpotNotExistException e) {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
         }
-    }
+    }*/
 
     @PostMapping(path = "assignpost/{iid}/{pid}")
     public ResponseEntity<String> assignPost(@PathVariable("iid") Long imageId,
@@ -91,7 +91,7 @@ public class ImageController {
         }
     }
 
-    @PostMapping(path = "assignuser/{iid}/{uid}")
+    /*@PostMapping(path = "assignuser/{iid}/{uid}")
     public ResponseEntity<String> assignUser(@PathVariable("iid") Long imageId,
                                              @PathVariable("uid") Long userId) {
         try {
@@ -102,5 +102,5 @@ public class ImageController {
         } catch (UserNotExistException e) {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
         }
-    }
+    }*/
 }

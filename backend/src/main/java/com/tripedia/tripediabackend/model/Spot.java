@@ -27,20 +27,15 @@ public class Spot {
     @JsonIgnoreProperties(value = {"spot"})
     List<Post> posts;
 
-    @OneToMany(mappedBy = "spot")
-    @JsonIgnoreProperties(value = {"spot"})
-    List<Image> images;
-
     public Spot(){}
 
-    public Spot(Long spotId, String address, Long popularity, String spotName, String introduction, List<Post> posts, List<Image> images) {
+    public Spot(Long spotId, String address, Long popularity, String spotName, String introduction, List<Post> posts) {
         this.spotId = spotId;
         this.address = address;
         this.popularity = popularity;
         this.spotName = spotName;
         this.introduction = introduction;
         this.posts = posts;
-        this.images = images;
     }
 
     public Long getSpotId() {
@@ -91,14 +86,6 @@ public class Spot {
         this.posts = posts;
     }
 
-    public List<Image> getImages() {
-        return images;
-    }
-
-    public void setImages(List<Image> images) {
-        this.images = images;
-    }
-
     @Override
     public String toString() {
         return "Spot{" +
@@ -108,7 +95,6 @@ public class Spot {
                 ", spotName='" + spotName + '\'' +
                 ", introduction='" + introduction + '\'' +
                 ", posts=" + posts +
-                ", images=" + images +
                 '}';
     }
 }

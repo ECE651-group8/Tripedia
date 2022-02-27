@@ -1,5 +1,7 @@
 package com.tripedia.tripediabackend.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import javax.persistence.*;
 
 import java.util.Date;
@@ -19,12 +21,9 @@ public class Comment {
     private Date CommentDate;
 
     @ManyToOne
+    @JsonIgnoreProperties(value = {"comment"})
     @JoinColumn(name = "post_id")
     private Post post;
-
-    @ManyToOne
-    @JoinColumn(name = "user_id")
-    private User user;
 
     public Comment(){}
 
@@ -33,7 +32,6 @@ public class Comment {
         CommentText = commentText;
         CommentDate = commentDate;
         this.post = post;
-        this.user = user;
     }
 
     public String getCommentText() {
@@ -68,14 +66,6 @@ public class Comment {
         this.post = post;
     }
 
-    public User getUser() {
-        return user;
-    }
-
-    public void setUser(User user) {
-        this.user = user;
-    }
-
     @Override
     public String toString() {
         return "Comment{" +
@@ -83,7 +73,6 @@ public class Comment {
                 ", CommentText='" + CommentText + '\'' +
                 ", CommentDate=" + CommentDate +
                 ", post=" + post +
-                ", user=" + user +
                 '}';
     }
 }

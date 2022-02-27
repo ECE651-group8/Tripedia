@@ -20,8 +20,10 @@ public class CommentService {
     private UserDao userDao;
 
     @Autowired
-    public CommentService(CommentDao commentDao) {
+    public CommentService(CommentDao commentDao, PostDao postDao, UserDao userDao) {
         this.commentDao = commentDao;
+        this.postDao = postDao;
+        this.userDao = userDao;
     }
 
     public Comment addComment(Comment comment) {
@@ -72,7 +74,7 @@ public class CommentService {
         return commentDao.save(comment);
     }
 
-    public Comment assignUser(Long commentId, Long userId) {
+    /*public Comment assignUser(Long commentId, Long userId) {
         if (!commentDao.existsById(commentId)) {
             throw new CommentNotExistException("Cannot find comment ID" + commentId);
         }
@@ -86,5 +88,5 @@ public class CommentService {
 
         comment.setUser(user);
         return commentDao.save(comment);
-    }
+    }*/
 }

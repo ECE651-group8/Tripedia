@@ -58,7 +58,7 @@ public class ImageService {
         return imageDao.save(image);
     }
 
-    public Image assignSpot(Long imageId, Long spotId) {
+    /*public Image assignSpot(Long imageId, Long spotId) {
         if (!imageDao.existsById(imageId)) {
             throw new ImageNotExistException("Cannot find image ID" + imageId);
         }
@@ -72,7 +72,7 @@ public class ImageService {
 
         image.setSpot(spot);
         return imageDao.save(image);
-    }
+    }*/
 
     public Image assignPost(Long imageId, Long postId) {
         if (!imageDao.existsById(imageId)) {
@@ -90,7 +90,7 @@ public class ImageService {
         return imageDao.save(image);
     }
 
-    public Image assignUser(Long imageId, Long userId) {
+    /*public Image assignUser(Long imageId, Long userId) {
         if (!imageDao.existsById(imageId)) {
             throw new ImageNotExistException("Cannot find image ID" + imageId);
         }
@@ -104,5 +104,5 @@ public class ImageService {
 
         image.setUser(user);
         return imageDao.save(image);
-    }
+    }*/
 }
