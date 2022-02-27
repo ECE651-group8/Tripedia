@@ -2,15 +2,14 @@ package com.tripedia.tripediabackend.service;
 import com.tripedia.tripediabackend.dao.ImageDao;
 import com.tripedia.tripediabackend.dao.PostDao;
 import com.tripedia.tripediabackend.dao.SpotDao;
-import com.tripedia.tripediabackend.exceptions.PostNotExistException;
-import com.tripedia.tripediabackend.exceptions.SpotNotExistException;
+import com.tripedia.tripediabackend.dao.UserDao;
+import com.tripedia.tripediabackend.exceptions.*;
 import com.tripedia.tripediabackend.model.Image;
 import com.tripedia.tripediabackend.model.Post;
 import com.tripedia.tripediabackend.model.Spot;
+import com.tripedia.tripediabackend.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import com.tripedia.tripediabackend.exceptions.PostEmptyImageException;
-import com.tripedia.tripediabackend.exceptions.ImageNotExistException;
 
 import java.util.List;
 import java.util.Optional;
@@ -20,6 +19,7 @@ public class ImageService {
     private ImageDao imageDao;
     private SpotDao spotDao;
     private PostDao postDao;
+    private UserDao userDao;
 
     @Autowired
     public ImageService(ImageDao imageDao) {
@@ -79,7 +79,7 @@ public class ImageService {
             throw new ImageNotExistException("Cannot find image ID" + imageId);
         }
 
-        if(!spotDao.existsById(postId)) {
+        if(!postDao.existsById(postId)) {
             throw new PostNotExistException("Cannot find post ID" + postId);
         }
 
@@ -87,6 +87,22 @@ public class ImageService {
         Post post = postDao.findById(postId).get();
 
         image.setPost(post);
+        return imageDao.save(image);
+    }
+
+    public Image assignUser(Long imageId, Long userId) {
+        if (!imageDao.existsById(imageId)) {
+            throw new ImageNotExistException("Cannot find image ID" + imageId);
+        }
+
+        if(!userDao.existsById(userId)) {
+            throw new UserNotExistException("Cannot find user ID" + userId);
+        }
+
+        Image image = getImageById(imageId).get();
+        User user = userDao.findById(userId).get();
+
+        image.setUser(user);
         return imageDao.save(image);
     }
 }

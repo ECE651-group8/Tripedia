@@ -1,15 +1,14 @@
 package com.tripedia.tripediabackend.service;
 import com.tripedia.tripediabackend.dao.CommentDao;
 import com.tripedia.tripediabackend.dao.PostDao;
-import com.tripedia.tripediabackend.exceptions.PostNotExistException;
-import com.tripedia.tripediabackend.exceptions.SpotNotExistException;
+import com.tripedia.tripediabackend.dao.UserDao;
+import com.tripedia.tripediabackend.exceptions.*;
 import com.tripedia.tripediabackend.model.Comment;
 import com.tripedia.tripediabackend.model.Post;
 import com.tripedia.tripediabackend.model.Spot;
+import com.tripedia.tripediabackend.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import com.tripedia.tripediabackend.exceptions.PostEmptyCommentException;
-import com.tripedia.tripediabackend.exceptions.CommentNotExistException;
 
 import java.util.List;
 import java.util.Optional;
@@ -18,6 +17,7 @@ import java.util.Optional;
 public class CommentService {
     private CommentDao commentDao;
     private PostDao postDao;
+    private UserDao userDao;
 
     @Autowired
     public CommentService(CommentDao commentDao) {
@@ -69,6 +69,22 @@ public class CommentService {
         Post post = postDao.findById(postId).get();
 
         comment.setPost(post);
+        return commentDao.save(comment);
+    }
+
+    public Comment assignUser(Long commentId, Long userId) {
+        if (!commentDao.existsById(commentId)) {
+            throw new CommentNotExistException("Cannot find comment ID" + commentId);
+        }
+
+        if(!userDao.existsById(userId)) {
+            throw new UserNotExistException("Cannot find user ID" + userId);
+        }
+
+        Comment comment = getCommentById(commentId).get();
+        User user = userDao.findById(userId).get();
+
+        comment.setUser(user);
         return commentDao.save(comment);
     }
 }

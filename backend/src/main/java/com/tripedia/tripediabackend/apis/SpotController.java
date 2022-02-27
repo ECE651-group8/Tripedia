@@ -23,7 +23,6 @@ public class SpotController {
     }
 
     @GetMapping
-    @RequestMapping("/all")
     public List<Spot> getAllSpot() {
         return spotService.getAllSpot();
     }

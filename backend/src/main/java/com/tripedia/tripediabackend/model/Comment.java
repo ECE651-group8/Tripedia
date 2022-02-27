@@ -22,13 +22,18 @@ public class Comment {
     @JoinColumn(name = "post_id")
     private Post post;
 
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    private User user;
+
     public Comment(){}
 
-    public Comment(Long commentId, String commentText, Date commentDate, Post post) {
+    public Comment(Long commentId, String commentText, Date commentDate, Post post, User user) {
         this.commentId = commentId;
         CommentText = commentText;
         CommentDate = commentDate;
         this.post = post;
+        this.user = user;
     }
 
     public String getCommentText() {
@@ -63,6 +68,14 @@ public class Comment {
         this.post = post;
     }
 
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
     @Override
     public String toString() {
         return "Comment{" +
@@ -70,6 +83,7 @@ public class Comment {
                 ", CommentText='" + CommentText + '\'' +
                 ", CommentDate=" + CommentDate +
                 ", post=" + post +
+                ", user=" + user +
                 '}';
     }
 }

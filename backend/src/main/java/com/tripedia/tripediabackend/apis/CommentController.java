@@ -1,9 +1,6 @@
 package com.tripedia.tripediabackend.apis;
 
-import com.tripedia.tripediabackend.exceptions.CommentNotExistException;
-import com.tripedia.tripediabackend.exceptions.InvalidPostException;
-import com.tripedia.tripediabackend.exceptions.PostNotExistException;
-import com.tripedia.tripediabackend.exceptions.SpotNotExistException;
+import com.tripedia.tripediabackend.exceptions.*;
 import com.tripedia.tripediabackend.model.Comment;
 import com.tripedia.tripediabackend.model.Post;
 import com.tripedia.tripediabackend.service.CommentService;
@@ -78,6 +75,19 @@ public class CommentController {
         } catch (CommentNotExistException e) {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
         } catch (PostNotExistException e) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
+        }
+    }
+
+    @PostMapping(path = "assignuser/{cid}/{uid}")
+    public ResponseEntity<String> assignUser(@PathVariable("cid") Long commentId,
+                                             @PathVariable("uid") Long userId) {
+        try {
+            Comment updatedComment = commentService.assignUser(commentId, userId);
+            return ResponseEntity.ok("Assigned user. " + updatedComment.toString());
+        } catch (CommentNotExistException e) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
+        } catch (UserNotExistException e) {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
         }
     }

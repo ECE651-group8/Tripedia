@@ -29,6 +29,8 @@ public class Post {
 
     private Long cost;
 
+    private String content;
+
     @ManyToOne
     @JsonIgnoreProperties(value = {"post"})
     @JoinColumn(name = "spot_id")
@@ -47,7 +49,7 @@ public class Post {
 
     public Post() {}
 
-    public Post(Long postId, boolean isBrief, Date tripTime, String title, Date createTime, Long visitorNum, Date postTime, Long cost, Spot spot, List<Image> images, List<Comment> comments, User user) {
+    public Post(Long postId, boolean isBrief, Date tripTime, String title, Date createTime, Long visitorNum, Date postTime, Long cost, String content, Spot spot, List<Image> images, List<Comment> comments, User user) {
         this.postId = postId;
         this.isBrief = isBrief;
         this.tripTime = tripTime;
@@ -56,6 +58,7 @@ public class Post {
         this.visitorNum = visitorNum;
         this.postTime = postTime;
         this.cost = cost;
+        this.content = content;
         this.spot = spot;
         this.images = images;
         this.comments = comments;
@@ -158,6 +161,14 @@ public class Post {
         this.user = user;
     }
 
+    public String getContent() {
+        return content;
+    }
+
+    public void setContent(String content) {
+        this.content = content;
+    }
+
     @Override
     public String toString() {
         return "Post{" +
@@ -169,6 +180,7 @@ public class Post {
                 ", visitorNum=" + visitorNum +
                 ", postTime=" + postTime +
                 ", cost=" + cost +
+                ", content='" + content + '\'' +
                 ", spot=" + spot +
                 ", images=" + images +
                 ", comments=" + comments +
