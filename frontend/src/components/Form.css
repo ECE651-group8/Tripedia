@@ -128,11 +128,7 @@
   height: 50px;
   margin-top: 10px;
   border-radius: 2px;
-  background: linear-gradient(
-    90deg,
-    rgb(217, 114, 54) 0%,
-    rgb(242, 209, 109) 100%
-  );
+  background-color: rgb(217, 114, 54);
   outline: none;
   border: none;
   color: #fff;
@@ -159,6 +155,6 @@
 
 .form-input-login a {
   text-decoration: none;
-  color: #27cdff;
+  color: #D97236;
   font-weight: 600;
 }

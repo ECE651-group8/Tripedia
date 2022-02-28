@@ -1,13 +1,7 @@
 import React,{useState} from 'react';
 import Masony from "react-masonry-component";
 import "./Posts.css";
-import Card from '@mui/material/Card';
-import CardActions from '@mui/material/CardActions';
-import CardContent from '@mui/material/CardContent';
-import CardMedia from '@mui/material/CardMedia';
-import Button from '@mui/material/Button';
-import Typography from '@mui/material/Typography';
-import Avatar from '@mui/material/Avatar';
+
 import Box from '@mui/material/Box';
 import ImageList from '@mui/material/ImageList';
 import ImageListItem from '@mui/material/ImageListItem';
@@ -109,7 +103,7 @@ const itemData = [
     author: 'Pavel Nekoranec',
   },
   {
-    img: 'https://images.unsplash.com/photo-1617803672592-177dbdb3abfa?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NXx8Y2FuYWRhJTIwbmF0dXJlfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=247&h=172&q=60',
+    img: 'https://images.unsplash.com/photo-1617803672592-177dbdb3abfa?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NXx8Y2FuYWRhJTIwbmF0dXJlfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=247&h=145&q=60',
     title: 'Enjoy your life in WatertonPark ',
     author: 'Charles Deluvio',
   },
@@ -134,7 +128,7 @@ const itemData = [
     author: 'Ben Kolde',
   },
   {
-    img: 'https://images.unsplash.com/photo-1548214649-9b8570c50f66?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mjd8fGNhbmFkYSUyMGNpdHl8ZW58MHx8MHx8&auto=format&fit=crop&w=247&h=172&q=60',
+    img: 'https://images.unsplash.com/photo-1548214649-9b8570c50f66?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mjd8fGNhbmFkYSUyMGNpdHl8ZW58MHx8MHx8&auto=format&fit=crop&w=247&h=145&q=60',
     title: 'Two days trip in Calgary',
     author: 'Philipp Berndt',
   },
@@ -149,7 +143,7 @@ const itemData = [
     author: 'Douglas Sheppard',
   },
   {
-    img: 'https://images.unsplash.com/photo-1599108689896-3f7c2631b0c2?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mjh8fGNhbmFkYSUyMG5hdHVyZXxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=247&h=172&q=60',
+    img: 'https://images.unsplash.com/photo-1599108689896-3f7c2631b0c2?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mjh8fGNhbmFkYSUyMG5hdHVyZXxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=247&h=145&q=60',
     title: 'Beautiful view in Waterloo',
     author: 'Fi Bell',
   },

@@ -16,7 +16,7 @@ function Hottest(){
             <Card.ImgOverlay>
               <Card.Title>
                 <div className="hottest-title">
-                  What's the hottest spot? 
+                  What's the hottest place? 
                 </div>
               </Card.Title>
         
