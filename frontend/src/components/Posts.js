@@ -74,7 +74,7 @@ function Posts() {
 
             actionIcon={
 
-            <IconButton sx={{ color: 'F2C53D' }}aria-label="add to favorites">
+            <IconButton sx={{ color: '#f00e0e' }}aria-label="add to favorites">
             <FavoriteIcon />
            </IconButton>
              

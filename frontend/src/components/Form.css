@@ -3,7 +3,7 @@
   /* margin-left: auto;
   margin-right: auto; */
   width: 1200px;
-  box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.2), 0 7px 20px 0 rgba(0, 0, 0, 0.2);
+  box-shadow: 0 5px 8px 0 rgba(242, 197, 61), 0 7px 20px 0 rgba(242, 197, 61);
   position: relative;
   border-radius: 10px;
   height: 800px;
@@ -39,7 +39,7 @@
 .form-content-right {
   border-radius: 0 10px 10px 0;
   position: relative;
-  background: linear-gradient(90deg, rgb(40, 40, 40) 0%, rgb(17, 17, 17) 100%);
+  background: linear-gradient(90deg, rgb(242, 197, 61) 0%, rgb(242, 197, 61) 100%);
 }
 
 .form-img {
@@ -119,7 +119,7 @@
 }
 
 .form-input::placeholder {
-  color: #595959;
+  color: #F2C53D;
   font-size: 12px;
 }
 
@@ -130,8 +130,8 @@
   border-radius: 2px;
   background: linear-gradient(
     90deg,
-    rgb(39, 176, 255) 0%,
-    rgb(0, 232, 236) 100%
+    rgb(217, 114, 54) 0%,
+    rgb(242, 209, 109) 100%
   );
   outline: none;
   border: none;
@@ -143,8 +143,8 @@
   cursor: pointer;
   background: linear-gradient(
     90deg,
-    rgb(39, 143, 255) 0%,
-    rgb(12, 99, 250) 100%
+    rgb(217, 114, 54) 0%,
+    rgb(242, 209, 109) 100%
   );
   transition: all 0.4s ease-out;
 }
