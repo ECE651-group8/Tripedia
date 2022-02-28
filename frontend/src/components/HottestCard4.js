@@ -13,12 +13,12 @@ function HottestCard(){
          
          <Card.Text>
            <div className="hottest-text">
-           <p>#2. Blue Montain</p>
-           <h> Join us between 3 and 6 pm on our outdoor patio’s to win new Dakine Mittens.</h>
-           <h1> 74.7K Likes</h1>
+           <p>#6. Ottawa's Parliament Hill </p>
+           <h> Ottawa's Parliament Hill stands high above the Ottawa River.</h>
+           <h1> 24.4K Likes</h1>
           </div>
          </Card.Text>      
-         <Image src="	http://b1-q.mafengwo.net/s10/M00/C4/C4/wKgBZ1oJrZuAJkjzAAB_pvRLpwU13.jpeg?imageMogr2%2Fthumbnail%2F%21200x200r%2Fgravity%2FCenter%2Fcrop%2F%21200x200%2Fquality%2F90" className='img-thumbnail'
+         <Image src="https://www.planetware.com/photos-large/CDN/canada-ontario-ottawa-parliament-hill.jpg" className='img-thumbnail'
          alt='...'></Image>
          
          

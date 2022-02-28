@@ -1,115 +1,163 @@
-import * as React from 'react';
-import { useState } from 'react';
+import React,{useState} from 'react';
+import Masony from "react-masonry-component";
+import "./Posts.css";
+import Card from '@mui/material/Card';
+import CardActions from '@mui/material/CardActions';
+import CardContent from '@mui/material/CardContent';
+import CardMedia from '@mui/material/CardMedia';
+import Button from '@mui/material/Button';
+import Typography from '@mui/material/Typography';
+import Avatar from '@mui/material/Avatar';
 import Box from '@mui/material/Box';
 import ImageList from '@mui/material/ImageList';
 import ImageListItem from '@mui/material/ImageListItem';
 import ImageListItemBar from '@mui/material/ImageListItemBar';
 import IconButton from '@mui/material/IconButton';
 import InfoIcon from '@mui/icons-material/Info';
+import FavoriteIcon from '@mui/icons-material/Favorite';
+
+// Dome dummy content
+
+// Masory Options
+const masonryOptions = {
+  fitWidth: false,
+  columnWidth: 300,
+  gutter: 30,
+  itemSelector: ".photo-item",
+};
 
 
-export default function TitlebarBelowMasonryImageList() {
-  
-    return (
-        <Box
-            sx={{
-                verflowY: 'scroll',
-            }}
-        >
-            <ImageList variant="masonry" cols={3} gap={8}>
-                {itemData.map(item => (
-                    <ImageListItem key={item.post_id} border={1}>
-                        <a href="/detail">
-                            <img
-                                src={`${item.img}?w=248&fit=crop&auto=format`}
-                                srcSet={`${item.img}?w=248&fit=crop&auto=format&dpr=2 2x`}
-                                alt={item.title}
-                                loading="lazy"
-                            />
-                        </a>
-                        <ImageListItemBar
-                            title={item.title}
-                            subtitle={
-                                <a href="/timeline">
-                                    <span>by: {item.author}</span>
-                                </a>
-                            }
-                            actionIcon={
-                                <IconButton
-                                    sx={{ color: 'F2C53D' }}
-                                    aria-label={`info about ${item.title}`}
-                                >
-                                    <InfoIcon />
-                                </IconButton>
-                            }
-                            position="below"
-                        />
-                    </ImageListItem>
-                ))}
-            </ImageList>
-        </Box>
-    );
+async function getData() {
+  const res = await fetch('http://localhost:8080/api/post', {
+      headers: {
+          'content-type': 'application/json',
+      },
+      method: 'GET',
+  });
+  const json = await res.json();
+  console.log(json);
+  return json;
 }
 
+const json = getData();
+
+function Posts() {
+  const [post, setPost] = useState([]);
+  json.then(item => {
+      setPost(item);
+  });
+
+  return (
+
+      <div>
+          {/* <div>00000</div>
+          {post.map(item => (
+              <div>{item.title}</div>
+          ))}
+          <div>11111</div> */}
+
+          <Box sx={{ verflowY: 'scroll' }}>
+      <ImageList variant="masonry" cols={3} gap={8}>
+        {itemData.map((item) => (
+          <ImageListItem key={item.cost}>
+            <a href = "/detail" >
+            <img
+              src={`${item.img}?w=248&fit=crop&auto=format`}
+              srcSet={`${item.img}?w=248&fit=crop&auto=format&dpr=2 2x`}
+              alt={item.title}
+              loading="lazy"
+            />
+            </a>          
+            <ImageListItemBar
+            title={item.title}
+            subtitle={<a href = "/timeline" ><span>by: {item.author}</span></a>}    
+
+            actionIcon={
+
+            <IconButton sx={{ color: 'F2C53D' }}aria-label="add to favorites">
+            <FavoriteIcon />
+           </IconButton>
+             
+              
+            }  
+            position="below"
+          />    
+          </ImageListItem>
+        ))}
+      </ImageList>
+    </Box>
+
+
+
+      </div>
+       
+
+       
+
+  );
+}
 const itemData = [
-    {
-        img: 'https://images.unsplash.com/photo-1549388604-817d15aa0110',
-        title: 'Bed',
-        author: 'swabdesign',
-    },
-    {
-        img: 'https://images.unsplash.com/photo-1525097487452-6278ff080c31',
-        title: 'Books',
-        author: 'Pavel Nekoranec',
-    },
-    {
-        img: 'https://images.unsplash.com/photo-1523413651479-597eb2da0ad6',
-        title: 'Sink',
-        author: 'Charles Deluvio',
-    },
-    {
-        img: 'https://images.unsplash.com/photo-1563298723-dcfebaa392e3',
-        title: 'Kitchen',
-        author: 'Christian Mackie',
-    },
-    {
-        img: 'https://images.unsplash.com/photo-1588436706487-9d55d73a39e3',
-        title: 'Blinds',
-        author: 'Darren Richardson',
-    },
-    {
-        img: 'https://images.unsplash.com/photo-1574180045827-681f8a1a9622',
-        title: 'Chairs',
-        author: 'Taylor Simpson',
-    },
-    {
-        img: 'https://images.unsplash.com/photo-1530731141654-5993c3016c77',
-        title: 'Laptop',
-        author: 'Ben Kolde',
-    },
-    {
-        img: 'https://images.unsplash.com/photo-1481277542470-605612bd2d61',
-        title: 'Doors',
-        author: 'Philipp Berndt',
-    },
-    {
-        img: 'https://images.unsplash.com/photo-1517487881594-2787fef5ebf7',
-        title: 'Coffee',
-        author: 'Jen P.',
-    },
-    {
-        img: 'https://images.unsplash.com/photo-1516455207990-7a41ce80f7ee',
-        title: 'Storage',
-        author: 'Douglas Sheppard',
-    },
-    {
-        img: 'https://images.unsplash.com/photo-1597262975002-c5c3b14bbd62',
-        title: 'Candle',
-        author: 'Fi Bell',
-    },
-    {
-        img: 'https://images.unsplash.com/photo-1519710164239-da123dc03ef4',
-        title: 'Coffee table',
-        author: 'Hutomo Abrianto',
-    },
+  {
+    img: 'https://images.unsplash.com/photo-1517935706615-2717063c2225?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=247&h=332&q=80',
+    title: 'Daily life in Downtown Toronto',
+    author: 'Edward',
+
+  },
+  {
+    img: 'https://images.unsplash.com/photo-1490623970972-ae8bb3da443e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8Y2FuYWRhJTIwY2l0eXxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=247&h=372&q=60',
+    title: 'Cochi,India',
+    author: 'Pavel Nekoranec',
+  },
+  {
+    img: 'https://images.unsplash.com/photo-1617803672592-177dbdb3abfa?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NXx8Y2FuYWRhJTIwbmF0dXJlfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=247&h=172&q=60',
+    title: 'Enjoy your life in WatertonPark ',
+    author: 'Charles Deluvio',
+  },
+  {
+    img: 'https://images.unsplash.com/photo-1607414464583-aa96b59e6bde?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTR8fGNhbmFkYSUyMGNpdHl8ZW58MHx8MHx8&auto=format&fit=crop&w=247&h=166&q=60',
+    title: 'Toronto CN Tower',
+    author: 'Christian Mackie',
+  },
+  {
+    img: 'https://images.unsplash.com/photo-1611674929309-30a2c9be2f2b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MjZ8fGNhbmFkYSUyMGNpdHl8ZW58MHx8MHx8&auto=format&fit=crop&w=247&h=166&q=60',
+    title: 'Jogging in Waterloo Park',
+    author: 'Darren Richardson',
+  },
+  {
+    img: 'https://images.unsplash.com/photo-1514924013411-cbf25faa35bb?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTh8fGNhbmFkYSUyMGNpdHl8ZW58MHx8MHx8&auto=format&fit=crop&w=247&h=332&q=60',
+    title: 'weather in kitchener',
+    author: 'Taylor Simpson',
+  },
+  {
+    img: 'https://images.unsplash.com/photo-1597288253793-6a050b62e62d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MzN8fGNhbmFkYSUyMGNpdHl8ZW58MHx8MHx8&auto=format&fit=crop&w=247&h=370&q=60',
+    title: 'Nice View in Banff',
+    author: 'Ben Kolde',
+  },
+  {
+    img: 'https://images.unsplash.com/photo-1548214649-9b8570c50f66?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mjd8fGNhbmFkYSUyMGNpdHl8ZW58MHx8MHx8&auto=format&fit=crop&w=247&h=172&q=60',
+    title: 'Two days trip in Calgary',
+    author: 'Philipp Berndt',
+  },
+  {
+    img: 'https://images.unsplash.com/photo-1594320126960-c08e13628dae?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTV8fGNhbmFkYSUyMGNpdHl8ZW58MHx8MHx8&auto=format&fit=crop&w=247&h=332&q=60',
+    title: 'Best Shopping mall in Toronto',
+    author: 'Jen P.',
+  },
+  {
+    img: 'https://images.unsplash.com/photo-1617803672592-177dbdb3abfa?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NXx8Y2FuYWRhJTIwbmF0dXJlfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=247&h=166&q=60',
+    title: 'Fall in Algonquin',
+    author: 'Douglas Sheppard',
+  },
+  {
+    img: 'https://images.unsplash.com/photo-1599108689896-3f7c2631b0c2?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mjh8fGNhbmFkYSUyMG5hdHVyZXxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=247&h=172&q=60',
+    title: 'Beautiful view in Waterloo',
+    author: 'Fi Bell',
+  },
+  {
+    img: 'https://images.unsplash.com/photo-1618162227832-308c1b488f63?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8OXx8Y2FuYWRhJTIwbmF0dXJlfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=247&h=372&q=60',
+    title: 'One day trip in Whistler',
+    author: 'Hutomo Abrianto',
+  },
 ];
+
+export default Posts;

@@ -52,7 +52,7 @@ const FormSignup = ({ submitForm }) => {
           />
           {errors.password && <p>{errors.password}</p>}
         </div>
-        <div className='form-inputs'>
+        {/* <div className='form-inputs'>
           <label className='form-label'>Confirm Password</label>
           <input
             className='form-input'
@@ -63,9 +63,9 @@ const FormSignup = ({ submitForm }) => {
             onChange={handleChange}
           />
           {errors.password2 && <p>{errors.password2}</p>}
-        </div>
+        </div> */}
         <button className='form-input-btn' type='submit'>
-          Sign up
+          Log in
         </button>
         <span className='form-input-login'>
           Already have an account? Login <a href='#'>here</a>

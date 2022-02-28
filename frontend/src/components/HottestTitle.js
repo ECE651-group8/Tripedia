@@ -16,14 +16,15 @@ function Hottest(){
             <Card.ImgOverlay>
               <Card.Title>
                 <div className="hottest-title">
-                  What is happening? 
+                  What's the hottest spot? 
                 </div>
               </Card.Title>
         
               <Card.Text >
                 <div className="hottest-content">
-                  <h1>#1. Banff</h1>
-                  <p>Last updated 3 mins ago</p>
+                  <h1>#1. Banff National Park </h1>
+                  <p>Banff National Park lies in the heart of the majestic Rocky Mountains in the province of Alberta,<br/>
+                   and showcases some of Canada's most beautiful scenery.</p>
                 </div>
               </Card.Text>
          

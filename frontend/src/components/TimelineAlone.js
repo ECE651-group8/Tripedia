@@ -57,7 +57,8 @@ export default function TimelineAlone() {
           <CardMedia
           component="img"
           height="350"
-          image="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/1c/ae/59/d8/caption.jpg?w=400&h=300&s=1&cx=2330&cy=1561&chk=v1_b70d932b90eebb686764"
+          
+          image="https://static.tacdn.com/img2/brand/home/homefeb2022_dt.webp"
           alt="Paella dish"
           //这是前面班夫国家公园的东西，这边能不能合并在一起，并且上面有单独的 提示行来显示
         />
@@ -77,7 +78,8 @@ export default function TimelineAlone() {
         <CardHeader 
        
         avatar={
-          <Avatar src="https://images.pexels.com/photos/4496891/pexels-photo-4496891.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500" sx={{ width: 77, height: 77 }}>
+          <Avatar src="http://p1-q.mafengwo.net/s10/M00/8E/78/wKgBZ1nwuTiAR5z9AAWG6X5Chik43.jpeg?imageMogr2%2Fthumbnail%2F%21120x120r%2Fgravity%2FCenter%2Fcrop%2F%21120x120%2Fquality%2F90" 
+          sx={{ width: 77, height: 77 }}>
                 {/* //用户 */}
           </Avatar>
         
@@ -87,8 +89,8 @@ export default function TimelineAlone() {
             <MoreVertIcon />
           </IconButton>
         }
-        title="by Suzanne R, Brooklyn, New York"
-        subheader="Jan 19, 2021"
+        title="Suzanne R, Brooklyn"
+        subheader="Aug 19, 2018"
         
         />
 
@@ -96,7 +98,8 @@ export default function TimelineAlone() {
      
       <CardContent>
         <Typography variant="body2" color="rgb(2,89,89)">
-        From Central Park on down to Lady Liberty--and everything around and in between--here are the key things to see on a visit to New York City.
+       A Waterloo university student,share my daily life with you.<br/>
+       Weclome to check and talk with me ！
         </Typography>
       </CardContent>
       <CardActions disableSpacing>

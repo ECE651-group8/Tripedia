@@ -12,8 +12,9 @@ import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import ShareIcon from '@mui/icons-material/Share';
-
+import AccessibilityIcon from '@mui/icons-material/Accessibility';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
+import AccessTimeIcon from '@mui/icons-material/AccessTime';
 
 
 
@@ -55,7 +56,7 @@ export default function Detail() {
           <CardMedia
           component="img"
           height="350"
-          image="https://static.tacdn.com/img2/brand/home/homefeb2022_dt.webp"
+          image="http://p1-q.mafengwo.net/s19/M00/47/21/CoNHPmIaQKZYq2cWABA0PCwHNiI.png?imageMogr2%2Fstrip"
           alt="Paella dish"
           //这是前面班夫国家公园的东西，这边能不能合并在一起，并且上面有单独的 提示行来显示
         />
@@ -75,7 +76,8 @@ export default function Detail() {
         <CardHeader 
        
         avatar={
-          <Avatar src="https://images.pexels.com/photos/4496891/pexels-photo-4496891.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500" sx={{ width: 77, height: 77 }}>
+          <Avatar src="http://p1-q.mafengwo.net/s10/M00/8E/78/wKgBZ1nwuTiAR5z9AAWG6X5Chik43.jpeg?imageMogr2%2Fthumbnail%2F%21120x120r%2Fgravity%2FCenter%2Fcrop%2F%21120x120%2Fquality%2F90" 
+          sx={{ width: 77, height: 77 }}>
                 {/* //用户 */}
           </Avatar>
         
@@ -85,7 +87,7 @@ export default function Detail() {
             <MoreVertIcon />
           </IconButton>
         }
-        title="by Suzanne R, Brooklyn, New York"
+        title="by Suzanne R,  Ontario Science Center"
         subheader="Jan 19, 2021"
         
         />
@@ -93,8 +95,9 @@ export default function Detail() {
       
      
       <CardContent>
-        <Typography variant="body2" color="rgb(2,89,89)">
-        From Central Park on down to Lady Liberty--and everything around and in between--here are the key things to see on a visit to New York City.
+        <Typography variant="body2" color="rgb(217, 114, 54)">
+        Ontario Science Center is a natural science and technology museum, which is more suitable for children.<br/>
+             There are a lot of scientifically interesting toys in it, and people who are innocence can find a lot of resonance here. 
         </Typography>
       </CardContent>
       <CardActions disableSpacing>
@@ -119,6 +122,7 @@ export default function Detail() {
         
         sx={{ 
           
+          bgcolor:'rgb(242, 209, 109)',
           border: 1,
           boxShadow: 1,
           borderRadius: 2,
@@ -126,25 +130,49 @@ export default function Detail() {
       }}
         
         >
-          <Item >Toronto Island was a lot of fun. I took a walk through the island and enjoyed myself. I found an app called paint by the numbers battle app when I was sitting down on the beach. That kept me entertained. So it was fun.</Item>
+          <Item >
+             But you also have to have a certain face to "share" with children. There are too many children playing here, 
+             and we are too embarrassed to "share" many facilities with the children. We only pass by silently, <br/>
+             so we strolled around for a while and then went back to the hotel to rest.
+
+
+It may be that the sun at noon is still a little poisonous, plus the excitement and lack of sleep last night, <br/>
+we modified the itinerary and decided to take a lunch break at the hotel now. <br/>
+It wasn't until after 4 pm that we started our journey again
+
+Second stop, The Distillery District. <br/>This is really a great place to take pictures. <br/>
+There are various photo spots nearby. Such as LOVE sign, Peace sign, etc. 
+We also met a couple of newlyweds taking wedding photos here, and the beautiful atmosphere is beyond words. <br/>
+There are all kinds of small shops along the road, selling all kinds of small boutiques. 
+Here we meet a family of travelers from New York. He is an art performer. <br/>
+He will have a performance in Toronto tomorrow, so he will bring his parents to visit. 
+The most beautiful thing is that the family can share it together.
+
+
+
+
+
+</Item>
         </Grid>
 
 
         <Grid item xs={3}>
           <Item>
-          <List sx={{ width: '100%', maxWidth: 360, bgcolor: 'rgb(160,163,3)',ml:2, }}>
+          <List sx={{ borderRadius: 2,width: '100%', maxWidth: 360, bgcolor: 'rgb(242, 219, 174)',ml:2, }}>
       <ListItem>
         <ListItemAvatar>
           <Avatar>
-            <ImageIcon />
+            <AccessTimeIcon/>
           </Avatar>
         </ListItemAvatar>
-        <ListItemText primary="Time" secondary="Jan 9, 2021" />
+        <ListItemText primary="Date" secondary="Jan 9, 2021" />
       </ListItem>
+      
       <ListItem>
         <ListItemAvatar>
           <Avatar>
-            <WorkIcon />
+            <AccessibilityIcon/>
+            
           </Avatar>
         </ListItemAvatar>
         <ListItemText primary="People" secondary="4" />
@@ -156,6 +184,14 @@ export default function Detail() {
           </Avatar>
         </ListItemAvatar>
         <ListItemText primary="Cost" secondary="$2000" />
+      </ListItem>
+      <ListItem>
+        <ListItemAvatar>
+          <Avatar>
+          <WorkIcon />
+          </Avatar>
+        </ListItemAvatar>
+        <ListItemText primary="Location" secondary="Ontario Science Center" />
       </ListItem>
     </List>
         

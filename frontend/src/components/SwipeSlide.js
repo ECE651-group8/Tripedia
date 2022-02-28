@@ -72,7 +72,7 @@ export default function SwipeSlide({ title, data }) {
           title: 'Camera',
         },
         {
-          img: 'https://dynamic-media-cdn.tripadvisor.com/media/photo-o/16/df/b6/1e/view-from-the-ktichen.jpg?w=400&h=300&s=1',
+          img: 'https://images.unsplash.com/photo-1607414464583-aa96b59e6bde?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTR8fGNhbmFkYSUyMGNpdHl8ZW58MHx8MHx8&auto=format&fit=crop&q=60',
           title: 'Coffee',
           cols: 2,
         },  
@@ -113,9 +113,9 @@ export default function SwipeSlide({ title, data }) {
           <Item>
 
 <Card   sx={{ 
-        
+            bgcolor:'rgb(242, 209, 109)',
             width: 4/5,
-            height: 500,
+            height: 540,
             border: 1,
             boxShadow: 1,
             borderRadius: 2,
@@ -141,7 +141,8 @@ export default function SwipeSlide({ title, data }) {
      
       <CardContent >
         <Typography variant="body2" color="text.secondary">
-        
+        Toronto, the capital of the province of Ontario, is a major Canadian city along Lake Ontario’s northwestern shore. It's a dynamic metropolis with a core of soaring skyscrapers, all dwarfed by the iconic, free-standing CN Tower. Toronto also has many green spaces, from the orderly oval 
+        of Queen’s Park to 400-acre High Park and its trails, sports facilities and zoo.<br/>
         We've heard Toronto described as New York City run by the Swiss,
         and it's true—you can find world-class theater, shopping and restaurants here, 
         but the sidewalks are clean and the people are friendly. 
@@ -151,12 +152,10 @@ export default function SwipeSlide({ title, data }) {
         Very beautiful place. On one side you will see the calm nature but on the other side there is lot of traffic. 
         You will miss the eating points there as I only found a ice cream shop. 
         You can see from there the famous CN Tower. <br/>
-        Hit the ice at any one of the lovely rinks around the city. Nathan Phillips Square is an urban wonderland with lights, lights and more lights. 
+        Hit the ice at any one of the lovely rinks around the city. Nathan Phillips Square is an urban wonderland with lights, lights and more lights. <br/>
         With its backdrop of fairy lights arching overtop the rink, and the iconic TORONTO sign, a skate date here makes for a quintessential Instagram moment. <br/>
  
-        Finally, 
-        along with the imposing concrete pillars of the Gardiner Expressway overhead, creates a moody, industrial-chic vibe.<br/>
-        Love to be there.
+    
         </Typography>
       </CardContent>
       <CardActions disableSpacing>
@@ -183,7 +182,7 @@ export default function SwipeSlide({ title, data }) {
             boxShadow: 1,
             borderRadius: 2,
             width: '100%', maxWidth: 400, 
-          bgcolor: 'rgb(160,163,3)' }}>
+          bgcolor: 'rgb(242, 219, 174)' }}>
       
         
         
@@ -194,7 +193,7 @@ export default function SwipeSlide({ title, data }) {
                     width="340"
                     height="500"
                     id="gmap_canvas"
-                    src="https://maps.google.com/maps?q=2880%20Broadway,%20New%20York&t=&z=13&ie=UTF8&iwloc=&output=embed"
+                    src="https://www.google.com/maps/d/embed?mid=1N-D8BKvYT6Ctc6uTpRCbL0HFEAY&msa=0&ie=UTF8&t=m&ll=43.66465366516071%2C-79.39340425840898&spn=1.590449%2C5.592041&z=13&output=embed"
                     frameborder="0"
                     scrolling="no"
                     marginheight="0"
@@ -205,6 +204,8 @@ export default function SwipeSlide({ title, data }) {
             </div>
         </div>
 
+
+        
       </ListItem>
       
     </List>
@@ -236,7 +237,7 @@ export default function SwipeSlide({ title, data }) {
                                     alt="location"
                                     style={{ marginLeft: 20}}
                                 />
-                                <p>Tornto</p>
+                                <p>Toronto</p>
                             </div>
                             <h2>Blue Mountain</h2>
                         </div>
