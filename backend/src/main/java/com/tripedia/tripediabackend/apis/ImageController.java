@@ -91,7 +91,7 @@ public class ImageController {
         }
     }
 
-    /*@PostMapping(path = "assignuser/{iid}/{uid}")
+    @PostMapping(path = "assignuser/{iid}/{uid}")
     public ResponseEntity<String> assignUser(@PathVariable("iid") Long imageId,
                                              @PathVariable("uid") Long userId) {
         try {
@@ -102,5 +102,5 @@ public class ImageController {
         } catch (UserNotExistException e) {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
         }
-    }*/
+    }
 }

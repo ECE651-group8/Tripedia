@@ -24,11 +24,11 @@ public class Spot {
     private String introduction;
 
     @OneToMany(mappedBy = "spot")
-    @JsonIgnoreProperties(value = {"spot", "images"})
+    @JsonIgnoreProperties(value = {"spot", "images", "comments", "user"})
     List<Post> posts;
 
     @OneToMany(mappedBy = "spot")
-    @JsonIgnoreProperties(value = {"spot", "post"})
+    @JsonIgnoreProperties(value = {"spot", "post", "spot"})
     List<Image> images;
 
     public Spot(){}

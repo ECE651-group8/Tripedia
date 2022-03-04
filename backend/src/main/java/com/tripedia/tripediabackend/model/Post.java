@@ -41,11 +41,11 @@ public class Post {
     List<Image> images;
 
     @OneToMany(mappedBy = "post")
-    @JsonIgnoreProperties(value = {"post"})
+    @JsonIgnoreProperties(value = {"post", "user"})
     List<Comment> comments;
 
     @ManyToOne
-    @JsonIgnoreProperties(value = {"posts"})
+    @JsonIgnoreProperties(value = {"posts", "comments"})
     @JoinColumn(name = "user_id")
     private User user;
 

@@ -7,6 +7,7 @@ import com.tripedia.tripediabackend.exceptions.*;
 import com.tripedia.tripediabackend.model.Image;
 import com.tripedia.tripediabackend.model.Post;
 import com.tripedia.tripediabackend.model.Spot;
+import com.tripedia.tripediabackend.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -18,12 +19,14 @@ public class ImageService {
     private ImageDao imageDao;
     private PostDao postDao;
     private SpotDao spotDao;
+    private UserDao userDao;
 
     @Autowired
-    public ImageService(ImageDao imageDao, PostDao postDao, SpotDao spotDao) {
+    public ImageService(ImageDao imageDao, PostDao postDao, SpotDao spotDao, UserDao userDao) {
         this.imageDao = imageDao;
         this.postDao = postDao;
         this.spotDao = spotDao;
+        this.userDao = userDao;
     }
 
     public Image addImage(Image image) {
@@ -90,7 +93,7 @@ public class ImageService {
         return imageDao.save(image);
     }
 
-    /*public Image assignUser(Long imageId, Long userId) {
+    public Image assignUser(Long imageId, Long userId) {
         if (!imageDao.existsById(imageId)) {
             throw new ImageNotExistException("Cannot find image ID" + imageId);
         }
@@ -104,5 +107,5 @@ public class ImageService {
 
         image.setUser(user);
         return imageDao.save(image);
-    }*/
+    }
 }

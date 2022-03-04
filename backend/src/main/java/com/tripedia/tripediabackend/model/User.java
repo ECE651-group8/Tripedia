@@ -37,8 +37,16 @@ public class User implements Serializable {
     private String profileBgId;
 
     @OneToMany(mappedBy = "user")
-    @JsonIgnoreProperties(value = {"user"})
+    @JsonIgnoreProperties(value = {"user", "spot", "images", "comments"})
     List<Post> posts;
+
+    @OneToMany(mappedBy = "user")
+    @JsonIgnoreProperties(value = {"user", "post"})
+    List<Comment> comments;
+
+    @OneToMany(mappedBy = "user")
+    @JsonIgnoreProperties(value = {"user", "post", "spot"})
+    List<Image> images;
 
     public User() {
     }
@@ -55,6 +63,8 @@ public class User implements Serializable {
         this.rating = rating;
         this.profileBgId = profileBgId;
         this.posts = posts;
+        this.comments = comments;
+        this.images = images;
     }
 
     public Long getUserId() {
@@ -145,9 +155,26 @@ public class User implements Serializable {
         this.posts = posts;
     }
 
+    public List<Comment> getComments() {
+        return comments;
+    }
+
+    public void setComments(List<Comment> comments) {
+        this.comments = comments;
+    }
+
+    public List<Image> getImages() {
+        return images;
+    }
+
+    public void setImages(List<Image> images) {
+        this.images = images;
+    }
+
     @Override
     public String toString() {
-        return "User{" +
+
+        String str = "User{" +
                 "userId=" + userId +
                 ", signTime=" + signTime +
                 ", introduction='" + introduction + '\'' +
@@ -157,8 +184,37 @@ public class User implements Serializable {
                 ", email='" + email + '\'' +
                 ", avatarId='" + avatarId + '\'' +
                 ", rating=" + rating +
-                ", profileBgId='" + profileBgId + '\'' +
-                ", posts=" + posts +
-                '}';
+                ", profileBgId='" + profileBgId + '\'';
+
+        if (posts == null) {
+            str += null;
+        }
+        else {
+            for (Post post : posts) {
+                str += post.getPostId();
+            }
+        }
+
+        if (comments == null) {
+            str += null;
+        }
+        else {
+            for (Comment comment : comments) {
+                str += comment.getCommentId();
+            }
+        }
+
+        if (images == null) {
+            str += null;
+        }
+        else {
+            for (Image image : images) {
+                str += image.getImageId();
+            }
+        }
+
+        str += '}';
+
+        return str;
     }
 }
