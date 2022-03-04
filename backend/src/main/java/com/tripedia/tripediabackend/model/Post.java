@@ -32,12 +32,12 @@ public class Post {
     private String content;
 
     @ManyToOne
-    @JsonIgnoreProperties(value = {"post"})
+    @JsonIgnoreProperties(value = {"posts", "images"})
     @JoinColumn(name = "spot_id")
     private Spot spot;
 
     @OneToMany(mappedBy = "post")
-    @JsonIgnoreProperties(value = {"post"})
+    @JsonIgnoreProperties(value = {"post", "spot"})
     List<Image> images;
 
     @OneToMany(mappedBy = "post")
@@ -45,7 +45,7 @@ public class Post {
     List<Comment> comments;
 
     @ManyToOne
-    @JsonIgnoreProperties(value = {"post"})
+    @JsonIgnoreProperties(value = {"posts"})
     @JoinColumn(name = "user_id")
     private User user;
 

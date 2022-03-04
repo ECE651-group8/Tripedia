@@ -22,12 +22,18 @@ public class Image {
     @JoinColumn(name = "post_id")
     private Post post;
 
+    @ManyToOne
+    @JsonIgnoreProperties(value = {"image"})
+    @JoinColumn(name = "spot_id")
+    private Spot spot;
+
     public Image(){}
 
-    public Image(Long imageId, String imageUrl, Spot spot, Post post, User user) {
+    public Image(Long imageId, String imageUrl, Post post, Spot spot) {
         this.imageId = imageId;
         this.imageUrl = imageUrl;
         this.post = post;
+        this.spot = spot;
     }
 
     public Long getImageId() {
@@ -54,6 +60,13 @@ public class Image {
         this.post = post;
     }
 
+    public Spot getSpot() {
+        return spot;
+    }
+
+    public void setSpot(Spot spot) {
+        this.spot = spot;
+    }
 
     @Override
     public String toString() {
@@ -66,6 +79,13 @@ public class Image {
         }
         else {
             str += post;
+        }
+
+        if (spot == null) {
+            str += null;
+        }
+        else {
+            str += spot;
         }
 
         str += '}';
