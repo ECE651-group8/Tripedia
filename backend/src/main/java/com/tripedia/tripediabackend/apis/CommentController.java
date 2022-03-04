@@ -66,7 +66,7 @@ public class CommentController {
     }
 
     @PostMapping(path = "assignpost/{cid}/{pid}")
-    public ResponseEntity<String> assignSpot(@PathVariable("cid") Long commentId,
+    public ResponseEntity<String> assignPost(@PathVariable("cid") Long commentId,
                                              @PathVariable("pid") Long postId) {
         try {
             Comment updatedComment = commentService.assignPost(commentId, postId);

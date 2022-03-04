@@ -81,7 +81,7 @@ public class PostController {
     public ResponseEntity<String> assignUser(@PathVariable("pid") Long postId,
                                              @PathVariable("uid") Long userId) {
         try {
-            Post updatedPost = postService.assignSpot(postId, userId);
+            Post updatedPost = postService.assignUser(postId, userId);
             return ResponseEntity.ok("Assigned user. " + updatedPost.toString());
         } catch (PostNotExistException e) {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
