@@ -1,6 +1,9 @@
 package com.tripedia.tripediabackend.apis;
 
 import com.tripedia.tripediabackend.exceptions.InvalidPostException;
+import com.tripedia.tripediabackend.exceptions.PostNotExistException;
+import com.tripedia.tripediabackend.exceptions.SpotNotExistException;
+import com.tripedia.tripediabackend.exceptions.UserNotExistException;
 import com.tripedia.tripediabackend.model.Post;
 import com.tripedia.tripediabackend.service.PostService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,7 +17,7 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("api/post")
-@CrossOrigin(origins="http://localhost:3000")
+@CrossOrigin(origins = "http://localhost:3000")
 public class PostController {
     private PostService postService;
 
@@ -28,7 +31,6 @@ public class PostController {
         return postService.getAllPost();
     }
 
-
     @RequestMapping("/{pid}")
     @GetMapping
     public Optional<Post> getPostById(@PathVariable("pid") Long postId) {
@@ -40,6 +42,7 @@ public class PostController {
     public ResponseEntity<String> addPost(@RequestBody Post post) {
         try{
             post.setPostTime(Calendar.getInstance().getTime());
+            post.setCreateTime(Calendar.getInstance().getTime());
             Post savedPost = postService.addPost(post);
             return ResponseEntity.ok("Added Post. " + savedPost.toString());
         } catch (InvalidPostException e){
@@ -60,4 +63,31 @@ public class PostController {
 
         return "Updated post";
     }
+
+    @PostMapping(path = "assignspot/{pid}/{sid}")
+    public ResponseEntity<String> assignSpot(@PathVariable("pid") Long postId,
+                                             @PathVariable("sid") Long spotId) {
+        try {
+            Post updatedPost = postService.assignSpot(postId, spotId);
+            return ResponseEntity.ok("Assigned spot. " + updatedPost.toString());
+        } catch (PostNotExistException e) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
+        } catch (SpotNotExistException e) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
+        }
+    }
+
+    @PostMapping(path = "assignuser/{pid}/{uid}")
+    public ResponseEntity<String> assignUser(@PathVariable("pid") Long postId,
+                                             @PathVariable("uid") Long userId) {
+        try {
+            Post updatedPost = postService.assignUser(postId, userId);
+            return ResponseEntity.ok("Assigned user. " + updatedPost.toString());
+        } catch (PostNotExistException e) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
+        } catch (UserNotExistException e) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
+        }
+    }
+
 }

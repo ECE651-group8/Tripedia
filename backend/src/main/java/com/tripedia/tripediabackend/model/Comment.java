@@ -1,5 +1,7 @@
 package com.tripedia.tripediabackend.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import javax.persistence.*;
 
 import java.util.Date;
@@ -18,12 +20,24 @@ public class Comment {
     @Column(nullable = false)
     private Date CommentDate;
 
+    @ManyToOne
+    @JsonIgnoreProperties(value = {"comment", "spot", "images", "comments", "user"})
+    @JoinColumn(name = "post_id")
+    private Post post;
+
+    @ManyToOne
+    @JsonIgnoreProperties(value = {"comments", "posts"})
+    @JoinColumn(name = "user_id")
+    private User user;
+
     public Comment(){}
 
-    public Comment(Long commentId, String commentText, Date commentDate) {
+    public Comment(Long commentId, String commentText, Date commentDate, Post post, User user) {
         this.commentId = commentId;
         CommentText = commentText;
         CommentDate = commentDate;
+        this.post = post;
+        this.user = user;
     }
 
     public Long getCommentId() {
@@ -50,12 +64,45 @@ public class Comment {
         CommentDate = commentDate;
     }
 
+    public Post getPost() {
+        return post;
+    }
+
+    public void setPost(Post post) {
+        this.post = post;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
     @Override
     public String toString() {
-        return "Comment{" +
+        String str = "Comment{" +
                 "commentId=" + commentId +
                 ", CommentText='" + CommentText + '\'' +
-                ", CommentDate=" + CommentDate +
-                '}';
+                ", CommentDate=" + CommentDate;
+
+        if (post == null) {
+            str += null;
+        }
+        else {
+            str += post;
+        }
+
+        if (user == null) {
+            str += null;
+        }
+        else {
+            str += user;
+        }
+
+        str += '}';
+
+        return str;
     }
 }

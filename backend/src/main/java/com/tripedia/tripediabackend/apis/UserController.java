@@ -1,6 +1,10 @@
 package com.tripedia.tripediabackend.apis;
 
+import com.tripedia.tripediabackend.exceptions.CommentNotExistException;
 import com.tripedia.tripediabackend.exceptions.InvalidPostException;
+import com.tripedia.tripediabackend.exceptions.PostNotExistException;
+import com.tripedia.tripediabackend.exceptions.UserNotExistException;
+import com.tripedia.tripediabackend.model.Comment;
 import com.tripedia.tripediabackend.model.User;
 import com.tripedia.tripediabackend.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +17,7 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("api/user")
+@CrossOrigin(origins = "http://localhost:3000")
 public class UserController {
     @Autowired
     private UserService userService;

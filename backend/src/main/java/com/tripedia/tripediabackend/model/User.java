@@ -1,8 +1,9 @@
 package com.tripedia.tripediabackend.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import javax.persistence.*;
 import java.io.Serializable;
-import java.io.StringReader;
 import java.util.Date;
 import java.util.List;
 import java.util.UUID;
@@ -29,16 +30,28 @@ public class User implements Serializable {
 
     private String email;
 
-    private String avatarUrl;
+    private String avatarId;
 
     private Long rating;
 
     private String profileBgId;
 
+    @OneToMany(mappedBy = "user")
+    @JsonIgnoreProperties(value = {"user", "spot", "images", "comments"})
+    List<Post> posts;
+
+    @OneToMany(mappedBy = "user")
+    @JsonIgnoreProperties(value = {"user", "post"})
+    List<Comment> comments;
+
+    @OneToMany(mappedBy = "user")
+    @JsonIgnoreProperties(value = {"user", "post", "spot"})
+    List<Image> images;
+
     public User() {
     }
 
-    public User(Long userId, Date signTime, String introduction, String city, String userName, String password, String email, String avatarUrl, Long rating, String profileBgId) {
+    public User(Long userId, Date signTime, String introduction, String city, String userName, String password, String email, String avatarId, Long rating, String profileBgId, List<Post> posts, List<Comment> comments, List<Image> images) {
         this.userId = userId;
         this.signTime = signTime;
         this.introduction = introduction;
@@ -46,9 +59,12 @@ public class User implements Serializable {
         this.userName = userName;
         this.password = password;
         this.email = email;
-        this.avatarUrl = avatarUrl;
+        this.avatarId = avatarId;
         this.rating = rating;
         this.profileBgId = profileBgId;
+        this.posts = posts;
+        this.comments = comments;
+        this.images = images;
     }
 
     public Long getUserId() {
@@ -107,12 +123,12 @@ public class User implements Serializable {
         this.email = email;
     }
 
-    public String getAvatarUrl() {
-        return avatarUrl;
+    public String getAvatarId() {
+        return avatarId;
     }
 
-    public void setAvatarUrl(String avatarUrl) {
-        this.avatarUrl = avatarUrl;
+    public void setAvatarId(String avatarId) {
+        this.avatarId = avatarId;
     }
 
     public Long getRating() {
@@ -131,9 +147,34 @@ public class User implements Serializable {
         this.profileBgId = profileBgId;
     }
 
+    public List<Post> getPosts() {
+        return posts;
+    }
+
+    public void setPosts(List<Post> posts) {
+        this.posts = posts;
+    }
+
+    public List<Comment> getComments() {
+        return comments;
+    }
+
+    public void setComments(List<Comment> comments) {
+        this.comments = comments;
+    }
+
+    public List<Image> getImages() {
+        return images;
+    }
+
+    public void setImages(List<Image> images) {
+        this.images = images;
+    }
+
     @Override
     public String toString() {
-        return "User{" +
+
+        String str = "User{" +
                 "userId=" + userId +
                 ", signTime=" + signTime +
                 ", introduction='" + introduction + '\'' +
@@ -141,9 +182,39 @@ public class User implements Serializable {
                 ", userName='" + userName + '\'' +
                 ", password='" + password + '\'' +
                 ", email='" + email + '\'' +
-                ", avatarUrl='" + avatarUrl + '\'' +
+                ", avatarId='" + avatarId + '\'' +
                 ", rating=" + rating +
-                ", profileBgId='" + profileBgId + '\'' +
-                '}';
+                ", profileBgId='" + profileBgId + '\'';
+
+        if (posts == null) {
+            str += null;
+        }
+        else {
+            for (Post post : posts) {
+                str += post.getPostId();
+            }
+        }
+
+        if (comments == null) {
+            str += null;
+        }
+        else {
+            for (Comment comment : comments) {
+                str += comment.getCommentId();
+            }
+        }
+
+        if (images == null) {
+            str += null;
+        }
+        else {
+            for (Image image : images) {
+                str += image.getImageId();
+            }
+        }
+
+        str += '}';
+
+        return str;
     }
 }

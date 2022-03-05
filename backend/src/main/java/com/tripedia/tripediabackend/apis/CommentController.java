@@ -1,7 +1,8 @@
 package com.tripedia.tripediabackend.apis;
 
-import com.tripedia.tripediabackend.exceptions.InvalidPostException;
+import com.tripedia.tripediabackend.exceptions.*;
 import com.tripedia.tripediabackend.model.Comment;
+import com.tripedia.tripediabackend.model.Post;
 import com.tripedia.tripediabackend.service.CommentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -14,6 +15,7 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("api/comment")
+@CrossOrigin(origins = "http://localhost:3000")
 public class CommentController {
     private CommentService commentService;
 
@@ -23,7 +25,6 @@ public class CommentController {
     }
 
     @GetMapping
-   
     public List<Comment> getAllComment() {
         return commentService.getAllComment();
     }
@@ -62,5 +63,31 @@ public class CommentController {
         commentService.updateComment(comment);
 
         return "Updated comment";
+    }
+
+    @PostMapping(path = "assignpost/{cid}/{pid}")
+    public ResponseEntity<String> assignPost(@PathVariable("cid") Long commentId,
+                                             @PathVariable("pid") Long postId) {
+        try {
+            Comment updatedComment = commentService.assignPost(commentId, postId);
+            return ResponseEntity.ok("Assigned post. " + updatedComment.toString());
+        } catch (CommentNotExistException e) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
+        } catch (PostNotExistException e) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
+        }
+    }
+
+    @PostMapping(path = "assignuser/{cid}/{uid}")
+    public ResponseEntity<String> assignUser(@PathVariable("cid") Long commentId,
+                                             @PathVariable("uid") Long userId) {
+        try {
+            Comment updatedComment = commentService.assignUser(commentId, userId);
+            return ResponseEntity.ok("Assigned user. " + updatedComment.toString());
+        } catch (CommentNotExistException e) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
+        } catch (UserNotExistException e) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
+        }
     }
 }

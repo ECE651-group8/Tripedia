@@ -65,7 +65,7 @@ export default function Post() {
             <div className='col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4'>
              
               <p>
-                <i className='fas fa-home me-3'></i> Davis Cneter,3586, Waterloo,CA
+                <i className='fas fa-home me-3'></i> Davis Center,3586, Waterloo,CA
               </p>
               <p>
                 <i className='fas fa-envelope me-3'></i>

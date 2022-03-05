@@ -1,6 +1,9 @@
 package com.tripedia.tripediabackend.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "spot")
@@ -20,12 +23,24 @@ public class Spot {
     @Column(nullable = false, name = "introduction")
     private String introduction;
 
-    public Spot(Long spotId, String address, Long popularity, String spotName, String introduction) {
+    @OneToMany(mappedBy = "spot")
+    @JsonIgnoreProperties(value = {"spot", "images", "comments", "user"})
+    List<Post> posts;
+
+    @OneToMany(mappedBy = "spot")
+    @JsonIgnoreProperties(value = {"spot", "post", "spot"})
+    List<Image> images;
+
+    public Spot(){}
+
+    public Spot(Long spotId, String address, Long popularity, String spotName, String introduction, List<Post> posts, List<Image> images) {
         this.spotId = spotId;
         this.address = address;
         this.popularity = popularity;
         this.spotName = spotName;
         this.introduction = introduction;
+        this.posts = posts;
+        this.images = images;
     }
 
     public Long getSpotId() {
@@ -36,20 +51,12 @@ public class Spot {
         this.spotId = spotId;
     }
 
-    public String getAddress() {
-        return address;
+    public String getIntroduction() {
+        return introduction;
     }
 
-    public void setAddress(String address) {
-        this.address = address;
-    }
-
-    public Long getPopularity() {
-        return popularity;
-    }
-
-    public void setPopularity(Long popularity) {
-        this.popularity = popularity;
+    public void setIntroduction(String introduction) {
+        this.introduction = introduction;
     }
 
     public String getSpotName() {
@@ -60,22 +67,67 @@ public class Spot {
         this.spotName = spotName;
     }
 
-    public String getIntroduction() {
-        return introduction;
+    public Long getPopularity() {
+        return popularity;
     }
 
-    public void setIntroduction(String introduction) {
-        this.introduction = introduction;
+    public void setPopularity(Long popularity) {
+        this.popularity = popularity;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public List<Post> getPosts() {
+        return posts;
+    }
+
+    public void setPosts(List<Post> posts) {
+        this.posts = posts;
+    }
+
+    public List<Image> getImages() {
+        return images;
+    }
+
+    public void setImages(List<Image> images) {
+        this.images = images;
     }
 
     @Override
     public String toString() {
-        return "Spot{" +
+        String str = "Spot{" +
                 "spotId=" + spotId +
                 ", address='" + address + '\'' +
                 ", popularity=" + popularity +
                 ", spotName='" + spotName + '\'' +
-                ", introduction='" + introduction + '\'' +
-                '}';
+                ", introduction='" + introduction + '\'';
+
+        if (posts == null) {
+            str += null;
+        }
+        else {
+            for (Post post : posts) {
+                str += post.getPostId();
+            }
+        }
+
+        if (images == null) {
+            str += null;
+        }
+        else {
+            for (Image image : images) {
+                str += image.getImageId();
+            }
+        }
+
+        str += '}';
+
+        return str;
     }
 }

@@ -2,6 +2,8 @@ package com.tripedia.tripediabackend.apis;
 
 import com.tripedia.tripediabackend.exceptions.*;
 import com.tripedia.tripediabackend.model.Image;
+import com.tripedia.tripediabackend.model.Post;
+import com.tripedia.tripediabackend.model.Spot;
 import com.tripedia.tripediabackend.service.ImageService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -13,6 +15,7 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("api/image")
+@CrossOrigin(origins = "http://localhost:3000")
 public class ImageController {
     private ImageService imageService;
 
@@ -22,7 +25,7 @@ public class ImageController {
     }
 
     @GetMapping
-
+   
     public List<Image> getAllImage() {
         return imageService.getAllImage();
     }
@@ -63,4 +66,42 @@ public class ImageController {
         return "Updated image";
     }
 
+    @PostMapping(path = "assignspot/{iid}/{sid}")
+    public ResponseEntity<String> assignSpot(@PathVariable("iid") Long imageId,
+                                             @PathVariable("sid") Long spotId) {
+        try {
+            Image updatedImage = imageService.assignSpot(imageId, spotId);
+            return ResponseEntity.ok("Assigned spot. " + updatedImage.toString());
+        } catch (ImageNotExistException e) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
+        } catch (SpotNotExistException e) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
+        }
+    }
+
+    @PostMapping(path = "assignpost/{iid}/{pid}")
+    public ResponseEntity<String> assignPost(@PathVariable("iid") Long imageId,
+                                             @PathVariable("pid") Long postId) {
+        try {
+            Image updatedImage = imageService.assignPost(imageId, postId);
+            return ResponseEntity.ok("Assigned post. " + updatedImage.toString());
+        } catch (ImageNotExistException e) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
+        } catch (PostNotExistException e) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
+        }
+    }
+
+    @PostMapping(path = "assignuser/{iid}/{uid}")
+    public ResponseEntity<String> assignUser(@PathVariable("iid") Long imageId,
+                                             @PathVariable("uid") Long userId) {
+        try {
+            Image updatedImage = imageService.assignUser(imageId, userId);
+            return ResponseEntity.ok("Assigned user. " + updatedImage.toString());
+        } catch (ImageNotExistException e) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
+        } catch (UserNotExistException e) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
+        }
+    }
 }
