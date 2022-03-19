@@ -89,6 +89,7 @@ export default function SwipeSlide({ title, data }) {
         ...theme.typography.body2,  
       }));
       
+
     return (
 
 
@@ -252,8 +253,10 @@ export default function SwipeSlide({ title, data }) {
 
     <Grid item xs={12}>
     <Item>
+
+
       
-      <section className='d-flex justify-content-center justify-content-lg-between p-4 border-bottom'>
+      {/* <section className='d-flex justify-content-center justify-content-lg-between p-4 border-bottom'>
         <div className='me-5 d-none d-lg-block'>
           <span>Get connected with us on social networks:</span>
         </div>
@@ -295,7 +298,11 @@ export default function SwipeSlide({ title, data }) {
         <a className='text-reset fw-bold' href='https://perfactTeam8.com/'>
         perfactTeam8.com
         </a>
-      </div>
+      </div> */}
+
+
+
+
       
     </Item>
   </Grid>

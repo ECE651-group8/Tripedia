@@ -8,9 +8,8 @@ import Post from './components/pages/Post';
 import SignUp from './components/pages/SignUp';
 import Detail from './components/pages/Detail';
 import Timeline from './components/pages/Timeline';
+import Upload from './components/pages/Upload';
 
-// import 'slick-carousel/slick/slick.css';
-// import 'slick-carousel/slick/slick-theme.css';
 
 function App() {
     return (
@@ -24,6 +23,7 @@ function App() {
                     <Route path="/sign-up" element={<SignUp />} />
                     <Route path="/detail" element={<Detail />} />
                     <Route path="/timeline" element={<Timeline />} />
+                    <Route path="/upload" element={<Upload />} />
                 </Routes>
             </Router>
         </>
