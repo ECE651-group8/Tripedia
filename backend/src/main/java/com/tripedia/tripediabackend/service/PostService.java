@@ -89,4 +89,15 @@ public class PostService {
         post.setUser(user);
         return postDao.save(post);
     }
+
+    public Post assignContent(Long postId, String content) {
+        if (!postDao.existsById(postId)) {
+            throw new PostNotExistException("Cannot find post ID" + postId);
+        }
+
+        Post post = getPostById(postId).get();
+
+        post.setContent(content);
+        return postDao.save(post);
+    }
 }

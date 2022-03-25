@@ -90,4 +90,16 @@ public class PostController {
         }
     }
 
+    @RequestMapping("/assigncontent/{pid}")
+    @PostMapping
+    public ResponseEntity<String> assignContent(@PathVariable("pid") Long postId,
+                                             @RequestBody String content) {
+        try{
+            Post updatedPost = postService.assignContent(postId, content);
+            return ResponseEntity.ok("Assigned content. " + updatedPost.toString());
+        } catch (InvalidPostException e){
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
+        }
+    }
+
 }
