@@ -70,6 +70,7 @@ public class PostService {
        Spot spot = spotDao.findById(spotId).get();
 
        post.setSpot(spot);
+       spot.addPopularity();
        return postDao.save(post);
     }
 

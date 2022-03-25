@@ -75,6 +75,10 @@ public class Spot {
         this.popularity = popularity;
     }
 
+    public void addPopularity() {
+        this.popularity += 1;
+    }
+
     public String getAddress() {
         return address;
     }
