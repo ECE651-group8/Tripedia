@@ -1,36 +1,24 @@
 import React from "react";
-import './HottestTitle.css';
-import Card from 'react-bootstrap/Card';
+import "./HottestTitle.css";
+import Card from "@mui/material/Card";
 
-function Hottest(){
-    return (
-      <div className="hottestTitle">
-        
-        <Card className="all-hottest-card" >
-          <div className="bg-image" >
-      
-            <Card.Img src="	https://www.banfftours.com/wp-content/uploads/2017/08/Banff-Ave-and-Town-in-Winter-1140x530.jpg" alt="Card image" />
-          
-            <div className="mask"></div>
+function HottestTitle({ img, text }) {
+  return (
+    <div className="hottestTitle">
+      <Card class="all-hottest-card">
+        <div
+          className="bgimage"
+          style={{
+            backgroundImage: "url(" + img + ")",
+          }}
+        >
+          <div className="mask">
+            <h1>Hottest Trend</h1>
+            <p>{text}</p>
           </div>
-            <Card.ImgOverlay>
-              <Card.Title>
-                <div className="hottest-title">
-                  What's the hottest place? 
-                </div>
-              </Card.Title>
-        
-              <Card.Text >
-                <div className="hottest-content">
-                  <h1>#1. Banff National Park </h1>
-                  <p>Banff National Park lies in the heart of the majestic Rocky Mountains in the province of Alberta,<br/>
-                   and showcases some of Canada's most beautiful scenery.</p>
-                </div>
-              </Card.Text>
-         
-            </Card.ImgOverlay>
-        </Card>
-      </div>
-    );
+        </div>
+      </Card>
+    </div>
+  );
 }
-export default Hottest;
+export default HottestTitle;

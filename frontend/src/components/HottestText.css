@@ -1,0 +1,19 @@
+#hottest-text{
+    display: flex;
+    flex-direction: row;
+    height: 7rem;
+    padding: 2%;
+    box-shadow: none;
+    border-radius: 1rem;
+}
+.hottest-text{
+    width: 75%;
+}
+.all-hottest-card >h1{
+    font-size: x-small;
+    color:red;
+    padding: 5%;
+}
+.hottestText{
+    margin-bottom: 3%;
+}
