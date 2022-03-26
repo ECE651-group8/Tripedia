@@ -10,7 +10,9 @@ import com.tripedia.tripediabackend.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import javax.servlet.http.HttpServletResponse;
 import org.springframework.web.bind.annotation.*;
+import javax.servlet.http.*;
 
 import java.util.List;
 import java.util.Optional;
@@ -33,14 +35,38 @@ public class UserController {
 
     @PostMapping
     @RequestMapping("/add")
-    public ResponseEntity<String> addUser(@RequestBody User user){
+    public ResponseEntity<String> addUser(@RequestBody User user, HttpServletRequest request){
         try{
             User savedUser = userService.addUser(user);
             return ResponseEntity.ok("Added Post." + savedUser.toString());
+            
         } catch (InvalidPostException e){
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
         }
     }
+
+    @PostMapping
+    @RequestMapping("/login")
+    public ResponseEntity<String> loginUser(@RequestBody User user, HttpServletResponse response){
+        try{
+            Long LoginUserId = userService.login(user);
+             // create a cookie
+             Cookie cookie = new Cookie("userId", Long.toString(LoginUserId));
+
+             cookie.setMaxAge(3 * 24 * 60 * 60); // 3 days expiration
+
+             //add cookie to response
+             response.addCookie(cookie);
+             
+            return ResponseEntity.ok("Login Success." + LoginUserId);
+        } catch (InvalidPostException e){
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
+        }
+    }
+
+    
+
+
 
 //    @PostMapping
 //    @RequestMapping("/find")

@@ -4,6 +4,7 @@ import com.tripedia.tripediabackend.dao.UserDao;
 import com.tripedia.tripediabackend.exceptions.UserNameEmptyException;
 import com.tripedia.tripediabackend.exceptions.UserNotExistException;
 import com.tripedia.tripediabackend.exceptions.PasswordNotExistException;
+import com.tripedia.tripediabackend.exceptions.UserNameExistsException;
 import com.tripedia.tripediabackend.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -32,9 +33,34 @@ public class UserService {
         if (user.getPassword() == null){
             throw new PasswordNotExistException("User Password cannot be found!");
         }
-        String encodedPswd = this.passwordEncoder.encode(user.getPassword());
-        user.setPassword(encodedPswd);
-        return userDao.save(user);
+        Long currentUserId = userDao.findId(user.getUserName());
+        if (currentUserId == null){
+            String encodedPswd = this.passwordEncoder.encode(user.getPassword());
+            user.setPassword(encodedPswd);
+            return userDao.save(user);
+        } else {
+            throw new UserNameExistsException("User Name is existed!");
+        }
+    }
+
+    public Long login(User user){
+        if (user.getUserName().isEmpty()){
+            throw new UserNameEmptyException("User name can not be empty");
+        }
+        if (user.getPassword() == null){
+            throw new PasswordNotExistException("User Password cannot be found!");
+        }
+        Long currentUserId = userDao.findId(user.getUserName());
+        if (currentUserId == null){
+            throw new UserNameExistsException("User Name is not existed!");
+        } else {
+            if (this.passwordEncoder.matches(user.getPassword(), userDao.findPswd(currentUserId))){
+                return currentUserId;
+            }
+            else {
+                throw new UserNameExistsException("User Password is not matched!");
+            }
+        }
     }
 
     public List<User> getAllUser(){
