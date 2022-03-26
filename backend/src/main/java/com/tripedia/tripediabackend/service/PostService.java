@@ -70,6 +70,7 @@ public class PostService {
        Spot spot = spotDao.findById(spotId).get();
 
        post.setSpot(spot);
+       spot.addPopularity();
        return postDao.save(post);
     }
 
@@ -86,6 +87,17 @@ public class PostService {
         User user = userDao.findById(userId).get();
 
         post.setUser(user);
+        return postDao.save(post);
+    }
+
+    public Post assignContent(Long postId, String content) {
+        if (!postDao.existsById(postId)) {
+            throw new PostNotExistException("Cannot find post ID" + postId);
+        }
+
+        Post post = getPostById(postId).get();
+
+        post.setContent(content);
         return postDao.save(post);
     }
 }
