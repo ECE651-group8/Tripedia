@@ -23,6 +23,7 @@
     "react-router-dom": "^6.2.2",
     "react-scripts": "^5.0.0",
     "react-slick": "^0.28.1",
+    "react-spring": "^9.4.4",
     "react-vertical-timeline-component": "^3.5.2",
     "slick-carousel": "^1.8.1",
     "styled-components": "^5.3.3",
