@@ -1,23 +1,20 @@
 import React from "react";
-import './HottestText.css';
-import Card from 'react-bootstrap/Card';
+import "./HottestText.css";
+import Card from "@mui/material/Card";
 
-
-
-function HottestText(){
-    return (
-        <div className="hottestText">
-            <Card.Link href= "/trips">
-            <Card className="all-hottest-card">
-                <Card.Text >
-                    <div className="hottest-text">
-                        <p>#3. Toronto</p>
-                        <h1> 25.4K Likes</h1>
-                    </div>
-                </Card.Text>
-            </Card>
-            </Card.Link>
-       </div>
-    );
+function HottestText({ rank, text1, text2, text3 }) {
+  return (
+    <div className="hottestText">
+      <Card className="all-hottest-card" id="hottest-text">
+        <div className="hottest-text">
+          <p>
+            #{rank}. {text1}
+          </p>
+          <h>{text2}</h>
+        </div>
+        <h1> {text3} Likes</h1>
+      </Card>
+    </div>
+  );
 }
 export default HottestText;

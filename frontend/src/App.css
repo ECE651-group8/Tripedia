@@ -7,14 +7,7 @@
 
 .home,
 .trips,
-/* .post, */
-.sign-up {
-  display: flex;
-  height: 90vh;
-  align-items: center;
-  justify-content: center;
-  font-size: 3rem;
-}
+
 
 .post {
   background-image: url('../public/images/img-2.jpg');

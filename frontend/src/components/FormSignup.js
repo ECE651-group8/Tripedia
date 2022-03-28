@@ -1,7 +1,38 @@
-import React from 'react';
-import validate from './validateInfo';
-import useForm from './useForm';
-import './Form.css';
+import React from "react";
+import validate from "./validateInfo";
+import useForm from "./useForm";
+import "./Form.css";
+
+import { useState } from "react";
+import { useSpring, animated } from "react-spring";
+
+function LoginForm() {
+  return (
+    <React.Fragment>
+      <label for="username">USERNAME</label>
+      <input type="text" id="username" />
+      <label for="password">PASSWORD</label>
+      <input type="text" id="password" />
+      <input type="submit" value="submit" className="submit" />
+    </React.Fragment>
+  );
+}
+
+function RegisterForm() {
+  return (
+    <React.Fragment>
+      <label for="fullname">full name</label>
+      <input type="text" id="fullname" />
+      <label for="email">email</label>
+      <input type="text" id="email" />
+      <label for="password">password</label>
+      <input type="text" id="password" />
+      <label for="confirmpassword">confirm password</label>
+      <input type="text" id="confirmpassword" />
+      <input type="submit" value="submit" class="submit" />
+    </React.Fragment>
+  );
+}
 
 const FormSignup = ({ submitForm }) => {
   const { handleChange, handleSubmit, values, errors } = useForm(
@@ -9,68 +40,63 @@ const FormSignup = ({ submitForm }) => {
     validate
   );
 
+  const [registrationFormStatus, setRegistartionFormStatus] = useState(false);
+  const loginProps = useSpring({
+    left: registrationFormStatus ? -700 : 0, // Login form sliding positions
+  });
+  const registerProps = useSpring({
+    left: registrationFormStatus ? 0 : 700, // Register form sliding positions
+  });
+
+  const loginBtnProps = useSpring({
+    borderBottom: registrationFormStatus
+      ? "solid 0px transparent"
+      : "solid 2px #1059FF", //Animate bottom border of login button
+  });
+  const registerBtnProps = useSpring({
+    borderBottom: registrationFormStatus
+      ? "solid 2px #1059FF"
+      : "solid 0px transparent", //Animate bottom border of register button
+  });
+
+  function registerClicked() {
+    setRegistartionFormStatus(true);
+  }
+  function loginClicked() {
+    setRegistartionFormStatus(false);
+  }
+
   return (
-    <div className='form-content-right'>
-      <form method="post" onSubmit={handleSubmit} className='form' noValidate>
-        <h1>
-          Get started with us today! Create your account by filling out the
-          information below.
-        </h1>
-        <div className='form-inputs'>
-          <label className='form-label'>Username</label>
-          <input
-            className='form-input'
-            type='text'
-            name='username'
-            placeholder='Enter your username'
-            value={values.username}
-            onChange={handleChange}
-          />
-          {errors.username && <p>{errors.username}</p>}
+    <div className="form-content-right">
+      <div className="login-register-wrapper">
+        <div className="nav-buttons">
+          <animated.button
+            onClick={loginClicked}
+            id="loginBtn"
+            style={loginBtnProps}
+          >
+            Login
+          </animated.button>
+          <animated.button
+            onClick={registerClicked}
+            id="registerBtn"
+            style={registerBtnProps}
+          >
+            Register
+          </animated.button>
         </div>
-        <div className='form-inputs'>
-          <label className='form-label'>Email</label>
-          <input
-            className='form-input'
-            type='email'
-            name='email'
-            placeholder='Enter your email'
-            value={values.email}
-            onChange={handleChange}
-          />
-          {errors.email && <p>{errors.email}</p>}
+        <div className="form-group">
+          <animated.form action="" id="loginform" style={loginProps}>
+            <LoginForm />
+          </animated.form>
+          <animated.form action="" id="registerform" style={registerProps}>
+            <RegisterForm />
+          </animated.form>
         </div>
-        <div className='form-inputs'>
-          <label className='form-label'>Password</label>
-          <input
-            className='form-input'
-            type='password'
-            name='password'
-            placeholder='Enter your password'
-            value={values.password}
-            onChange={handleChange}
-          />
-          {errors.password && <p>{errors.password}</p>}
-        </div>
-        <div className='form-inputs'>
-          <label className='form-label'>Confirm Password</label>
-          <input
-            className='form-input'
-            type='password'
-            name='password2'
-            placeholder='Confirm your password'
-            value={values.password2}
-            onChange={handleChange}
-          />
-          {errors.password2 && <p>{errors.password2}</p>}
-        </div>
-        <button className='form-input-btn' type='submit'>
-          Sign up
-        </button>
-        <span className='form-input-login'>
-          Already have an account? Login <a href='#'>here</a>
-        </span>
-      </form>
+        <animated.div className="forgot-panel" style={loginProps}>
+          <a herf="#">Forgot your password</a>
+        </animated.div>
+      </div>
     </div>
   );
 };

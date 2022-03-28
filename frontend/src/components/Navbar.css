@@ -122,7 +122,7 @@
     position:absolute;
     top: 0;
     left: 0px;
-    transform: translate(25%, 50%);
+    transform: translate(25%, 0);
   }
 
   .menu-icon {

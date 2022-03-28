@@ -4,7 +4,7 @@ let timelineBackup = [
     title: "Never get tired of the Canadian Big Falls",
     location: "Niagara, Ontario",
     description:
-      "Excitement bla bla bla bla bla",
+      "Niagara Falls is Canada's most famous natural attraction, bringing in millions of visitors each year.",
     buttonText: "See more descriptions",
     date: "August 2021",
     icon: "work",
@@ -14,7 +14,7 @@ let timelineBackup = [
     title: "Charming historic town",
     location: "Quebec City, Quebec",
     description:
-      "Enjoying bla bla bla",
+      "Old Quebec is a UNESCO World Heritage Site and one of Canada's historic gems. ",
     buttonText: "See more descriptions",
     date: "January 2020",
     icon: "work",
@@ -24,7 +24,7 @@ let timelineBackup = [
     title: "Lost in Heaven",
     location: "Banff National Park, Alberta",
     description:
-      "Wonderful bla bla bla bla.",
+      "Banff National Park lies in the heart of the majestic Rocky Mountains in the province of Alberta, and showcases some of Canada's most beautiful scenery..",
     buttonText: "See more descriptions",
     date: "September 2019",
     icon: "work",
@@ -34,7 +34,7 @@ let timelineBackup = [
     title: "Spectacular park",
     location: "Forillon National Park, Quebec",
     description:
-      " can not wait bla bla bla",
+      " can not wait to go to the Forillon National Park",
     // buttonText: "See more descriptions",
     date: "June 2019",
     icon: "school",

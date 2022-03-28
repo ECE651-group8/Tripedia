@@ -36,7 +36,12 @@ public class UserService {
             throw new PasswordNotExistException("User Password cannot be found!");
         }
         Long currentUserId = userDao.findId(user.getUserName());
+//        int isUserListEmpty = userDao.isUserListEmpty();
         if (currentUserId == null){
+//            if (isUserListEmpty == 0){
+//                // Meaning there is no element in the userList
+//                user.setUserId(1L);
+//            }
             // 定义时间格式化对象和定义格式化样式
             SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
             // 格式化时间对象

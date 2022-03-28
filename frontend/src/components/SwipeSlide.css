@@ -12,11 +12,14 @@
     font-size: 2.2vw;
     font-weight: 600;
     color: #3a3a3a;
+    margin-top:4%;
+    margin-left:1%;
 }
 .card__container--inner {
     width: 90%;
     padding: 15px;
     display: block;
+    margin:auto;
 }
 .card__container--inner--card {
     padding: 30px 0;
@@ -53,7 +56,7 @@
     padding-left: 8px;
 }
 .card__container--inner--card img {
-    width: 100%;
+    width: 95%;
     height: 220px;
     border-radius: 1vw;
     overflow: hidden;
@@ -62,6 +65,7 @@
     -webkit-box-pack: center;
     justify-content: center;
     border-radius: 10px;
+    margin:auto;
 }
 .card__container--inner--card:hover {
     transform: scale(1.05);
@@ -72,6 +76,7 @@
     align-items: center;
     margin-top: 5px;
     color: #D97236;
+    width: 85%;
 }
 .card__container--inner--card--date_time img {
     width: 20px;
@@ -87,22 +92,25 @@
 /* -------------------------------------------------------------- */
 /* SLICK REACT CAROUSEL */
 /* -------------------------------------------------------------- */
-.slick-next,
-.slick-prev {
+.right-arrow
+.left-arrow {
     padding: 14px;
-    width: 2vw;
-    height: 2vw;
+    width: 30px;
+    height: 30px;
     cursor: pointer;
     border: none;
     border-radius: 5vw;
     background-color: #fff;
     z-index: 99 !important;
-    box-shadow: rgba(35, 35, 35, 0.5) 0px 0px 20px 5px;
+    box-shadow: rgba(35, 35, 35, 0.25) 0px 0px 30px 3px;
     top: 40%;
 }
 .slick-next:hover,
 .slick-prev:hover {
-    background-color: #fff;
+    background-color: gray;
+    
 }
 
 /*# sourceMappingURL=home.css.map */
+
+

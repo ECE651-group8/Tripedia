@@ -3,7 +3,7 @@
   /* margin-left: auto;
   margin-right: auto; */
   width: 1200px;
-  box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.2), 0 7px 20px 0 rgba(0, 0, 0, 0.2);
+  box-shadow: 0 5px 8px 0 rgba(242, 197, 61), 0 7px 20px 0 rgba(242, 197, 61);
   position: relative;
   border-radius: 10px;
   height: 800px;
@@ -29,8 +29,8 @@
 .form-content-left {
   background: linear-gradient(
     90deg,
-    rgb(9, 105, 33) 0%,
-    rgb(1, 73, 17) 100%
+    rgb(242, 224, 201) 0%,
+    rgb(242, 224, 201) 100%
   );
   border-radius: 10px 0 0 10px;
   position: relative;
@@ -39,7 +39,7 @@
 .form-content-right {
   border-radius: 0 10px 10px 0;
   position: relative;
-  background: linear-gradient(90deg, rgb(40, 40, 40) 0%, rgb(17, 17, 17) 100%);
+  background: linear-gradient(90deg, rgb(242, 197, 61) 0%, rgb(242, 197, 61) 100%);
 }
 
 .form-img {
@@ -119,7 +119,7 @@
 }
 
 .form-input::placeholder {
-  color: #595959;
+  color: #F2C53D;
   font-size: 12px;
 }
 
@@ -128,11 +128,7 @@
   height: 50px;
   margin-top: 10px;
   border-radius: 2px;
-  background: linear-gradient(
-    90deg,
-    rgb(39, 176, 255) 0%,
-    rgb(0, 232, 236) 100%
-  );
+  background-color: rgb(217, 114, 54);
   outline: none;
   border: none;
   color: #fff;
@@ -143,8 +139,8 @@
   cursor: pointer;
   background: linear-gradient(
     90deg,
-    rgb(39, 143, 255) 0%,
-    rgb(12, 99, 250) 100%
+    rgb(217, 114, 54) 0%,
+    rgb(242, 209, 109) 100%
   );
   transition: all 0.4s ease-out;
 }
@@ -159,6 +155,108 @@
 
 .form-input-login a {
   text-decoration: none;
-  color: #27cdff;
+  color: #D97236;
   font-weight: 600;
 }
+
+
+.login-register-wrapper {
+      height: 560px;
+      width: 500px;
+      margin-left: auto;
+      margin-right: auto;
+      padding:0 2em;
+      border-radius: 5px;
+      box-shadow: 0px 2px 7px rgba(242, 197, 61,0.2);
+      overflow: hidden; 
+      color:#ffffff;
+      background: linear-gradient(180deg, rgb(242, 197, 61) 0%, rgba(242, 197, 61) , rgb(242, 197, 61));
+  }
+  
+  /* Nav buttons */
+  .nav-buttons {
+    width: 100%;
+    height: 100px;
+    padding-top: 40px;
+    opacity: 1;
+    margin-bottom: 3em;
+  }
+  button {
+      font-size: 1.5em;
+      margin-right:1em;
+      border:0px;
+      cursor: pointer;
+   
+  }
+  button:focus {
+      outline: 0px;
+  }
+  button.active {
+      padding-bottom: 10px;
+      border-bottom: solid 2px #54ff10;
+  } 
+  
+   /* footer: forgot section */
+   .forgot-panel {
+    position: relative;
+    height: 100px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    padding-top: 24px;
+    border-top: solid 1px rgba(255,255,255,0.8);    
+}
+
+    /* form styling */
+    .form-group input {
+        width: 100%;
+        height: 35px;
+        padding-left: 15px;
+        border: none;
+        border-radius: 5px;
+        margin-bottom: 20px;
+        background: rgba(255,255,255,0.8);
+    }
+    .form-group label {
+      text-transform: uppercase;
+    }
+    input.submit {
+        font-weight: 700;
+        text-transform: uppercase;
+        font-size: 1em;
+        text-align: center;
+        color: rgba(255,255,255, 1);
+        padding: 8px 0px;
+        width: 100%;
+        height: 35px;
+        border: none;
+        border-radius: 20px;
+        margin-top: 23px;
+        background-color: rgba(160, 166, 3,0.4);
+    
+    }
+
+    /*Form positioning and animation */
+
+    form#registerform {
+        left:500px;
+        top:-230px;
+        position:relative;
+    }
+
+    .forgot-panel {
+        margin-top:-300px;
+        color:gray;
+    }
+
+    form, .forgot-panel { 
+        position: relative;
+        transition: all .5s ease;
+    }
+    #loginBtn, #registerBtn {
+        transition: all .5s ease;
+        background-color: #f2c53d;
+
+    }
+
+    

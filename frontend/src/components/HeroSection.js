@@ -8,7 +8,7 @@ function HeroSection() {
     <div className='hero-container'>
       <video src='\videos\video-niagara.mp4' playsInline autoPlay muted loop className='hero-video'></video>
       <h1>Start From Here</h1>
-      <p>What are you waiting for?</p>
+      <p>Explore the world from here</p>
       <div className='hero-btns'>
         <Button
           className='btns'
@@ -17,14 +17,14 @@ function HeroSection() {
         >
           GET STARTED
         </Button>
-        <Button
+        {/* <Button
           className='btns'
           buttonStyle='btn--primary'
           buttonSize='btn--large'
           onClick={console.log('hey')}
         >
           WATCH TRAILER <i className='far fa-play-circle' />
-        </Button>
+        </Button> */}
       </div>
     </div>
   );
