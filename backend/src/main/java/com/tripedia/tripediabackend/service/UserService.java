@@ -11,6 +11,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -35,6 +37,10 @@ public class UserService {
         }
         Long currentUserId = userDao.findId(user.getUserName());
         if (currentUserId == null){
+            // 定义时间格式化对象和定义格式化样式
+            SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+            // 格式化时间对象
+            user.setSignTime(dateFormat.format(new Date()));
             String encodedPswd = this.passwordEncoder.encode(user.getPassword());
             user.setPassword(encodedPswd);
             return userDao.save(user);

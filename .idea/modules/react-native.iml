@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module external.linked.project.id="react-native" external.linked.project.path="$MODULE_DIR$/../../frontend/node_modules/react-spring/node_modules/react-native" external.root.project.path="$MODULE_DIR$/../../frontend/node_modules/react-spring/node_modules/react-native" external.system.id="GRADLE" type="JAVA_MODULE" version="4">
+  <component name="NewModuleRootManager" inherit-compiler-output="true">
+    <exclude-output />
+    <content url="file://$MODULE_DIR$/../../frontend/node_modules/react-spring/node_modules/react-native" />
+    <orderEntry type="sourceFolder" forTests="false" />
+  </component>
+</module>
