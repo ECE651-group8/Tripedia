@@ -1,24 +1,13 @@
 import React, { useState } from "react";
-import Masony from "react-masonry-component";
 import "./Posts.css";
+import Topbar from "./Topbar.js";
 
 import Box from "@mui/material/Box";
 import ImageList from "@mui/material/ImageList";
 import ImageListItem from "@mui/material/ImageListItem";
 import ImageListItemBar from "@mui/material/ImageListItemBar";
 import IconButton from "@mui/material/IconButton";
-import InfoIcon from "@mui/icons-material/Info";
 import FavoriteIcon from "@mui/icons-material/Favorite";
-
-// Dome dummy content
-
-// Masory Options
-const masonryOptions = {
-  fitWidth: false,
-  columnWidth: 300,
-  gutter: 30,
-  itemSelector: ".photo-item",
-};
 
 async function getData() {
   const res = await fetch("http://localhost:8080/api/spot", {
@@ -60,29 +49,26 @@ function Posts() {
 
   return (
     <div>
-      {post.map((item) => (
-        <div>{item.imageUrl}</div>
-      ))}
-      {post2.map((item) => (
-        <div>{item.title}</div>
-      ))}
       <Box sx={{ verflowY: "scroll" }}>
-        <ImageList variant="masonry" cols={3} gap={8}>
+        <Topbar />
+
+        <ImageList variant="masonry" cols={3} gap={8} className="total-list">
           {post2.map((item) => (
-            <ImageListItem key={item.imageUrl}>
+            <ImageListItem key={item.postId} className="list">
               <a href="/detail">
                 <img
-                  src={`${item.img}`}
-                  srcSet={`${item.img}`}
+                  src={`${item.images[0].imageUrl}`}
+                  srcSet={`${item.images[0].imageUrl}`}
                   alt={item.title}
                   loading="lazy"
+                  width={"100%"}
                 />
               </a>
               <ImageListItemBar
                 title={item.title}
                 subtitle={
                   <a href="/timeline">
-                    <span>by: {item.author}</span>
+                    <span>by: {item.user.userName}</span>
                   </a>
                 }
                 actionIcon={
