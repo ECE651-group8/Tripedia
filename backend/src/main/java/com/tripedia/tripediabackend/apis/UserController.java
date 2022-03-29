@@ -49,16 +49,16 @@ public class UserController {
     @RequestMapping("/login")
     public ResponseEntity<String> loginUser(@RequestBody User user, HttpServletResponse response){
         try{
-            Long LoginUserId = userService.login(user);
+            User LoginUser = userService.login(user);
              // create a cookie
-             Cookie cookie = new Cookie("userId", Long.toString(LoginUserId));
+             Cookie cookie = new Cookie("userId", Long.toString(LoginUser.getUserId()));
 
              cookie.setMaxAge(3 * 24 * 60 * 60); // 3 days expiration
 
              //add cookie to response
              response.addCookie(cookie);
              
-            return ResponseEntity.ok("Login Success." + LoginUserId);
+            return ResponseEntity.ok("Login Success." + LoginUser.getUserId());
         } catch (InvalidPostException e){
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
         }

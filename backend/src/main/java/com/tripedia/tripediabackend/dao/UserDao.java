@@ -12,9 +12,9 @@ public interface UserDao extends CrudRepository<User, Long> {
     @Query("Select userId from User u where u.userName = :name") 
     public Long findId(@Param("name") String name); 
 
-    @Query("Select password from User u where u.userId = :id") 
-    public String findPswd(@Param("id") Long id);
+//    @Query("Select password from User u where u.userId = :id")
+//    public String findPswd(@Param("id") Long id);
 
-//    @Query("Select 1 from User u where u.userId = '1' limit 1")
-//    public int isUserListEmpty();
+//    @Query("SELECT 1 FROM User u WHERE u.userId = 1")
+//    public Integer isUserListEmpty();
 }
