@@ -2,7 +2,7 @@ import { styled } from "@mui/material/styles";
 import Box from "@mui/material/Box";
 
 import Grid from "@mui/material/Grid";
-
+import Navbar from "../Navbar";
 import ProfileCard from "../ProfileCard.js";
 
 import Footer from "../Footer.js";
@@ -27,6 +27,7 @@ const item = [
 export default function Detail() {
   return (
     <Box sx={{ flexGrow: 1 }}>
+      <Navbar />
       <Grid container spacing={2}>
         <Grid item xs={12}>
           <Item>

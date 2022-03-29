@@ -1,12 +1,11 @@
-import React, { Component } from "react";
 import Box from "@mui/material/Box";
 import { styled } from "@mui/material/styles";
 import Grid from "@mui/material/Grid";
-
 import SwipeSlide from "../SwipeSlide";
 import Spot from "../Spot";
 import ImageCard from "../ImageCard";
 import Footer from "../Footer";
+import Navbar from "../Navbar";
 
 // Import css files
 import "slick-carousel/slick/slick.css";
@@ -43,28 +42,26 @@ const Item = styled(Box)(({ theme }) => ({
   ...theme.typography.body2,
 }));
 
-export default class App extends Component {
-  render() {
-    return (
-      <div className="card__container">
-        <Box sx={{ flexGrow: 1 }}>
-          <ImageCard />
-        </Box>
-        <Spot />
-        <Grid container spacing={0}>
-          <Grid item xs={12}>
-            <Item>
-              <SwipeSlide data={data} />
-            </Item>
-          </Grid>
+export default function Trip() {
+  return (
+    <Box sx={{ flexGrow: 1 }}>
+      <Navbar />
+      <ImageCard />
 
-          <Grid item xs={12}>
-            <Item>
-              <Footer />
-            </Item>
-          </Grid>
+      <Spot />
+      <Grid container spacing={0}>
+        <Grid item xs={12}>
+          <Item>
+            <SwipeSlide data={data} />
+          </Item>
         </Grid>
-      </div>
-    );
-  }
+
+        <Grid item xs={12}>
+          <Item>
+            <Footer />
+          </Item>
+        </Grid>
+      </Grid>
+    </Box>
+  );
 }

@@ -1,7 +1,38 @@
-.footer{
-    background-color: rgba(242, 224, 201);
+
+.main-footer{
+    color:white;
+    background:url("https://get.wallhere.com/photo/cloud-sky-mountain-atmosphere-plant-building-tree-nature-azure-Natural-landscape-snow-dusk-Freezing-atmospheric-phenomenon-horizon-mountainous-landforms-landscape-mountain-range-hill-castle-calm-winter-city-mist-fog-house-evening-Massif-reflection-haze-hill-station-steeple-fell-dawn-spire-conifer-sunrise-church-frost-place-of-worship-painting-night-skyline-summit-tourist-attraction-fir-Tourism-afterglow-chapel-pine-family-Alps-2078065.jpg");
+    bottom: 0;
+    height: 30%;
+   
+}
+.row{
+    display:flex;
+    flex-direction: row;
+    margin-left: 10%;
+    margin-top: 2%;
+   
+   
+}
+
+.col{
+    margin-right: 18%;
+    list-style: none;
+    margin-top: 5%;
+    margin-bottom: 2%;
+}
+li {
+    list-style-type:none;
+}
+.row{
     text-align: center;
-    padding: 1%;
-    margin-top: 1%;
-    color: rgba(0, 0, 0);
+   
+}
+.col-sm{
+    margin-left: 20%;
+    margin-bottom: 2%;
+    font-size: 150%;
+}
+.col > h4{
+    font-size: 200%;
 }

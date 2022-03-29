@@ -5,6 +5,7 @@ import Footer from "../Footer.js";
 import ProfileCard from "../ProfileCard.js";
 import { styled } from "@mui/material/styles";
 import Box from "@mui/material/Box";
+import Navbar from "../Navbar";
 
 const item = [
   {
@@ -23,31 +24,29 @@ const Item = styled(Box)(({ theme }) => ({
   ...theme.typography.body2,
 }));
 
-function Timeline() {
+export default function Timeline() {
   return (
-    <div>
-      <Box sx={{ flexGrow: 1 }}>
-        <Grid container spacing={2}>
-          <Grid item xs={12}>
-            <Item>
-              <ProfileCard item={item} />
-            </Item>
-          </Grid>
-          <Grid item xs>
-            <Item></Item>
-          </Grid>
-          <Grid item xs>
-            <Item></Item>
-          </Grid>
+    <Box sx={{ flexGrow: 1 }}>
+      <Navbar />
+      <Grid container spacing={2}>
+        <Grid item xs={12}>
+          <Item>
+            <ProfileCard item={item} />
+          </Item>
         </Grid>
-      </Box>
+        <Grid item xs>
+          <Item></Item>
+        </Grid>
+        <Grid item xs>
+          <Item></Item>
+        </Grid>
+      </Grid>
+
       <TimelineAlone />
 
       <Grid item xs={12}>
         <Footer />
       </Grid>
-    </div>
+    </Box>
   );
 }
-
-export default Timeline;
