@@ -1,32 +1,60 @@
-import React from "react";
+import React from 'react';
 import './Footer.css';
-import FacebookIcon from '@mui/icons-material/Facebook';
-import GitHubIcon from '@mui/icons-material/GitHub';
-import InstagramIcon from '@mui/icons-material/Instagram';
-import MailOutlineIcon from '@mui/icons-material/MailOutline';
+const Footer=() =>{
+  return (
+    <div className='main-footer'>
+      <div className='container'>
+        <div className='row'>
+          {/* Columu1 */}
+          <div className="col">
+          <h4>csakdsasda</h4>
+          <ul className='list-unstyled'>
+          <li>1231231</li>
+          <li>canada</li>
+          <li>waterloo</li>
+          </ul></div>
+           {/* Columu2 */}
+           <div className="col">
+          <h4>stuff</h4>
+          <ul className='list-unstyled'>
+          <li>1231231</li>
+          <li>canada</li>
+          <li>waterloo</li>
+          </ul>
+          </div>
+            {/* Columu3 */}
+            <div className="col">
+          <h4>stuff</h4>
+          <ul className='list-unstyled'>
+          <li>1231231</li>
+          <li>canada</li>
+          <li>waterloo</li>
+          </ul>
+          </div>
+          {/* Columu1 */}
+          <div className="col">
+          <h4>csakdsasda</h4>
+          <ul className='list-unstyled'>
+          <li>1231231</li>
+          <li>canada</li>
+          <li>waterloo</li>
+          </ul></div>
+        </div>
+        <hr/>
+        <div className='row'>
+          <p className='col-sm'>
+                &copy;{new Date().getFullYear()} asdnaskdnals   |    afabjsfba  |    All right reserved
 
-
-
-
-function Footer(){
-    return (
-        <div className="footer">
-
-        
-        
-            <p>Get connected with us on social networks:</p>
-            <div>
-                <FacebookIcon/><GitHubIcon/><InstagramIcon/><MailOutlineIcon/>
-          
-            </div>
-            <p><i className='fas fa-gem me-3'></i>Team 8 :Forever bling bling Team</p>
-            <p>Ting,Ziyi,Hongyi,Yancy,Lia,Xiongyi </p>
-            <p><i className='fas fa-home me-3'></i>Davis Cneter,3586, Waterloo,CA</p>
-            <p><i className='fas fa-envelope me-3'></i>TingGu@uwaterloo.com</p>
-            <p>© 2022 Copyright:<a className='text-reset fw-bold' href='https://perfactTeam8.com/'>perfactTeam8.com</a></p>
-        
-        
+          </p>
       </div>
-    );
+      
+       
+
+    </div>
+   
+
+    </div>
+  )
 }
+
 export default Footer;

@@ -1,14 +1,13 @@
 import React from "react";
-import SearchItem from "../SearchItem.js";
+import Upload from "../Upload.js";
 import Grid from "@mui/material/Grid";
 import Footer from "../Footer.js";
 import Navbar from "../Navbar";
-
-function Search() {
+function UploadNew() {
   return (
     <div>
       <Navbar />
-      <SearchItem />
+      <Upload />
 
       <Grid item xs={12}>
         <Footer />
@@ -17,4 +16,4 @@ function Search() {
   );
 }
 
-export default Search;
+export default UploadNew;

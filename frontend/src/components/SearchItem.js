@@ -1,15 +1,8 @@
-import Box from "@mui/material/Box";
+import "./SearchItem.css";
 import { styled } from "@mui/material/styles";
+import Box from "@mui/material/Box";
 import Grid from "@mui/material/Grid";
-import SwipeSlide from "../SwipeSlide";
-import Spot from "../Spot";
-import ImageCard from "../ImageCard";
-import Footer from "../Footer";
-import Navbar from "../Navbar";
-
-// Import css files
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
+import SwipeSlide from "./SwipeSlide";
 
 const data = [
   {
@@ -42,25 +35,31 @@ const Item = styled(Box)(({ theme }) => ({
   ...theme.typography.body2,
 }));
 
-export default function Trip() {
+export default function SearchItem() {
   return (
-    <Box sx={{ flexGrow: 1 }}>
-      <Navbar />
-      <ImageCard />
-
-      <Spot />
-      <Grid container spacing={0}>
+    <Box sx={{ flexGrow: 0 }}>
+      <Grid container spacing={2}>
         <Grid item xs={12}>
           <Item>
-            <SwipeSlide data={data} />
+            <div className="content">
+              <h1 id="search-text">Search</h1>
+              <input
+                id="input"
+                type="search"
+                autocomplete="off"
+                spellcheck="false"
+                role="combobox"
+                aria-live="polite"
+                placeholder="Start Your Journey From Here"
+              ></input>
+            </div>
           </Item>
         </Grid>
-
-        <Grid item xs={12}>
-          <Item>
-            <Footer />
-          </Item>
-        </Grid>
+      </Grid>
+      <Grid item xs={12}>
+        <Item>
+          <SwipeSlide data={data} />
+        </Item>
       </Grid>
     </Box>
   );

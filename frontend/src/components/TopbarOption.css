@@ -5,19 +5,19 @@
 }
 
 .topbarOption:hover {
-    background-color: #e8f5fe;
-    border-radius: 30px;
+    background-color: #6b7a9b2c;
+    border-radius: 0.5vw;
     color: var(--option-color);
     transition: color 100ms ease-out;
 }
 
-.topbarOption > .MuiSvgIcon-root {
-    padding: 20px;
+.MuiSvgIcon-root {
+    margin-right: 10%;
 }
 
 .topbarOption > h2 {
     font-weight: 800;
-    font-size: 20px;
+    font-size: 0.9vw;
     margin-right: 20px;
 }
 

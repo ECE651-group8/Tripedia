@@ -1,10 +1,7 @@
 package com.tripedia.tripediabackend.service;
 
 import com.tripedia.tripediabackend.dao.UserDao;
-import com.tripedia.tripediabackend.exceptions.UserNameEmptyException;
-import com.tripedia.tripediabackend.exceptions.UserNotExistException;
-import com.tripedia.tripediabackend.exceptions.PasswordNotExistException;
-import com.tripedia.tripediabackend.exceptions.UserNameExistsException;
+import com.tripedia.tripediabackend.exceptions.*;
 import com.tripedia.tripediabackend.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -32,7 +29,7 @@ public class UserService {
         if (user.getUserName().isEmpty()){
             throw new UserNameEmptyException("User name can not be empty");
         }
-        if (user.getPassword() == null){
+        if (user.getPassword().isEmpty()){
             throw new PasswordNotExistException("User Password cannot be found!");
         }
         Long currentUserId = userDao.findId(user.getUserName());
@@ -53,7 +50,7 @@ public class UserService {
         if (user.getUserName().isEmpty()){
             throw new UserNameEmptyException("User name can not be empty");
         }
-        if (user.getPassword() == null){
+        if (user.getPassword().isEmpty()){
             throw new PasswordNotExistException("User Password cannot be found!");
         }
         Long currentUserId = userDao.findId(user.getUserName());
@@ -65,7 +62,7 @@ public class UserService {
                 return currentUser;
             }
             else {
-                throw new UserNameExistsException("User Password is not matched!");
+                throw new PasswordWrongException("User Password is not matched!");
             }
         }
     }
