@@ -121,5 +121,5 @@ class UserServiceTest {
         Long currentUserId = this.userDao.findId(username);
         assertEquals("ziyi",(this.userService.getUser(currentUserId)).get().getUserName());
     }
-    
+
 }

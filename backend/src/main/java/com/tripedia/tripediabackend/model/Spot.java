@@ -33,8 +33,8 @@ public class Spot {
 
     public Spot(){}
 
-    public Spot(Long spotId, String address, Long popularity, String spotName, String introduction, List<Post> posts, List<Image> images) {
-        this.spotId = spotId;
+    public Spot(String address, Long popularity, String spotName, String introduction, List<Post> posts, List<Image> images) {
+//        this.spotId = spotId;
         this.address = address;
         this.popularity = popularity;
         this.spotName = spotName;

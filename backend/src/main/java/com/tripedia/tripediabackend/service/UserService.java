@@ -26,10 +26,10 @@ public class UserService {
     }
 
     public User addUser(User user){
-        if (user.getUserName().isEmpty()){
+        if (user.getUserName().isEmpty() || user.getUserName() == null){
             throw new UserNameEmptyException("User name can not be empty");
         }
-        if (user.getPassword().isEmpty()){
+        if (user.getPassword().isEmpty() || user.getPassword() == null){
             throw new PasswordNotExistException("User Password cannot be found!");
         }
         Long currentUserId = userDao.findId(user.getUserName());
@@ -47,10 +47,10 @@ public class UserService {
     }
 
     public User login(User user){
-        if (user.getUserName().isEmpty()){
+        if (user.getUserName().isEmpty() || user.getUserName() == null){
             throw new UserNameEmptyException("User name can not be empty");
         }
-        if (user.getPassword().isEmpty()){
+        if (user.getPassword().isEmpty() || user.getPassword() == null){
             throw new PasswordNotExistException("User Password cannot be found!");
         }
         Long currentUserId = userDao.findId(user.getUserName());
