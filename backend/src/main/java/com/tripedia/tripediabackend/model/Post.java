@@ -21,8 +21,6 @@ public class Post {
     @Column(unique = true, nullable = false)
     private String title;
 
-    private Date createTime;
-
     private Long visitorNum;
 
     private Date postTime;
@@ -53,12 +51,11 @@ public class Post {
 
     public Post() {}
 
-    public Post(Long postId, boolean isBrief, Date tripTime, String title, Date createTime, Long visitorNum, Date postTime, Long cost, String content, Spot spot, List<Image> images, List<Comment> comments, User user) {
+    public Post(Long postId, boolean isBrief, Date tripTime, String title, Long visitorNum, Date postTime, Long cost, String content, Spot spot, List<Image> images, List<Comment> comments, User user) {
         this.postId = postId;
         this.isBrief = isBrief;
         this.tripTime = tripTime;
         this.title = title;
-        this.createTime = createTime;
         this.visitorNum = visitorNum;
         this.postTime = postTime;
         this.cost = cost;
@@ -83,14 +80,6 @@ public class Post {
 
     public void setTitle(String title) {
         this.title = title;
-    }
-
-    public Date getCreateTime() {
-        return createTime;
-    }
-
-    public void setCreateTime(Date createTime) {
-        this.createTime = createTime;
     }
 
     public Date getPostTime() {
@@ -180,7 +169,6 @@ public class Post {
                 ", isBrief=" + isBrief +
                 ", tripTime=" + tripTime +
                 ", title='" + title + '\'' +
-                ", createTime=" + createTime +
                 ", visitorNum=" + visitorNum +
                 ", postTime=" + postTime +
                 ", cost=" + cost +
