@@ -18,17 +18,17 @@ public class Image {
     private String imageUrl;
 
     @ManyToOne
-    @JsonIgnoreProperties(value = {"image", "spot", "images", "comments", "user"})
+    @JsonIgnoreProperties(value = {"spot", "images", "comments", "user"})
     @JoinColumn(name = "post_id")
     private Post post;
 
     @ManyToOne
-    @JsonIgnoreProperties(value = {"image", "posts", "images"})
+    @JsonIgnoreProperties(value = {"posts", "images"})
     @JoinColumn(name = "spot_id")
     private Spot spot;
 
     @ManyToOne
-    @JsonIgnoreProperties(value = {"image", "posts", "comments", "images"})
+    @JsonIgnoreProperties(value = {"posts", "comments", "images"})
     @JoinColumn(name = "user_id")
     private User user;
 

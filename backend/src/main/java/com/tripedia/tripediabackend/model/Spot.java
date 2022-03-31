@@ -28,7 +28,7 @@ public class Spot {
     List<Post> posts;
 
     @OneToMany(mappedBy = "spot")
-    @JsonIgnoreProperties(value = {"spot", "post", "spot"})
+    @JsonIgnoreProperties(value = {"spot", "post", "user"})
     List<Image> images;
 
     public Spot(){}

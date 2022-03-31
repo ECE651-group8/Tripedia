@@ -21,12 +21,12 @@ public class Comment {
     private Date CommentDate;
 
     @ManyToOne
-    @JsonIgnoreProperties(value = {"comment", "spot", "images", "comments", "user"})
+    @JsonIgnoreProperties(value = {"spot", "images", "comments", "user"})
     @JoinColumn(name = "post_id")
     private Post post;
 
     @ManyToOne
-    @JsonIgnoreProperties(value = {"comments", "posts"})
+    @JsonIgnoreProperties(value = {"comments", "posts", "images"})
     @JoinColumn(name = "user_id")
     private User user;
 

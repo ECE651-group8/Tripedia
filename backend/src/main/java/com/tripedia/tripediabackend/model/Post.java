@@ -37,7 +37,7 @@ public class Post {
     private Spot spot;
 
     @OneToMany(mappedBy = "post")
-    @JsonIgnoreProperties(value = {"post", "spot"})
+    @JsonIgnoreProperties(value = {"post", "spot", "user"})
     List<Image> images;
 
     @OneToMany(mappedBy = "post")
@@ -45,7 +45,7 @@ public class Post {
     List<Comment> comments;
 
     @ManyToOne
-    @JsonIgnoreProperties(value = {"posts", "comments"})
+    @JsonIgnoreProperties(value = {"posts", "comments", "images"})
     @JoinColumn(name = "user_id")
     private User user;
 
