@@ -20,4 +20,10 @@ public class SearchController {
     public List<Spot> findBySpotNameLike(@RequestBody String spotName) {
         return searchDao.findBySpotNameContaining(spotName);
     }
+
+    @RequestMapping("/findByPopularity")
+    @GetMapping
+    public List<Spot> findByPopularity() {
+        return searchDao.findByPopularity();
+    }
 }
