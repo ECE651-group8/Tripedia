@@ -29,6 +29,8 @@ public class Post {
 
     private Long cost;
 
+    @Lob
+    @Column(columnDefinition = "text")
     private String content;
 
     @ManyToOne
