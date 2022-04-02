@@ -79,7 +79,7 @@ class SpotServiceTest {
     void getAllSpot() {
         List<Spot> allSpots = this.spotService.getAllSpot();
         int spotNumbers = allSpots.size();
-        assertEquals(spotNumbers, 11);
+        assertEquals(11, spotNumbers);
     }
 
     @Test

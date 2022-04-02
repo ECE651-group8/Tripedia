@@ -13,6 +13,8 @@ import com.tripedia.tripediabackend.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -31,9 +33,12 @@ public class PostService {
     }
 
     public Post addPost(Post post){
-        if (post.getTitle().isEmpty()) {
+        if (post.getTitle().isEmpty() || post.getTitle() == null) {
             throw new PostEmptyTitleException("Post title can not be empty");
         }
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        // 格式化时间对象
+        post.setPostTime(dateFormat.format(new Date()));
         return postDao.save(post);
     }
 
@@ -86,6 +91,17 @@ public class PostService {
         User user = userDao.findById(userId).get();
 
         post.setUser(user);
+        return postDao.save(post);
+    }
+
+    public Post assignContent(Long postId, String content) {
+        if (!postDao.existsById(postId)) {
+            throw new PostNotExistException("Cannot find post ID" + postId);
+        }
+
+        Post post = getPostById(postId).get();
+
+        post.setContent(content);
         return postDao.save(post);
     }
 }

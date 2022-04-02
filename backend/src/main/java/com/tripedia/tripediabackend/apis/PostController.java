@@ -41,8 +41,7 @@ public class PostController {
     @PostMapping
     public ResponseEntity<String> addPost(@RequestBody Post post) {
         try{
-            post.setPostTime(Calendar.getInstance().getTime());
-            post.setCreateTime(Calendar.getInstance().getTime());
+//            post.setPostTime(Calendar.getInstance().getTime());
             Post savedPost = postService.addPost(post);
             return ResponseEntity.ok("Added Post. " + savedPost.toString());
         } catch (InvalidPostException e){
@@ -86,6 +85,18 @@ public class PostController {
         } catch (PostNotExistException e) {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
         } catch (UserNotExistException e) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
+        }
+    }
+
+    @RequestMapping("/assigncontent/{pid}")
+    @PostMapping
+    public ResponseEntity<String> assignContent(@PathVariable("pid") Long postId,
+                                             @RequestBody String content) {
+        try{
+            Post updatedPost = postService.assignContent(postId, content);
+            return ResponseEntity.ok("Assigned content. " + updatedPost.toString());
+        } catch (InvalidPostException e){
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
         }
     }

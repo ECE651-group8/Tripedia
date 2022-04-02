@@ -28,13 +28,13 @@ public class Spot {
     List<Post> posts;
 
     @OneToMany(mappedBy = "spot")
-    @JsonIgnoreProperties(value = {"spot", "post", "spot"})
+    @JsonIgnoreProperties(value = {"spot", "post", "user"})
     List<Image> images;
 
     public Spot(){}
 
-    public Spot(String address, Long popularity, String spotName, String introduction, List<Post> posts, List<Image> images) {
-//        this.spotId = spotId;
+    public Spot(Long spotId, String address, Long popularity, String spotName, String introduction, List<Post> posts, List<Image> images) {
+        this.spotId = spotId;
         this.address = address;
         this.popularity = popularity;
         this.spotName = spotName;
@@ -73,6 +73,10 @@ public class Spot {
 
     public void setPopularity(Long popularity) {
         this.popularity = popularity;
+    }
+
+    public void addPopularity() {
+        this.popularity += 1;
     }
 
     public String getAddress() {
