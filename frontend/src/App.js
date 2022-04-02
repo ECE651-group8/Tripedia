@@ -19,8 +19,8 @@ function App() {
           <Route path="/display" element={<Display />} />
           <Route path="/trips" element={<Trips />} />
           <Route path="/sign-up" element={<SignUp />} />
-          <Route path="/detail" element={<Detail />} />
-          <Route path="/timeline" element={<Timeline />} />
+          <Route path="/detail/:id" element={<Detail />} />
+          <Route path="/timeline/:id" element={<Timeline />} />
           <Route path="/upload" element={<UploadNew />} />
           <Route path="/search" element={<Search />} />
         </Routes>

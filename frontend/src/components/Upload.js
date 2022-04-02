@@ -28,15 +28,16 @@ const Input = styled("input")({
 
 export default function Sidebar() {
   return (
-    <Box sx={{ flexGrow: 1 }}>
+    <Box sx={{ flexGrow: 1, backgroundColor: "#fcf7f8" }}>
       <Grid container spacing={2}>
         <Grid item xs={12}>
           <Item>
             <Card
+              id="upload-card"
               sx={{
                 height: 350,
                 backgroundImage:
-                  "url(https://get.wallhere.com/photo/cloud-sky-mountain-atmosphere-plant-building-tree-nature-azure-Natural-landscape-snow-dusk-Freezing-atmospheric-phenomenon-horizon-mountainous-landforms-landscape-mountain-range-hill-castle-calm-winter-city-mist-fog-house-evening-Massif-reflection-haze-hill-station-steeple-fell-dawn-spire-conifer-sunrise-church-frost-place-of-worship-painting-night-skyline-summit-tourist-attraction-fir-Tourism-afterglow-chapel-pine-family-Alps-2078065.jpg)",
+                  "url(https://img2.fonwall.ru/o/zf/osen-doroga-avtostrada.jpg)",
               }}
             >
               <CardHeader

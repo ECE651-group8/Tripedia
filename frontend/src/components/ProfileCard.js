@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import "./ProfileCard.css";
 import Card from "@mui/material/Card";
 import CardHeader from "@mui/material/CardHeader";
@@ -17,17 +17,47 @@ import Box from "@mui/material/Box";
 const Item = styled(Box)(({ theme }) => ({
   ...theme.typography.body2,
 }));
-export default function ProfileCard({ item }) {
+const postid = window.location.pathname.substring(8);
+
+async function getData() {
+  const res = await fetch("http://localhost:8080/api/post/" + postid, {
+    headers: {
+      "content-type": "application/json",
+    },
+    method: "GET",
+  });
+  const json = await res.json();
+  const detail = [
+    {
+      img: json.images[0].imageUrl,
+      user_url: json.user.avatarId,
+      title: json.user.userName,
+      date: json.postTime,
+      summary: json.user.introduction,
+    },
+  ];
+  return detail;
+}
+
+const detail = getData();
+
+export default function ProfileCard() {
+  const [post, setPost] = useState([]);
+  detail.then((item) => {
+    setPost(item);
+  });
+  console.log(detail);
   return (
     <Item>
-      {item.map((item) => (
+      {post.map((item) => (
         <>
           <Card sx={{ height: 350 }}>
             <CardMedia
               component="img"
               height="350"
               image={item.img}
-              alt="Paella dish"
+              alt="bgimg"
+              className="prof-img"
             />
           </Card>
           <Card

@@ -31,7 +31,7 @@ export default function Timeline() {
       <Grid container spacing={2}>
         <Grid item xs={12}>
           <Item>
-            <ProfileCard item={item} />
+            <ProfileCard />
           </Item>
         </Grid>
         <Grid item xs>

@@ -1,38 +1,50 @@
 
 .main-footer{
     color:white;
-    background:url("https://get.wallhere.com/photo/cloud-sky-mountain-atmosphere-plant-building-tree-nature-azure-Natural-landscape-snow-dusk-Freezing-atmospheric-phenomenon-horizon-mountainous-landforms-landscape-mountain-range-hill-castle-calm-winter-city-mist-fog-house-evening-Massif-reflection-haze-hill-station-steeple-fell-dawn-spire-conifer-sunrise-church-frost-place-of-worship-painting-night-skyline-summit-tourist-attraction-fir-Tourism-afterglow-chapel-pine-family-Alps-2078065.jpg");
-    bottom: 0;
-    height: 30%;
+    background:url("https://img2.fonwall.ru/o/zf/osen-doroga-avtostrada.jpg");
    
+    height: 15vw;
+   background-position: bottom;
+}
+.contact-line{
+    display: flex;
+    flex-direction: row;
+    height:20%;
+    align-items: center;
+    
+    
+}
+.contact-line>h3{
+    margin:auto;
+    display: flex;
+    flex-direction: row;
+}
+.Icon-footer{
+    display:flex ;
+    flex-direction: row;
+    color: white;
 }
 .row{
     display:flex;
     flex-direction: row;
-    margin-left: 10%;
-    margin-top: 2%;
-   
-   
+    height: 60%;
+    width:100%;
+}
+.col{
+    width:25%;
+    text-align: center;
+    padding-top: 1vw;
+    
 }
 
-.col{
-    margin-right: 18%;
-    list-style: none;
-    margin-top: 5%;
-    margin-bottom: 2%;
+.Icon-footer-right{
+    display:flex ;
+    flex-direction: row;
+    padding-left: 25%;
 }
-li {
-    list-style-type:none;
+#footer-text{
+    padding-right:12.5%;
 }
-.row{
-    text-align: center;
-   
-}
-.col-sm{
-    margin-left: 20%;
-    margin-bottom: 2%;
-    font-size: 150%;
-}
-.col > h4{
-    font-size: 200%;
+.icon{
+    color: white;
 }

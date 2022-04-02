@@ -12,7 +12,8 @@ import "./Detail.css";
 const Item = styled(Box)(({ theme }) => ({
   ...theme.typography.body2,
 }));
-const item = [
+
+/*const item = [
   {
     img: "http://p1-q.mafengwo.net/s19/M00/47/21/CoNHPmIaQKZYq2cWABA0PCwHNiI.png?imageMogr2%2Fstrip",
     user_url:
@@ -22,7 +23,7 @@ const item = [
     summary: `Ontario Science Center is a natural science and technology museum, which is more suitable for children. <br/>
       There are a lot of scientifically interesting toys in it, and people who are innocence can find a lot of resonance here.`,
   },
-];
+];*/
 
 export default function Detail() {
   return (
@@ -31,7 +32,7 @@ export default function Detail() {
       <Grid container spacing={2}>
         <Grid item xs={12}>
           <Item>
-            <ProfileCard item={item} />
+            <ProfileCard />;
           </Item>
         </Grid>
         <Grid item xs>

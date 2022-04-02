@@ -9,7 +9,7 @@
 
   .sidebarIcon{
     margin-left: 20%;; 
-    background-color: var(rgb(242, 197, 61))!important;
+    background-color: var(rgb(209, 152, 135))!important;
     /* border: none !important; */
 
     color: white !important; 
@@ -23,16 +23,18 @@
   }
   #upload-card{
     height: 20vw;
-    background-image:"https://get.wallhere.com/photo/cloud-sky-mountain-atmosphere-plant-building-tree-nature-azure-Natural-landscape-snow-dusk-Freezing-atmospheric-phenomenon-horizon-mountainous-landforms-landscape-mountain-range-hill-castle-calm-winter-city-mist-fog-house-evening-Massif-reflection-haze-hill-station-steeple-fell-dawn-spire-conifer-sunrise-church-frost-place-of-worship-painting-night-skyline-summit-tourist-attraction-fir-Tourism-afterglow-chapel-pine-family-Alps-2078065.jpg" ;
+    background-image:"https://img2.fonwall.ru/o/zf/osen-doroga-avtostrada.jpg" ;
+    background-position-x: center;
+    background-position-y: -5vw;
   }
 .color{
-  color:white;
+  color:#fcf7f8;
 }
 .MuiFormLabel-root.Mui-focused {
-  color: #f3f3f3 !important;
+  color: #fcf7f8 !important;
 }
 .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline {
-  border-color: #f3f3f3 !important;
+  border-color: #fcf7f8 !important;
 }
 .css-83ijpv-MuiTypography-root{
   
@@ -47,9 +49,9 @@
 }
 
 .css-180lf2n-MuiButtonBase-root-MuiButton-root{
-  border: 1px solid rgba(90, 115, 156, 0.5)!important;
-  color: #5a739c!important;
+  border: 1px solid rgba(161, 122, 131, 0.5)!important;
+  color: #a17a83!important;
 }
 .css-sghohy-MuiButtonBase-root-MuiButton-root{
-  background-color: #5a739c!important;
+  background-color: #a17a83!important;
 }

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { styled } from "@mui/material/styles";
 import Box from "@mui/material/Box";
 
@@ -19,7 +19,8 @@ import ReactMarkdown from "react-markdown";
 const Item = styled(Box)(({ theme }) => ({
   ...theme.typography.body2,
 }));
-const data = [
+/*const data = [
+
   {
     content: ` But you also have to have a certain face to "share" with children.
       There are too many children playing here, and we are too embarrassed
@@ -47,11 +48,39 @@ const data = [
     location: "Toronto",
     people: "4",
   },
-];
+];*/
+const postid = window.location.pathname.substring(8);
+async function getData() {
+  const res = await fetch("http://localhost:8080/api/post/" + postid, {
+    headers: {
+      "content-type": "application/json",
+    },
+    method: "GET",
+  });
+  const json = await res.json();
+  const detail = [
+    {
+      location: json.spot.spotName,
+      cost: json.cost,
+      title: json.title,
+      people: json.visitorNum,
+      date: json.tripTime,
+      content: json.content,
+    },
+  ];
+  return detail;
+}
+
+const detail = getData();
 export default function Content() {
+  const [post, setPost] = useState([]);
+  detail.then((item) => {
+    setPost(item);
+  });
+  console.log(detail);
   return (
     <>
-      {data.map((item) => (
+      {post.map((item) => (
         <>
           <Grid
             item
@@ -65,6 +94,7 @@ export default function Content() {
             }}
           >
             <Item>
+              <ReactMarkdown>{item.title}</ReactMarkdown>
               <ReactMarkdown>{item.content}</ReactMarkdown>
             </Item>
           </Grid>
