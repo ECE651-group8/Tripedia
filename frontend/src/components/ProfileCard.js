@@ -17,7 +17,13 @@ import Box from "@mui/material/Box";
 const Item = styled(Box)(({ theme }) => ({
   ...theme.typography.body2,
 }));
-const postid = window.location.pathname.substring(8);
+var postid;
+console.log(window.location.pathname.substring(1, 2));
+if (window.location.pathname.substring(1, 2) === "t") {
+  postid = window.location.pathname.substring(10);
+} else {
+  postid = window.location.pathname.substring(8);
+}
 
 async function getData() {
   const res = await fetch("http://localhost:8080/api/post/" + postid, {
@@ -27,6 +33,7 @@ async function getData() {
     method: "GET",
   });
   const json = await res.json();
+  console.log(json);
   const detail = [
     {
       img: json.images[0].imageUrl,

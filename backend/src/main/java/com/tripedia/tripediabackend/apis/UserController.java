@@ -22,50 +22,56 @@ public class UserController {
     @Autowired
     private UserService userService;
 
-    public UserController(UserService userService){
+    public UserController(UserService userService) {
         this.userService = userService;
     }
 
     @GetMapping
-    public List<User> getAllUser(){
+    public List<User> getAllUser() {
         return userService.getAllUser();
+    }
+
+    @RequestMapping("/{pid}")
+    @GetMapping
+    public Optional<User> getUserById(@PathVariable("pid") Long userId) {
+        return userService.getUserById(userId);
     }
 
     @PostMapping
     @RequestMapping("/add")
-    public ResponseEntity<String> addUser(@RequestBody User user){
-        try{
+    public ResponseEntity<String> addUser(@RequestBody User user) {
+        try {
             User savedUser = userService.addUser(user);
             return ResponseEntity.ok("Added Post." + savedUser.toString());
-        } catch (InvalidPostException e){
+        } catch (InvalidPostException e) {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
         }
     }
 
-//    @PostMapping
-//    @RequestMapping("/find")
-//    public ResponseEntity<String> getUser(@RequestBody User user){
-//        try{
-//            Optional<User> savedUser = userService.getUser(user);
-//            return ResponseEntity.ok("Added Post." + savedUser.toString());
-//        } catch (InvalidPostException e){
-//            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
-//        }
-//    }
+    // @PostMapping
+    // @RequestMapping("/find")
+    // public ResponseEntity<String> getUser(@RequestBody User user){
+    // try{
+    // Optional<User> savedUser = userService.getUser(user);
+    // return ResponseEntity.ok("Added Post." + savedUser.toString());
+    // } catch (InvalidPostException e){
+    // return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
+    // }
+    // }
 
     @RequestMapping("/del")
     @PostMapping
-    public void delUser(@RequestBody User user){
+    public void delUser(@RequestBody User user) {
         userService.delUser(user);
     }
 
     @RequestMapping("/update")
     @PostMapping
-    public ResponseEntity<String> updateUser(@RequestBody User user){
-        try{
+    public ResponseEntity<String> updateUser(@RequestBody User user) {
+        try {
             User savedUser = userService.updateUser(user);
             return ResponseEntity.ok("Updated Post." + savedUser.toString());
-        } catch (InvalidPostException e){
+        } catch (InvalidPostException e) {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
         }
     }

@@ -1,55 +1,61 @@
-import React from "react";
+import React, { useState } from "react";
 import "../App.css";
 import "./TimelineAlone.css";
 import { ReactComponent as WorkIcon } from "./work.svg";
 import { ReactComponent as SchoolIcon } from "./school.svg";
-import timelineBackup from "./timelineBackup";
+
 import {
   VerticalTimeline,
   VerticalTimelineElement,
 } from "react-vertical-timeline-component";
 import "react-vertical-timeline-component/style.min.css";
 
+const userid = window.location.pathname.substring(10);
+async function getData() {
+  const res = await fetch("http://localhost:8080/api/user/" + userid, {
+    headers: {
+      "content-type": "application/json",
+    },
+    method: "GET",
+  });
+  const json = await res.json();
+  console.log(json.posts);
+  return json.posts;
+}
+
+const time = getData();
+
 export default function TimelineAlone() {
   let workIconStyles = { background: "#06D6A0" };
   let schoolIconStyles = { background: "#f9c74f" };
+  const [post, setPost] = useState([]);
+  time.then((item) => {
+    setPost(item);
+  });
 
   return (
     <VerticalTimeline>
-      {timelineBackup.map((element) => {
-        let isWorkIcon = element.icon === "work";
-        //Here, isWork will be true if element.icon is equal to work
-        //叫做checker property
-        let showButton =
-          element.buttonText !== undefined &&
-          element.buttonText !== null &&
-          element.buttonText !== "";
-
+      {post.map((element) => {
         return (
           <VerticalTimelineElement
-            key={element.key}
-            date={element.date}
+            key={element.postId}
+            date={element.tripTime}
             dateClassName="date"
-            iconStyle={isWorkIcon ? workIconStyles : schoolIconStyles}
+            iconStyle={workIconStyles}
             //this iconstyle contains all css for the icon, just remember this point.
-            icon={isWorkIcon ? <WorkIcon /> : <SchoolIcon />}
+            icon={<WorkIcon />}
             //this is 用来展示，圆圈中进展的图片以及使用的方式
           >
             <h3 className="vertical-timeline-element-title">{element.title}</h3>
-            <h5 className="vertical-timeline-element-subtitle">
-              {element.location}
-            </h5>
-            <p id="description">{element.description}</p>
-            {showButton && (
+
+            {
               <a
-                className={`button ${
-                  isWorkIcon ? "workButton" : "schoolButton"
-                }`}
-                href="/detail"
+                className={`button ${"workButton"}`}
+                href={"/detail/" + element.postId}
               >
-                {element.buttonText}
+                See more description
               </a>
-            )}
+            }
             {/* here button has function logic */}
           </VerticalTimelineElement>
         );
