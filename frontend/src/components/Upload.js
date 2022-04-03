@@ -68,10 +68,11 @@ export default function Sidebar() {
         const res = await axios.post('http://localhost:8080/api/file', fd);
         const url = res.data['publicURL'];
         setImgurl(url);
+        console.log(imgurl);
     };
 
     const postUploadHandler = async () => {
-        const res = await axios.post('http://localhost:8080/api/post/add', {
+        let res = await axios.post('http://localhost:8080/api/post/add', {
             title: title,
             content: content,
             tripTime: triptime,
@@ -80,6 +81,17 @@ export default function Sidebar() {
             brief: true,
         });
         const postId = res.data.split('postId=')[1].split(',')[0];
+        res = await axios.post('http://localhost:8080/api/image/add', {
+            imageUrl: imgurl,
+        });
+        const imageId = res.data.split('imageId=')[1].split(',')[0];
+        let url =
+            'http://localhost:8080/api/image/assignpost/' +
+            imageId +
+            '/' +
+            postId;
+        res = await axios.get(url);
+        console.log(res);
     };
 
     return (
