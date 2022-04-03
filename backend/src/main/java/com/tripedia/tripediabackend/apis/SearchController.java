@@ -15,9 +15,9 @@ public class SearchController {
     @Autowired
     private SearchDao searchDao;
 
-    @RequestMapping("/findBySpotNameContaining")
-    @GetMapping
-    public List<Spot> findBySpotNameLike(@RequestBody String spotName) {
+    @GetMapping("/findBySpotNameContaining")
+    public List<Spot> findBySpotNameLike(@RequestParam("spotName") String spotName) {
+        System.out.println(spotName);
         return searchDao.findBySpotNameContaining(spotName);
     }
 
