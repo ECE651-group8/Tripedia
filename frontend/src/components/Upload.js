@@ -20,6 +20,7 @@ import AddCardIcon from '@mui/icons-material/AddCard';
 import AccessTimeIcon from '@mui/icons-material/AccessTime';
 import AccessibilityNewIcon from '@mui/icons-material/AccessibilityNew';
 import axios from 'axios';
+import { CatchingPokemonSharp } from '@mui/icons-material';
 const Item = styled(Box)(({ theme }) => ({
     ...theme.typography.body2,
 }));
@@ -35,6 +36,7 @@ export default function Sidebar() {
     const [visitornum, setVisitornum] = useState(0);
     const [cost, setCost] = useState(0);
     const [triptime, setTriptime] = useState('');
+    const [imgurl, setImgurl] = useState('');
 
     const fileSelectHandler = event => {
         setFile(event.target.files[0]);
@@ -64,7 +66,8 @@ export default function Sidebar() {
         const fd = new FormData();
         fd.append('file', file);
         const res = await axios.post('http://localhost:8080/api/file', fd);
-        console.log(res);
+        const url = res.data['publicURL'];
+        setImgurl(url);
     };
 
     const postUploadHandler = async () => {
@@ -76,7 +79,7 @@ export default function Sidebar() {
             visitorNum: visitornum,
             brief: true,
         });
-        console.log(res);
+        const postId = res.data.split('postId=')[1].split(',')[0];
     };
 
     return (
