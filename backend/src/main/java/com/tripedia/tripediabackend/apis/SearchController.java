@@ -17,7 +17,6 @@ public class SearchController {
 
     @GetMapping("/findBySpotNameContaining")
     public List<Spot> findBySpotNameLike(@RequestParam("spotName") String spotName) {
-        System.out.println(spotName);
         return searchDao.findBySpotNameContaining(spotName);
     }
 
