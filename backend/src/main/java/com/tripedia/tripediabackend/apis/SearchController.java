@@ -16,7 +16,7 @@ public class SearchController {
     private SearchDao searchDao;
 
     @RequestMapping("/findBySpotNameContaining")
-    @PostMapping
+    @GetMapping
     public List<Spot> findBySpotNameLike(@RequestBody String spotName) {
         return searchDao.findBySpotNameContaining(spotName);
     }
