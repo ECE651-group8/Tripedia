@@ -1,10 +1,6 @@
 package com.tripedia.tripediabackend.apis;
 
-import com.tripedia.tripediabackend.exceptions.CommentNotExistException;
 import com.tripedia.tripediabackend.exceptions.InvalidPostException;
-import com.tripedia.tripediabackend.exceptions.PostNotExistException;
-import com.tripedia.tripediabackend.exceptions.UserNotExistException;
-import com.tripedia.tripediabackend.model.Comment;
 import com.tripedia.tripediabackend.model.User;
 import com.tripedia.tripediabackend.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,7 +11,6 @@ import org.springframework.web.bind.annotation.*;
 import javax.servlet.http.*;
 
 import java.util.List;
-import java.util.Optional;
 
 @RestController
 @RequestMapping("api/user")
@@ -35,7 +30,7 @@ public class UserController {
 
     @PostMapping
     @RequestMapping("/add")
-    public ResponseEntity<String> addUser(@RequestBody User user, HttpServletRequest request){
+    public ResponseEntity<String> addUser(@RequestBody User user){
         try{
             User savedUser = userService.addUser(user);
             return ResponseEntity.ok("Added Post." + savedUser.toString());

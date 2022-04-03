@@ -52,8 +52,11 @@ public class User implements Serializable {
     public User() {
     }
 
-    public User(Long userId, String introduction, String city, String userName, String password, String email, String avatarId, Long rating, String profileBgId, List<Post> posts, List<Comment> comments, List<Image> images) {
-        this.userId = userId;
+    public User(String userName){
+        this.userName = userName;
+    }
+
+    public User(String introduction, String city, String userName, String password, String email, String avatarId, Long rating, String profileBgId, List<Post> posts, List<Comment> comments, List<Image> images) {
         this.introduction = introduction;
         this.city = city;
         this.userName = userName;
