@@ -91,7 +91,7 @@ export default function Sidebar() {
             '/' +
             postId;
         res = await axios.get(url);
-        console.log(res);
+        console.log(res.data);
     };
 
     return (
