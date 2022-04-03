@@ -79,7 +79,7 @@ public class ImageController {
         }
     }
 
-    @PostMapping(path = "assignpost/{iid}/{pid}")
+    @GetMapping(path = "assignpost/{iid}/{pid}")
     public ResponseEntity<String> assignPost(@PathVariable("iid") Long imageId,
                                              @PathVariable("pid") Long postId) {
         try {
