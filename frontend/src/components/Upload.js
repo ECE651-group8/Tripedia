@@ -118,6 +118,9 @@ export default function Sidebar() {
 
         url = 'http://localhost:8080/api/post/assignuser/' + postId + '/1';
         res = await axios.get(url);
+
+        url = 'http://localhost:8080/api/image/assignuser/' + imageId + '/1';
+        res = await axios.get(url);
         console.log(res.data);
     };
 

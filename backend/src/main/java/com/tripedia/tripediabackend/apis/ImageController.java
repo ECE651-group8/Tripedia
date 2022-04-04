@@ -92,7 +92,7 @@ public class ImageController {
         }
     }
 
-    @PostMapping(path = "assignuser/{iid}/{uid}")
+    @GetMapping(path = "assignuser/{iid}/{uid}")
     public ResponseEntity<String> assignUser(@PathVariable("iid") Long imageId,
                                              @PathVariable("uid") Long userId) {
         try {
