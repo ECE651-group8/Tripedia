@@ -16,14 +16,14 @@ public class Post {
 
     private boolean isBrief;
 
-    private Date tripTime;
+    private String tripTime;
 
     @Column(unique = true, nullable = false)
     private String title;
 
     private Long visitorNum;
 
-    private Date postTime;
+    private String postTime;
 
     private Long cost;
 
@@ -51,13 +51,11 @@ public class Post {
 
     public Post() {}
 
-    public Post(Long postId, boolean isBrief, Date tripTime, String title, Long visitorNum, Date postTime, Long cost, String content, Spot spot, List<Image> images, List<Comment> comments, User user) {
-        this.postId = postId;
+    public Post (boolean isBrief, String tripTime, String title, Long visitorNum, Long cost, String content, Spot spot, List<Image> images, List<Comment> comments, User user) {
         this.isBrief = isBrief;
         this.tripTime = tripTime;
         this.title = title;
         this.visitorNum = visitorNum;
-        this.postTime = postTime;
         this.cost = cost;
         this.content = content;
         this.spot = spot;
@@ -82,11 +80,11 @@ public class Post {
         this.title = title;
     }
 
-    public Date getPostTime() {
+    public String getPostTime() {
         return postTime;
     }
 
-    public void setPostTime(Date postTime) {
+    public void setPostTime(String postTime) {
         this.postTime = postTime;
     }
 
@@ -104,14 +102,6 @@ public class Post {
 
     public void setBrief(boolean brief) {
         isBrief = brief;
-    }
-
-    public Date getTripTime() {
-        return tripTime;
-    }
-
-    public void setTripTime(Date tripTime) {
-        this.tripTime = tripTime;
     }
 
     public Long getCost() {

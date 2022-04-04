@@ -1,9 +1,8 @@
 package com.tripedia.tripediabackend.service;
 
 import com.tripedia.tripediabackend.dao.SpotDao;
-import com.tripedia.tripediabackend.exceptions.PostEmptyTitleException;
-import com.tripedia.tripediabackend.exceptions.SpotEmptyNameException;
-import com.tripedia.tripediabackend.exceptions.SpotNotExistException;
+import com.tripedia.tripediabackend.exceptions.*;
+import com.tripedia.tripediabackend.exceptions.SpotAddressEmptyException;
 import com.tripedia.tripediabackend.model.Spot;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -21,8 +20,14 @@ public class SpotService {
     }
 
     public Spot addSpot(Spot spot) {
-        if (spot.getSpotName().isEmpty()) {
+        if (spot.getSpotName().isEmpty() || spot.getSpotName() == null) {
             throw new SpotEmptyNameException("Spot name can not be empty");
+        }
+        if (spot.getAddress().isEmpty() || spot.getAddress() == null) {
+            throw new SpotAddressEmptyException("Spot Address can not be empty");
+        }
+        if (spot.getIntroduction().isEmpty() || spot.getIntroduction() == null) {
+            throw new SpotEmptyIntroException("Spot name can not be empty");
         }
 
         return spotDao.save(spot);

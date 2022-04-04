@@ -6,7 +6,6 @@ import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
-import java.util.UUID;
 
 
 @Entity
@@ -17,7 +16,9 @@ public class User implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long userId;
 
-    private Date signTime;
+    private String signTime;
+
+//    private Date stime;
 
     private String introduction;
 
@@ -51,9 +52,11 @@ public class User implements Serializable {
     public User() {
     }
 
-    public User(Long userId, Date signTime, String introduction, String city, String userName, String password, String email, String avatarId, Long rating, String profileBgId, List<Post> posts, List<Comment> comments, List<Image> images) {
-        this.userId = userId;
-        this.signTime = signTime;
+    public User(String userName){
+        this.userName = userName;
+    }
+
+    public User(String introduction, String city, String userName, String password, String email, String avatarId, Long rating, String profileBgId, List<Post> posts, List<Comment> comments, List<Image> images) {
         this.introduction = introduction;
         this.city = city;
         this.userName = userName;
@@ -75,13 +78,21 @@ public class User implements Serializable {
         this.userId = userId;
     }
 
-    public Date getSignTime() {
+    public String getSignTime() {
         return signTime;
     }
 
-    public void setSignTime(Date signTime) {
+    public void setSignTime(String signTime) {
         this.signTime = signTime;
     }
+
+//    public Date getStime() {
+//        return stime;
+//    }
+//
+//    public void setStime(Date stime) {
+//        this.stime = stime;
+//    }
 
     public String getIntroduction() {
         return introduction;
