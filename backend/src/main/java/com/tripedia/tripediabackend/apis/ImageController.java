@@ -66,7 +66,7 @@ public class ImageController {
         return "Updated image";
     }
 
-    @PostMapping(path = "assignspot/{iid}/{sid}")
+    @GetMapping(path = "assignspot/{iid}/{sid}")
     public ResponseEntity<String> assignSpot(@PathVariable("iid") Long imageId,
                                              @PathVariable("sid") Long spotId) {
         try {

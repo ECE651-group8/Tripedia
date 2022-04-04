@@ -63,7 +63,7 @@ public class PostController {
         return "Updated post";
     }
 
-    @PostMapping(path = "assignspot/{pid}/{sid}")
+    @GetMapping(path = "assignspot/{pid}/{sid}")
     public ResponseEntity<String> assignSpot(@PathVariable("pid") Long postId,
                                              @PathVariable("sid") Long spotId) {
         try {
@@ -76,7 +76,7 @@ public class PostController {
         }
     }
 
-    @PostMapping(path = "assignuser/{pid}/{uid}")
+    @GetMapping(path = "assignuser/{pid}/{uid}")
     public ResponseEntity<String> assignUser(@PathVariable("pid") Long postId,
                                              @PathVariable("uid") Long userId) {
         try {
