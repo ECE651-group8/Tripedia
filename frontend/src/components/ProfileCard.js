@@ -82,7 +82,7 @@ export default function ProfileCard() {
             <CardHeader
               avatar={
                 <a href={"/timeline/" + item.userId}>
-                  <Avatar src={item.user_url} sx={{ width: 77, height: 77 }}>
+                  <Avatar src={item.img} sx={{ width: 77, height: 77 }}>
                     {/* //用户 */}
                   </Avatar>
                 </a>

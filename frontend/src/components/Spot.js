@@ -19,6 +19,7 @@ import Grid from "@mui/material/Grid";
 import ReactMarkdown from "react-markdown";
 import "./Spot.css";
 const spotid = window.location.pathname.substring(7);
+// const spotid = 1;
 console.log(spotid);
 async function getData() {
   const res = await fetch("http://localhost:8080/api/spot/" + spotid, {

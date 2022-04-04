@@ -46,7 +46,7 @@ class UserServiceTest {
     void addUser_Exist() {
         User user = new User();
         user.setUserId(2L);
-        user.setUserName("ziyi");
+        user.setUserName("nourah1992");
         user.setPassword("open the door");
         user.setEmail("ziyi@gmail.com");
         assertThrows(UserNameExistsException.class, () -> this.userService.addUser(user));
