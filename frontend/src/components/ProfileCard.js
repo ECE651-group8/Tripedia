@@ -18,7 +18,7 @@ const Item = styled(Box)(({ theme }) => ({
   ...theme.typography.body2,
 }));
 var postid;
-console.log(window.location.pathname.substring(1, 2));
+console.log(window.location.pathname.substring(8));
 if (window.location.pathname.substring(1, 2) === "t") {
   postid = window.location.pathname.substring(10);
 } else {

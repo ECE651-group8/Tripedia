@@ -14,7 +14,7 @@
     border-radius: 2rem;
     margin-top: 5%;
     
-    height:5%
+    height:3vw;
 
 } 
 #search-text{
@@ -24,11 +24,19 @@
 }
 
 .content{
-    background-image: url("https://img2.fonwall.ru/o/zf/osen-doroga-avtostrada.jpg");
+    background-image: url("https://c.wallhere.com/photos/d7/8b/1920x1138_px_building_Lake_Bled-597381.jpg!d");
     background-position-x: center;
     background-position-y: -5vw;
     height:45vw;
     text-align:center;
     /* width:100%; */
     /* text-align: center; */
+}
+.button{
+    background-color: #b78e7a;
+    border-radius: 1vw;
+    color: white;
+    height: 3vw;
+    width: 8%;
+    margin-left: 1vw;
 }

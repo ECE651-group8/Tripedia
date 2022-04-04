@@ -95,8 +95,6 @@
 .right-arrow
 .left-arrow {
     padding: 14px;
-    width: 30px;
-    height: 30px;
     cursor: pointer;
     border: none;
     border-radius: 5vw;
@@ -109,6 +107,11 @@
 .slick-prev:hover {
     background-color: gray;
     
+}
+.slick-prev,
+.slick-next{
+    width: 50px!important;
+    height: 50px!important;
 }
 
 /*# sourceMappingURL=home.css.map */

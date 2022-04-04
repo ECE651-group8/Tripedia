@@ -49,19 +49,8 @@ export default function Trip() {
       <ImageCard />
 
       <Spot />
-      <Grid container spacing={0}>
-        <Grid item xs={12}>
-          <Item>
-            <SwipeSlide data={data} />
-          </Item>
-        </Grid>
 
-        <Grid item xs={12}>
-          <Item>
-            <Footer />
-          </Item>
-        </Grid>
-      </Grid>
+      <Footer />
     </Box>
   );
 }

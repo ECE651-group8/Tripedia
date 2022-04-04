@@ -37,29 +37,31 @@ export default function SwipeSlide({ data }) {
       <Grid container spacing={0} sx={{ display: "flex" }}>
         <Grid item xs={1}></Grid>
         <Grid item xs={10} className="card-box">
-          <h1>Trending Trips</h1>
+          <h1>Trending Spots</h1>
           <hr />
           <Slider {...settings} className="card__container--inner">
-            {data.map((item, index) => {
+            {data.map((item) => {
               return (
-                <div className="card__container--inner--card" key={index}>
-                  <img src={item.url} alt="tourism_img" />
+                <div className="card__container--inner--card" key={item.spotId}>
+                  <a href={"/trips/" + item.spotId}>
+                    <img src={item.images[0].imageUrl} alt="tourism_img" />
+                  </a>
 
                   <div className="card__container--inner--card--date_time">
                     <img
                       src="https://www.wanderon.in/svg/clock.svg"
                       alt="time"
                     />
-                    <p>{item.time}</p>
+                    <p>{item.tripTime}</p>
 
                     <img
                       src="https://www.wanderon.in/svg/map-pin.svg"
                       alt="location"
                       style={{ marginLeft: 20 }}
                     />
-                    <p>{item.location}</p>
+                    <p>{item.address}</p>
                   </div>
-                  <h2>{item.spot}</h2>
+                  <h2>{item.spotName}</h2>
                 </div>
               );
             })}

@@ -55,3 +55,14 @@
 .css-sghohy-MuiButtonBase-root-MuiButton-root{
   background-color: #a17a83!important;
 }
+.css-1e6y48t-MuiButtonBase-root-MuiButton-root{
+  background-color: #a17a83!important;
+  color:white!important;
+  margin-left: 8%!important;
+}
+.button-box{
+  display: flex;
+  flex-direction: row;
+  text-align: center;
+  align-items: center;
+}

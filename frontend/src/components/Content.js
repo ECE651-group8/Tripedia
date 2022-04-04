@@ -57,11 +57,12 @@ export default function Content() {
             item
             xs={6}
             sx={{
-              bgcolor: "rgb(242, 209, 109)",
-              border: 1,
+              bgcolor: "rgb(217, 199, 201)",
               boxShadow: 1,
               borderRadius: 2,
               mt: 2,
+              overflow: "auto",
+              height: "30rem",
             }}
           >
             <Item>
@@ -76,7 +77,7 @@ export default function Content() {
                   borderRadius: 2,
                   width: "100%",
                   maxWidth: 360,
-                  bgcolor: "rgb(242, 219, 174)",
+                  bgcolor: "rgb(217, 199, 201)",
                   ml: 2,
                 }}
               >

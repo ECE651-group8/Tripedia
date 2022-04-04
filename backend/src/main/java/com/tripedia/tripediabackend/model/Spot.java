@@ -23,17 +23,22 @@ public class Spot {
     @Column(nullable = false, name = "introduction")
     private String introduction;
 
+    @Column(nullable = false, name = "mapUrl")
+    private String mapUrl;
+
     @OneToMany(mappedBy = "spot")
-    @JsonIgnoreProperties(value = {"spot", "images", "comments", "user"})
+    @JsonIgnoreProperties(value = { "spot", "images", "comments", "user" })
     List<Post> posts;
 
     @OneToMany(mappedBy = "spot")
-    @JsonIgnoreProperties(value = {"spot", "post", "user"})
+    @JsonIgnoreProperties(value = { "spot", "post", "user" })
     List<Image> images;
 
-    public Spot(){}
+    public Spot() {
+    }
 
-    public Spot(Long spotId, String address, Long popularity, String spotName, String introduction, List<Post> posts, List<Image> images) {
+    public Spot(Long spotId, String address, Long popularity, String mapUrl, String spotName, String introduction,
+            List<Post> posts, List<Image> images) {
         this.spotId = spotId;
         this.address = address;
         this.popularity = popularity;
@@ -41,6 +46,7 @@ public class Spot {
         this.introduction = introduction;
         this.posts = posts;
         this.images = images;
+        this.mapUrl = mapUrl;
     }
 
     public Long getSpotId() {
@@ -57,6 +63,14 @@ public class Spot {
 
     public void setIntroduction(String introduction) {
         this.introduction = introduction;
+    }
+
+    public String getMapUrl() {
+        return mapUrl;
+    }
+
+    public void setMapUrl(String mapUrl) {
+        this.mapUrl = mapUrl;
     }
 
     public String getSpotName() {
@@ -114,8 +128,7 @@ public class Spot {
 
         if (posts == null) {
             str += null;
-        }
-        else {
+        } else {
             for (Post post : posts) {
                 str += post.getPostId();
             }
@@ -123,8 +136,7 @@ public class Spot {
 
         if (images == null) {
             str += null;
-        }
-        else {
+        } else {
             for (Image image : images) {
                 str += image.getImageId();
             }
