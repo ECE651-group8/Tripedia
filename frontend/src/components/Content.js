@@ -15,6 +15,7 @@ import ListItemAvatar from "@mui/material/ListItemAvatar";
 import WorkIcon from "@mui/icons-material/Work";
 import BeachAccessIcon from "@mui/icons-material/BeachAccess";
 import ReactMarkdown from "react-markdown";
+import "./Content.css";
 
 const Item = styled(Box)(({ theme }) => ({
   ...theme.typography.body2,
@@ -57,7 +58,7 @@ export default function Content() {
             item
             xs={6}
             sx={{
-              bgcolor: "rgb(217, 199, 201)",
+              bgcolor: "#d3dce1",
               boxShadow: 1,
               borderRadius: 2,
               mt: 2,
@@ -66,8 +67,8 @@ export default function Content() {
             }}
           >
             <Item>
-              <ReactMarkdown>{item.title}</ReactMarkdown>
-              <ReactMarkdown>{item.content}</ReactMarkdown>
+              <ReactMarkdown id="title">{item.title}</ReactMarkdown>
+              <ReactMarkdown id="content">{item.content}</ReactMarkdown>
             </Item>
           </Grid>
           <Grid item xs={3}>
@@ -77,7 +78,8 @@ export default function Content() {
                   borderRadius: 2,
                   width: "100%",
                   maxWidth: 360,
-                  bgcolor: "rgb(217, 199, 201)",
+                  bgcolor: "#425784",
+                  color: "white",
                   ml: 2,
                 }}
               >

@@ -51,7 +51,7 @@ export default function Spot() {
           <Item id="text-box">
             <Card
               sx={{
-                bgcolor: "rgb(242, 209, 109)",
+                bgcolor: "#d3dce1",
                 height: 540,
                 border: 1,
                 boxShadow: 1,
@@ -98,7 +98,7 @@ export default function Spot() {
                 borderRadius: 2,
                 width: "100%",
                 maxWidth: 400,
-                bgcolor: "rgb(242, 219, 174)",
+                bgcolor: "#8696a6",
               }}
             >
               <ListItem>

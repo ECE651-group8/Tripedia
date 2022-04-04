@@ -19,7 +19,7 @@ async function getData() {
     method: "GET",
   });
   const json = await res.json();
-  console.log(json.posts);
+
   return json.posts;
 }
 
@@ -48,14 +48,7 @@ export default function TimelineAlone() {
           >
             <h3 className="vertical-timeline-element-title">{element.title}</h3>
 
-            {
-              <a
-                className={`button ${"workButton"}`}
-                href={"/detail/" + element.postId}
-              >
-                See more description
-              </a>
-            }
+            {<a href={"/detail/" + element.postId}>See more description</a>}
             {/* here button has function logic */}
           </VerticalTimelineElement>
         );

@@ -32,26 +32,28 @@ public class Post {
     private String content;
 
     @ManyToOne
-    @JsonIgnoreProperties(value = {"posts", "images"})
+    @JsonIgnoreProperties(value = { "posts", "images" })
     @JoinColumn(name = "spot_id")
     private Spot spot;
 
     @OneToMany(mappedBy = "post")
-    @JsonIgnoreProperties(value = {"post", "spot", "user"})
+    @JsonIgnoreProperties(value = { "post", "spot", "user" })
     List<Image> images;
 
     @OneToMany(mappedBy = "post")
-    @JsonIgnoreProperties(value = {"post", "user"})
+    @JsonIgnoreProperties(value = { "post", "user" })
     List<Comment> comments;
 
     @ManyToOne
-    @JsonIgnoreProperties(value = {"posts", "comments", "images"})
+    @JsonIgnoreProperties(value = { "posts", "comments", "images" })
     @JoinColumn(name = "user_id")
     private User user;
 
-    public Post() {}
+    public Post() {
+    }
 
-    public Post (boolean isBrief, String tripTime, String title, Long visitorNum, Long cost, String content, Spot spot, List<Image> images, List<Comment> comments, User user) {
+    public Post(boolean isBrief, String tripTime, String postTime, String title, Long visitorNum, Long cost,
+            String content, Spot spot, List<Image> images, List<Comment> comments, User user) {
         this.isBrief = isBrief;
         this.tripTime = tripTime;
         this.title = title;
@@ -62,6 +64,7 @@ public class Post {
         this.images = images;
         this.comments = comments;
         this.user = user;
+        this.postTime = postTime;
     }
 
     public Long getPostId() {
@@ -164,17 +167,15 @@ public class Post {
                 ", cost=" + cost +
                 ", content='" + content + '\'';
 
-        if(spot == null) {
+        if (spot == null) {
             str += null;
-        }
-        else {
+        } else {
             str += spot.getSpotId().toString();
         }
 
         if (images == null) {
             str += null;
-        }
-        else {
+        } else {
             for (Image image : images) {
                 str += image.getImageId();
             }
@@ -182,17 +183,15 @@ public class Post {
 
         if (comments == null) {
             str += null;
-        }
-        else {
+        } else {
             for (Comment comment : comments) {
                 str += comment.getCommentId();
             }
         }
 
-        if(user == null) {
+        if (user == null) {
             str += null;
-        }
-        else {
+        } else {
             str += user.getUserId().toString();
         }
 

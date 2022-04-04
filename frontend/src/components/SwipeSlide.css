@@ -110,10 +110,15 @@
 }
 .slick-prev,
 .slick-next{
-    width: 50px!important;
-    height: 50px!important;
+    width: 3vw!important;
+    height: 3.2vw!important;
+    position: auto!important;
 }
 
 /*# sourceMappingURL=home.css.map */
 
-
+.slick-slider{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}

@@ -13,6 +13,7 @@ import DeleteIcon from "@mui/icons-material/Delete";
 import SendIcon from "@mui/icons-material/Send";
 
 import IconButton from "@mui/material/IconButton";
+import AddLocationIcon from "@mui/icons-material/AddLocation";
 import PhotoCamera from "@mui/icons-material/PhotoCamera";
 import Stack from "@mui/material/Stack";
 
@@ -37,6 +38,7 @@ export default function Sidebar() {
   const [cost, setCost] = useState(0);
   const [triptime, setTriptime] = useState("");
   const [imgurl, setImgurl] = useState("");
+  const [spotId, setspotId] = useState("");
 
   const fileSelectHandler = (event) => {
     setFile(event.target.files[0]);
@@ -61,6 +63,9 @@ export default function Sidebar() {
   const visitornumGetHandler = (event) => {
     setVisitornum(event.target.value);
   };
+  const spotIdGetHandler = (event) => {
+    setspotId(event.target.value);
+  };
 
   const fileUploadHandler = async () => {
     const fd = new FormData();
@@ -80,6 +85,7 @@ export default function Sidebar() {
       cost: cost,
       visitorNum: visitornum,
       brief: true,
+      spotId: spotId,
     });
     const postId = res.data.split("postId=")[1].split(",")[0];
     res = await axios.post("http://localhost:8080/api/image/add", {
@@ -102,7 +108,7 @@ export default function Sidebar() {
               sx={{
                 height: 350,
                 backgroundImage:
-                  "url(https://img2.fonwall.ru/o/zf/osen-doroga-avtostrada.jpg)",
+                  "url(https://c.wallhere.com/photos/d7/8b/1920x1138_px_building_Lake_Bled-597381.jpg!d)",
               }}
             >
               <CardHeader
@@ -154,7 +160,7 @@ export default function Sidebar() {
 
         <Grid xs={1}></Grid>
         <Item></Item>
-        <Grid item xs={8}>
+        <Grid item xs={8} height="100%">
           <Item>
             <TextField
               id="standard-multiline-static"
@@ -189,19 +195,26 @@ export default function Sidebar() {
 
         <Grid item xs={3}>
           <Box sx={{ display: "flex", alignItems: "flex-end", my: 3 }}>
-            <label htmlFor="icon-button-file" className="icon-button">
-              <Input accept="image/*" id="icon-button-file" type="file" />
-              <IconButton
-                color="primary"
-                aria-label="Upload picture"
-                component="span"
-                id="svg"
-                sx={{ color: "action.active", mr: 6, my: 0.5 }}
-              >
-                <PhotoCamera />
-              </IconButton>
-            </label>
-            <p id="text">Upload picture</p>
+            <AddLocationIcon
+              sx={{
+                color: "action.active",
+                mr: 7,
+                my: 0.5,
+                ml: 1,
+              }}
+            />
+            <select
+              class="form-control info-select"
+              onChange={spotIdGetHandler}
+            >
+              <option selected="selected" value="1">
+                Aquarium
+              </option>
+              <option value="2">CN tower</option>
+              <option value="3">Royal Park</option>
+              <option value="4">Notre-Dame</option>
+              <option value="4">Banff</option>
+            </select>
           </Box>
 
           <Box sx={{ display: "flex", alignItems: "flex-end", my: 3 }}>
@@ -247,7 +260,7 @@ export default function Sidebar() {
             />
             <input
               type="date"
-              id="input-with-sx"
+              id="input-with-time"
               variant="standard"
               onChange={triptimeGetHandler}
             />

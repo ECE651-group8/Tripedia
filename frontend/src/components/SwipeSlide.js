@@ -52,14 +52,14 @@ export default function SwipeSlide({ data }) {
                       src="https://www.wanderon.in/svg/clock.svg"
                       alt="time"
                     />
-                    <p>{item.tripTime}</p>
+                    <p>{item.time}</p>
 
                     <img
                       src="https://www.wanderon.in/svg/map-pin.svg"
                       alt="location"
                       style={{ marginLeft: 20 }}
                     />
-                    <p>{item.address}</p>
+                    <p>{item.province}</p>
                   </div>
                   <h2>{item.spotName}</h2>
                 </div>

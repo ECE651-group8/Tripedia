@@ -36,6 +36,7 @@ async function getData() {
   console.log(json);
   const detail = [
     {
+      userId: json.user.userId,
       img: json.images[0].imageUrl,
       user_url: json.user.avatarId,
       title: json.user.userName,
@@ -80,9 +81,11 @@ export default function ProfileCard() {
           >
             <CardHeader
               avatar={
-                <Avatar src={item.user_url} sx={{ width: 77, height: 77 }}>
-                  {/* //用户 */}
-                </Avatar>
+                <a href={"/timeline/" + item.userId}>
+                  <Avatar src={item.user_url} sx={{ width: 77, height: 77 }}>
+                    {/* //用户 */}
+                  </Avatar>
+                </a>
               }
               action={
                 <IconButton aria-label="settings">

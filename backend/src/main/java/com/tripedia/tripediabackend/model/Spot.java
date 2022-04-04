@@ -19,12 +19,18 @@ public class Spot {
 
     @Column(nullable = false, name = "spot_name")
     private String spotName;
-
-    @Column(nullable = false, name = "introduction")
+    @Lob
+    @Column(columnDefinition = "text")
     private String introduction;
 
     @Column(nullable = false, name = "mapUrl")
     private String mapUrl;
+
+    @Column(nullable = false, name = "time")
+    private String time;
+
+    @Column(nullable = false, name = "province")
+    private String province;
 
     @OneToMany(mappedBy = "spot")
     @JsonIgnoreProperties(value = { "spot", "images", "comments", "user" })
@@ -37,7 +43,8 @@ public class Spot {
     public Spot() {
     }
 
-    public Spot(Long spotId, String address, Long popularity, String mapUrl, String spotName, String introduction,
+    public Spot(Long spotId, String address, Long popularity, String province, String time, String mapUrl,
+            String spotName, String introduction,
             List<Post> posts, List<Image> images) {
         this.spotId = spotId;
         this.address = address;
@@ -47,6 +54,8 @@ public class Spot {
         this.posts = posts;
         this.images = images;
         this.mapUrl = mapUrl;
+        this.province = province;
+        this.time = time;
     }
 
     public Long getSpotId() {
@@ -71,6 +80,22 @@ public class Spot {
 
     public void setMapUrl(String mapUrl) {
         this.mapUrl = mapUrl;
+    }
+
+    public String getProvince() {
+        return province;
+    }
+
+    public void setProvince(String province) {
+        this.province = province;
+    }
+
+    public String getTime() {
+        return time;
+    }
+
+    public void setTime(String time) {
+        this.time = time;
     }
 
     public String getSpotName() {

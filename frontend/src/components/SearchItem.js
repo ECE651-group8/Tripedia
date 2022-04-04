@@ -73,7 +73,7 @@ export default function SearchItem() {
                   onChange={keywordGetHandler}
                 ></input>
                 <a href="/search#top">
-                  <button className="button" onClick={searchHandler}>
+                  <button className="search-button" onClick={searchHandler}>
                     Search
                   </button>
                 </a>
