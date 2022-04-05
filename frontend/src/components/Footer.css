@@ -1,0 +1,50 @@
+
+.main-footer{
+    color:white;
+    background:url("https://c.wallhere.com/photos/d7/8b/1920x1138_px_building_Lake_Bled-597381.jpg!d");
+   
+    height: 15vw;
+   background-position: bottom;
+}
+.contact-line{
+    display: flex;
+    flex-direction: row;
+    height:20%;
+    align-items: center;
+    
+    
+}
+.contact-line>h3{
+    margin:auto;
+    display: flex;
+    flex-direction: row;
+}
+.Icon-footer{
+    display:flex ;
+    flex-direction: row;
+    color: white;
+}
+.row{
+    display:flex;
+    flex-direction: row;
+    height: 60%;
+    width:100%;
+}
+.col{
+    width:25%;
+    text-align: center;
+    padding-top: 1vw;
+    
+}
+
+.Icon-footer-right{
+    display:flex ;
+    flex-direction: row;
+    padding-left: 25%;
+}
+#footer-text{
+    padding-right:12.5%;
+}
+.icon{
+    color: white;
+}

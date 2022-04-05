@@ -1,0 +1,13 @@
+.list{
+    width: 100%;
+    height: auto;
+    margin-bottom: 8px;
+    
+}
+.total-list{
+    margin-top: 0.5%;
+    width: 90%;
+}
+.list-img{
+    border-radius: 0.5vw;
+}

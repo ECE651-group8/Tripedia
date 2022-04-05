@@ -1,0 +1,26 @@
+.topbarOption {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+.topbarOption:hover {
+    background-color: #6b7a9b2c;
+    border-radius: 0.5vw;
+    color: var(--option-color);
+    transition: color 100ms ease-out;
+}
+
+.MuiSvgIcon-root {
+    margin-right: 10%;
+}
+
+.topbarOption > h2 {
+    font-weight: 800;
+    font-size: 0.9vw;
+    margin-right: 20px;
+}
+
+.topbarOption--active {
+    color: var(--option-color);
+}

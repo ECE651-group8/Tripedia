@@ -1,0 +1,22 @@
+#text-box{
+    width: 90%;
+    margin:auto;
+    max-width: 85rem;
+}
+.mapouter{
+    width:100%;
+}
+.css-xq8xf5-MuiPaper-root-MuiCard-root{
+    border: 0 !important;
+    margin-bottom: 2vw!important;
+}
+.css-9jambh-MuiList-root{
+    border: 0!important;
+}
+.css-r40f8v-MuiTypography-root>p{
+    font-size: 1.2vw;
+    font-family: inherit;
+}
+.css-1qvr50w-MuiTypography-root{
+    font-size: 1.5vw!important;
+}

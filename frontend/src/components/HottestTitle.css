@@ -1,0 +1,37 @@
+:root{
+    --img:url("https://www.planetware.com/photos-large/CDN/canada-view-over-old-quebec.jpg");
+}
+.hottestTitle{
+    margin-top: 5%;
+    margin-bottom: 3%;
+}
+.bgimage{
+    
+    display: "inline-block";
+    height:10rem;
+    border-radius: 1rem;
+    background-image:var(--img);
+    background-position: center;
+    background-size: cover;
+}
+.mask >h1{
+    color:white;
+    margin-top: 20px;
+    font-size: 30px;
+    font-weight:bold;
+    font-style:italic;
+}
+.mask >p{
+    color:white;
+    font-size: 18px;
+    margin-top: 8%;
+}
+.mask{
+    background-color: rgba(0, 0, 0, 0.3);
+    display: flex;
+    flex-direction: column;
+    border-radius: 1rem;
+    height: 100%;
+}
+
+

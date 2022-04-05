@@ -1,0 +1,11 @@
+.topbar {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-right: 13%;
+    margin-left: 15%;
+    border-bottom: 1px solid var(--option-background);;
+}
+.topbar-box{
+    width:90%
+}

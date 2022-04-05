@@ -1,0 +1,5 @@
+.hottest{
+    border-right: 1px solid var(--option-background);    
+    display: flex;
+    flex-direction: column;
+}

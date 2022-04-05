@@ -1,0 +1,42 @@
+
+#input{
+
+     background-color: rgba(255, 255, 255, 0.4); 
+    border: none;
+    color: rgba(8, 8, 8, 0.8);
+    font-family: inherit;
+    font-size: 0.8vw;
+    outline: none;
+    padding-inline-end: 44px;
+    padding-inline-start: 52px;
+    position: relative;
+    width: 60%;
+    border-radius: 2rem;
+    margin-top: 5%;
+    
+    height:3vw;
+
+} 
+#search-text{
+    padding-top: 12%;
+    font-size: 4vw;
+    color: whitesmoke;
+}
+
+.content{
+    background-image: url("https://c.wallhere.com/photos/d7/8b/1920x1138_px_building_Lake_Bled-597381.jpg!d");
+    background-position-x: center;
+    background-position-y: -5vw;
+    height:45vw;
+    text-align:center;
+    /* width:100%; */
+    /* text-align: center; */
+}
+.search-button{
+    background-color: #5c6d8a;
+    border-radius: 1vw;
+    color: white;
+    height: 3vw;
+    width: 8%;
+    margin-left: 1vw;
+}
