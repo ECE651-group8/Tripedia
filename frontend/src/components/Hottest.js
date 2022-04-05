@@ -8,10 +8,12 @@ function Hottest() {
   return (
     <div className="hottest">
       {/* HottestTitle */}
-      <HottestTitle
-        img="https://www.banfftours.com/wp-content/uploads/2017/08/Banff-Ave-and-Town-in-Winter-1140x530.jpg"
-        text="#1. Banff National Park"
-      />
+      <a href="trips/5">
+        <HottestTitle
+          img="https://www.banfftours.com/wp-content/uploads/2017/08/Banff-Ave-and-Town-in-Winter-1140x530.jpg"
+          text="#1. Banff National Park"
+        />
+      </a>
 
       {/* HottestCard */}
       <HottestCard
