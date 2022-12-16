@@ -76,8 +76,6 @@ class UserServiceTest {
         assertThrows(UserNameExistsException.class, () -> this.userService.login(user));
     }
 
-
-
     @Test
     void login_notExist() {
         User user = new User();
@@ -101,8 +99,7 @@ class UserServiceTest {
         User user = new User();
         user.setUserName("ziyi");
         user.setPassword("Test1234");
-        user.setEmail("ziyi@gmail.com");
-        User targetUser = this.userService.getUser(6L).get();
+        User targetUser = this.userService.getUser(2L).get();
         User resultUser = this.userService.login(user);
         // If their userId are equal, then these two are the same.
         assertEquals(targetUser.getUserId(), resultUser.getUserId());
@@ -112,14 +109,14 @@ class UserServiceTest {
     void getAllUser() {
         List<User> allUsers = this.userService.getAllUser();
         int userNumbers = allUsers.size();
-        assertEquals(userNumbers, 6);
+        assertEquals(userNumbers, 5);
     }
 
     @Test
     void getUser() {
-        String username = "ziyi";
+        String username = "nourah1992";
         Long currentUserId = this.userDao.findId(username);
-        assertEquals("ziyi",(this.userService.getUser(currentUserId)).get().getUserName());
+        assertEquals("nourah1992",(this.userService.getUser(currentUserId)).get().getUserName());
     }
 
 }
